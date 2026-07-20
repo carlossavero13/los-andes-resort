@@ -32,7 +32,7 @@ export default function InstagramFeed() {
             subtitle="@losandescieneguilla"
             title="Vive la Experiencia"
             light={false}
-            center={true}
+            centered={true}
           />
           <a 
             href="https://www.instagram.com/losandescieneguilla/" 
