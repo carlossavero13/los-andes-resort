@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Primary Brand — Base #581e1d */
+  --color-forest: #581e1d;
+  --color-forest-light: #7A3533;
+  --color-forest-dark: #3D1413;
+  /* Accent — Turquoise (contraste complementario) */
+  --color-pool: #4BB5C1;
+  --color-pool-light: #6AD0DC;
+  --color-pool-dark: #35909B;
+  /* Secondary — Sand/Warm Gold */
+  --color-gold: #C4A265;
+  --color-gold-light: #D4B87E;
+  --color-gold-dark: #9E7D45;
+  /* Dark mode tokens */
+  --color-dark: #0A0F0D;
+  --color-dark-card: #1A1F1D;
+  --color-dark-border: #2A2F2D;
+  /* Light mode surfaces */
+  --color-light-bg: #FAF3E8;
+  --color-light-card: #FFFCF5;
+  --color-light-border: #E8D5B8;
+  /* Text hierarchy — warm tones para coherencia */
+  --color-text-primary: #3B1210;
+  --color-text-secondary: #6B4A4A;
+  --color-text-light: #A08585;
+  /* Fonts */
+  --font-playfair: 'Playfair Display', serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-poppins);
+  background-color: var(--color-light-bg);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+}
+
+.dark body {
+  background-color: #0A0F0D;
+  color: #E5E7EB;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light-bg);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1A1F1D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dark);
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(196, 162, 101, 0.3);
+  color: #581e1d;
+}
+
+.dark ::selection {
+  background-color: rgba(196, 162, 101, 0.3);
+  color: #E5E7EB;
+}
+
+/* Focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom Swiper Styles for Rooms */
+.room-swiper {
+  --swiper-navigation-color: #fff;
+  --swiper-navigation-size: 20px;
+  --swiper-pagination-color: #C4A265;
+  --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.6);
+  --swiper-pagination-bullet-inactive-opacity: 1;
+}
+
+.room-swiper .swiper-button-next,
+.room-swiper .swiper-button-prev {
+  background: rgba(0, 0, 0, 0.3);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.room-swiper .swiper-button-next:hover,
+.room-swiper .swiper-button-prev:hover {
+  background: rgba(196, 162, 101, 0.8); /* Gold background on hover */
+}
+
+.room-swiper .swiper-button-next:after,
+.room-swiper .swiper-button-prev:after {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Custom Elegant Scrollbar for Modals */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(43, 61, 46, 0.2); /* forest color with opacity */
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(43, 61, 46, 0.4);
+}
+
