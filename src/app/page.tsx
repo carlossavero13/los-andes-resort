@@ -12,12 +12,12 @@ const Rooms = dynamic(() => import("@/components/sections/Rooms"));
 const InstagramFeed = dynamic(() => import("@/components/sections/InstagramFeed"));
 const Gallery = dynamic(() => import("@/components/sections/Gallery"));
 const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
-const CommonAreas = dynamic(() => import("@/components/sections/CommonAreas"));
 const Restaurant = dynamic(() => import("@/components/sections/Restaurant"));
 const Events = dynamic(() => import("@/components/sections/Events"));
 const About = dynamic(() => import("@/components/sections/About"));
 const FAQ = dynamic(() => import("@/components/sections/FAQ"));
 const Location = dynamic(() => import("@/components/sections/Location"));
+const Tourism = dynamic(() => import("@/components/sections/Tourism"));
 
 export default function Home() {
   return (
@@ -25,35 +25,37 @@ export default function Home() {
       <Navbar />
       
       <main className="flex-1">
-        {/* 1. GANCHO — Impacto visual inmediato */}
+        {/* 1. PORTADA */}
         <Hero />
 
-        {/* 2. PROPUESTA DE VALOR — Precio accesible, acción rápida */}
-        <FullDay />
+        {/* 2. NOSOTROS */}
+        <About />
 
-        {/* 3. CORE BUSINESS — Donde se genera la mayor rentabilidad */}
+        {/* 3. HOTEL */}
         <Rooms />
 
-        {/* FEED INSTAGRAM */}
+        {/* 4. FULL DAY */}
+        <FullDay />
+
+        {/* 5. VIVE LA EXPERIENCIA */}
         <InstagramFeed />
 
-        {/* 4. PRUEBA VISUAL — Demuestra que es real */}
-        <Gallery />
+        {/* 6. UBICACIÓN */}
+        <Location />
 
-        {/* 5. PRUEBA SOCIAL — Otros ya confiaron */}
-        <Testimonials />
+        {/* 7. LUGARES TURÍSTICOS */}
+        <Tourism />
 
-        {/* 6. SOPORTE — Complementa la decisión */}
-        <CommonAreas />
-        <Restaurant />
+        {/* 7. EVENTOS ESPECIALES */}
         <Events />
 
-        {/* 7. CONFIANZA — Historia y dudas */}
-        <About />
+        {/* TODO LO DEMÁS */}
+        <Restaurant />
+        <Gallery />
         <FAQ />
-
-        {/* 8. CIERRE — Cómo llegar y contacto */}
-        <Location />
+        
+        {/* 8. TESTIMONIOS (ÚLTIMO) */}
+        <Testimonials />
       </main>
 
       <Footer />

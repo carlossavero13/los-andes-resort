@@ -89,7 +89,11 @@ export default function Navbar() {
           {/* Logo (Izquierda) */}
           <div className="flex-1 flex justify-start">
             <Link 
-              href="#hero" 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               className={cn(
                 "transition-transform duration-300 hover:scale-105 z-[60]",
                 !isScrolled && "absolute top-0 left-4 md:left-6"
@@ -98,8 +102,8 @@ export default function Navbar() {
               <div className={cn(
                 "relative transition-all duration-500",
                 isScrolled 
-                  ? "w-[120px] h-[45px] md:w-[150px] md:h-[55px] brightness-0 opacity-80" 
-                  : "w-[160px] h-[160px] md:w-[220px] md:h-[220px] drop-shadow-2xl"
+                  ? "w-[96px] h-[36px] md:w-[120px] md:h-[44px] brightness-0 opacity-80" 
+                  : "w-[128px] h-[128px] md:w-[176px] md:h-[176px] drop-shadow-2xl"
               )}>
                 <Image 
                   src="/images/los_andes_logo.png" 
@@ -196,7 +200,15 @@ export default function Navbar() {
           >
             {/* Header del menú */}
             <div className="flex justify-between items-center p-6 md:p-8 border-b border-white/5">
-              <div className="w-[100px] relative opacity-80 brightness-0 invert">
+              <Link 
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsMobileMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="w-[100px] relative opacity-80 brightness-0 invert block"
+              >
                 <Image 
                   src="/images/los_andes_logo.png" 
                   alt="Los Andes Logo" 
@@ -204,7 +216,7 @@ export default function Navbar() {
                   height={40}
                   className="object-contain"
                 />
-              </div>
+              </Link>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="text-white/70 p-2 hover:text-gold transition-colors flex flex-col items-center justify-center gap-1.5"

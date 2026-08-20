@@ -1,9 +1,10 @@
 "use client";
 
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, BookOpen } from "lucide-react";
 import {
   NAV_LINKS,
   RESORT_PHONE,
+  RESORT_LANDLINE,
   RESORT_EMAIL,
   RESORT_ADDRESS,
   WHATSAPP_DEFAULT_MESSAGE,
@@ -96,9 +97,14 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone size={18} className="text-gold flex-shrink-0 mt-0.5" />
-                <span className="text-white/70 text-sm font-poppins">
-                  {RESORT_PHONE}
-                </span>
+                <div className="flex flex-col gap-1">
+                  <span className="text-white/70 text-sm font-poppins">
+                    {RESORT_PHONE} (Celular)
+                  </span>
+                  <span className="text-white/70 text-sm font-poppins">
+                    {RESORT_LANDLINE} (Fijo)
+                  </span>
+                </div>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={18} className="text-gold flex-shrink-0 mt-0.5" />
@@ -136,14 +142,27 @@ export default function Footer() {
         </div>
 
         {/* Divider & Copyright */}
-        <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
           <p className="text-white/50 text-sm font-poppins text-center md:text-left">
             © {new Date().getFullYear()} Los Andes Club Resort. Todos los
             derechos reservados.
           </p>
-          <p className="text-white/30 text-xs font-poppins">
-            Diseñado con ♥ para crear experiencias inolvidables
-          </p>
+          
+          <div className="flex flex-col items-center md:items-end gap-3">
+            <a 
+              href="#" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-white/70 hover:text-white transition-colors bg-white/5 px-4 py-2.5 rounded-lg border border-white/10 hover:bg-white/10 hover:border-white/20 shadow-sm"
+              title="Libro de Reclamaciones"
+            >
+              <BookOpen size={18} className="text-gold" />
+              <span className="font-poppins text-xs font-medium uppercase tracking-wider">Libro de Reclamaciones</span>
+            </a>
+            <p className="text-white/30 text-xs font-poppins">
+              Diseñado con ♥ para crear experiencias inolvidables
+            </p>
+          </div>
         </div>
       </div>
     </footer>

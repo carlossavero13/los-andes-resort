@@ -20,10 +20,12 @@ export default function Location() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <SectionHeading subtitle="Encuéntranos" title="Ubicación" light />
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start mt-16">
-          <AnimatedSection variant="fadeLeft">
-            <div className="p-2 md:p-3 bg-white/5 backdrop-blur-md rounded-[2.5rem] border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
-              <div className="overflow-hidden rounded-[2rem] relative aspect-square lg:aspect-[4/5] bg-black">
+        <div className="flex flex-col gap-16 mt-16">
+          
+          {/* MAPA FULL WIDTH */}
+          <AnimatedSection variant="fadeUp">
+            <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] p-2 md:p-3 bg-white/5 backdrop-blur-md rounded-[2.5rem] border border-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
+              <div className="w-full h-full rounded-[2rem] overflow-hidden relative bg-black">
                 <iframe
                   src={GOOGLE_MAPS_EMBED}
                   width="100%"
@@ -46,73 +48,86 @@ export default function Location() {
             </div>
           </AnimatedSection>
 
-          {/* Info */}
-          <AnimatedSection variant="fadeRight" className="lg:py-8">
-            <h3 className="font-playfair text-3xl md:text-5xl font-light text-white mb-12 leading-tight">
-              Tu escape está <br/><span className="italic text-gold">más cerca de lo que crees</span>
-            </h3>
-            
-            <div className="flex items-start gap-6 mb-10">
-              <div className="flex-shrink-0 mt-1 w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center shadow-inner">
-                <MapPin className="w-5 h-5 text-gold" />
-              </div>
-              <div>
-                <h4 className="font-inter text-[10px] uppercase tracking-[0.3em] text-white/50 mb-2 font-medium">
-                  Dirección
-                </h4>
-                <span className="text-white/90 font-playfair text-xl md:text-2xl font-light">
-                  {RESORT_ADDRESS}
-                </span>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-6 mb-12 pb-12 border-b border-gold/20">
-              <div className="flex-shrink-0 mt-1 w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center shadow-inner">
-                <Car className="w-5 h-5 text-gold" />
-              </div>
-              <div>
-                <h4 className="font-inter text-[10px] uppercase tracking-[0.3em] text-white/50 mb-3 font-medium">
-                  Cómo Llegar desde Lima
-                </h4>
-                <p className="text-white/70 font-inter font-light text-sm md:text-base leading-relaxed">
-                  Toma la Panamericana Sur y desvía hacia Cieneguilla. El trayecto 
-                  es de aproximadamente 1 hora. El camino está 
-                  totalmente asfaltado y señalizado. Contamos con <strong className="text-gold font-medium">estacionamiento 
-                  privado y vigilado</strong> para tu total tranquilidad.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <a
-                href={GOOGLE_MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-3 bg-gold text-forest px-8 py-4 rounded-xl font-inter font-semibold text-[10px] tracking-[0.25em] uppercase hover:bg-white transition-all shadow-[0_10px_30px_rgba(196,162,101,0.2)] hover:shadow-[0_10px_30px_rgba(255,255,255,0.3)] hover:-translate-y-1"
-              >
-                <MapIcon className="w-4 h-4" />
-                Google Maps
-              </a>
+          {/* DETALLES ABAJO (2 Columnas en Desktop) */}
+          <AnimatedSection variant="fadeUp">
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center pt-8">
               
-              <a
-                href="https://waze.com/ul?q=Club%20Resort%20Los%20Andes%20Cieneguilla"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-3 bg-white/5 backdrop-blur-sm border border-gold/30 text-white hover:bg-gold/10 px-8 py-4 rounded-xl font-inter font-medium text-[10px] tracking-[0.25em] uppercase transition-all"
-              >
-                <Navigation className="w-4 h-4 text-gold" />
-                Waze
-              </a>
+              {/* Columna Izquierda: Título y Botones */}
+              <div>
+                <h3 className="font-playfair text-3xl md:text-5xl lg:text-6xl font-light text-white mb-10 leading-tight">
+                  Tu escape está <br/><span className="italic text-gold">más cerca de lo que crees</span>
+                </h3>
+                
+                <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+                  <a
+                    href={GOOGLE_MAPS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-3 bg-gold text-forest px-8 py-4 rounded-xl font-inter font-semibold text-[10px] tracking-[0.25em] uppercase hover:bg-white transition-all shadow-[0_10px_30px_rgba(196,162,101,0.2)] hover:shadow-[0_10px_30px_rgba(255,255,255,0.3)] hover:-translate-y-1"
+                  >
+                    <MapIcon className="w-4 h-4" />
+                    Google Maps
+                  </a>
+                  
+                  <a
+                    href="https://waze.com/ul?q=Club%20Resort%20Los%20Andes%20Cieneguilla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-3 bg-white/5 backdrop-blur-sm border border-gold/30 text-white hover:bg-gold/10 px-8 py-4 rounded-xl font-inter font-medium text-[10px] tracking-[0.25em] uppercase transition-all"
+                  >
+                    <Navigation className="w-4 h-4 text-gold" />
+                    Waze
+                  </a>
+                </div>
+                
+                <div className="mt-4">
+                  <a
+                    href={getWhatsAppUrl("Hola, me gustaría saber cómo llegar a Los Andes Club Resort")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-3 text-gold/70 hover:text-gold py-4 font-inter font-medium text-[10px] tracking-[0.25em] uppercase transition-all underline underline-offset-4 decoration-gold/30 hover:decoration-gold"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Preguntar por WhatsApp
+                  </a>
+                </div>
+              </div>
 
-              <a
-                href={getWhatsAppUrl("Hola, me gustaría saber cómo llegar a Los Andes Club Resort")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto flex items-center justify-center gap-3 text-gold/70 hover:text-gold px-8 py-4 font-inter font-medium text-[10px] tracking-[0.25em] uppercase transition-all underline underline-offset-4 decoration-gold/30 hover:decoration-gold"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Preguntar por WhatsApp
-              </a>
+              {/* Columna Derecha: Dirección e Instrucciones */}
+              <div className="flex flex-col gap-10 md:border-l border-gold/20 pt-8 md:pt-0 md:pl-12 lg:pl-16">
+                
+                <div className="flex items-start gap-6">
+                  <div className="flex-shrink-0 mt-1 w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center shadow-inner">
+                    <MapPin className="w-5 h-5 text-gold" />
+                  </div>
+                  <div>
+                    <h4 className="font-inter text-[10px] uppercase tracking-[0.3em] text-white/50 mb-2 font-medium">
+                      Dirección
+                    </h4>
+                    <span className="text-white/90 font-playfair text-xl md:text-2xl font-light leading-relaxed block">
+                      {RESORT_ADDRESS}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-6">
+                  <div className="flex-shrink-0 mt-1 w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center shadow-inner">
+                    <Car className="w-5 h-5 text-gold" />
+                  </div>
+                  <div>
+                    <h4 className="font-inter text-[10px] uppercase tracking-[0.3em] text-white/50 mb-3 font-medium">
+                      Cómo Llegar desde Lima
+                    </h4>
+                    <p className="text-white/70 font-inter font-light text-sm md:text-base leading-relaxed">
+                      Toma la Panamericana Sur y desvía hacia Cieneguilla. El trayecto 
+                      es de aproximadamente 1 hora. El camino está 
+                      totalmente asfaltado y señalizado. Contamos con <strong className="text-gold font-medium">estacionamiento 
+                      privado y vigilado</strong> para tu total tranquilidad.
+                    </p>
+                  </div>
+                </div>
+                
+              </div>
             </div>
           </AnimatedSection>
         </div>

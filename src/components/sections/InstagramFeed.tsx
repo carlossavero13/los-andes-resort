@@ -25,7 +25,7 @@ const feedMedia = [
 
 export default function InstagramFeed() {
   return (
-    <section id="instagram" className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section id="instagram" className="py-24 md:py-32 bg-[#faf3e8] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16 relative z-20">
         <AnimatedSection variant="fadeUp" className="flex flex-col items-center justify-center text-center">
           <SectionHeading

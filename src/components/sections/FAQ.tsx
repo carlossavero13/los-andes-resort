@@ -11,7 +11,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First one open by default
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-light-bg relative overflow-hidden">
+    <section id="faq" className="py-24 md:py-32 bg-[#faf3e8] relative overflow-hidden">
       
       {/* Elementos decorativos */}
       <div className="absolute top-0 left-0 w-1/4 h-full bg-white/40 -z-10 blur-3xl rounded-full opacity-50" />

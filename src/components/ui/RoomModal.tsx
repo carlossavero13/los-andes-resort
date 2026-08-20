@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Users, Check, Maximize2, Coffee, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, Users, Check, Maximize2, Coffee, ArrowLeft, ArrowRight, BedDouble, Waves, Activity, Refrigerator, Droplets, Wifi, Maximize, Bath, TreePine, Car, Snowflake, ConciergeBell, Sparkles, Tv, SprayCan, Sun } from "lucide-react";
 import { useLenis } from 'lenis/react';
 import { cn } from "@/lib/utils";
 
@@ -18,6 +18,28 @@ interface RoomModalProps {
 export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
   const lenis = useLenis();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  const getAmenityIcon = (amenity: string) => {
+    const a = amenity.toLowerCase();
+    if (a.includes("cama")) return BedDouble;
+    if (a.includes("piscina")) return Waves;
+    if (a.includes("fútbol") || a.includes("juegos")) return Activity;
+    if (a.includes("desayuno")) return Coffee;
+    if (a.includes("friobar") || a.includes("cafetera")) return Refrigerator;
+    if (a.includes("agua caliente")) return Droplets;
+    if (a.includes("wifi")) return Wifi;
+    if (a.includes("área") || a.includes("medición") || a.includes("metros")) return Maximize;
+    if (a.includes("toalla")) return Bath;
+    if (a.includes("verde") || a.includes("naturaleza")) return TreePine;
+    if (a.includes("estacionamiento")) return Car;
+    if (a.includes("aire acondicionado")) return Snowflake;
+    if (a.includes("servicio") || a.includes("habitaciones disponible")) return ConciergeBell;
+    if (a.includes("limpieza")) return Sparkles;
+    if (a.includes("televisión") || a.includes("tv")) return Tv;
+    if (a.includes("aseo") || a.includes("artículos")) return SprayCan;
+    if (a.includes("terraza")) return Sun;
+    return Check;
+  };
 
   // Prevenir scroll de fondo cuando el modal está abierto
   useEffect(() => {
@@ -38,6 +60,10 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
 
   if (!room) return null;
 
+  const resortKeywords = ['desayuno', 'piscina', 'fútbol', 'juegos', 'verdes', 'estacionamiento'];
+  const roomFeatures = room.amenities.filter(a => !resortKeywords.some(k => a.toLowerCase().includes(k)));
+  const resortFeatures = room.amenities.filter(a => resortKeywords.some(k => a.toLowerCase().includes(k)));
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -57,7 +83,7 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-6xl h-[95vh] md:h-[90vh] bg-[#FDFBF7] z-[101] rounded-sm shadow-2xl overflow-hidden flex flex-col"
+            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[98%] max-w-[1500px] h-[98vh] md:h-[95vh] bg-[#FDFBF7] z-[101] rounded-sm shadow-2xl overflow-hidden flex flex-col"
             data-lenis-prevent="true"
           >
             {/* BOTÓN CERRAR */}
@@ -74,7 +100,7 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
               data-lenis-prevent="true"
             >
               {/* TÍTULO PRINCIPAL (Arriba de todo) */}
-              <div className="max-w-6xl mx-auto px-5 pt-14 md:px-10 md:pt-12 md:pb-2 flex flex-col items-start gap-3 md:gap-4">
+              <div className="max-w-[1500px] w-full mx-auto px-5 pt-14 md:px-10 md:pt-12 md:pb-2 flex flex-col items-start gap-3 md:gap-4">
                 <div className="flex items-center gap-2 md:gap-3">
                   <span className="border border-forest/20 text-forest text-[9px] uppercase tracking-[0.3em] px-3 py-1.5 font-medium rounded-sm">
                     {room.category === 'hotel' ? 'Hotel' : 'Cabaña'}
@@ -90,7 +116,7 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
                 </h2>
               </div>
 
-              <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 p-6 md:p-10 pt-6 md:pt-6">
+              <div className="max-w-[1500px] w-full mx-auto flex flex-col md:flex-row gap-8 md:gap-16 p-6 md:p-10 pt-6 md:pt-6">
                 {/* Columna Izquierda (Galería + Detalles) */}
                 <div className="w-full md:w-[60%] flex flex-col">
                   
@@ -114,18 +140,18 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
                               e.stopPropagation(); 
                               setActiveImageIndex((prev) => (prev - 1 + room.images.length) % room.images.length); 
                             }}
-                            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-forest shadow-[0_4px_14px_0_rgba(0,0,0,0.15)] transition-all opacity-0 group-hover:opacity-100 hover:scale-105"
+                            className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-9 h-9 md:w-11 md:h-11 bg-white/40 hover:bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-forest shadow-md border border-white/50 transition-all hover:scale-105 z-10"
                           >
-                            <ChevronLeft size={24} strokeWidth={2} className="mr-0.5" />
+                            <ArrowLeft size={18} strokeWidth={2} className="md:w-6 md:h-6" />
                           </button>
                           <button 
                             onClick={(e) => { 
                               e.stopPropagation(); 
                               setActiveImageIndex((prev) => (prev + 1) % room.images.length); 
                             }}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center text-forest shadow-[0_4px_14px_0_rgba(0,0,0,0.15)] transition-all opacity-0 group-hover:opacity-100 hover:scale-105"
+                            className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 w-9 h-9 md:w-11 md:h-11 bg-white/40 hover:bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-forest shadow-md border border-white/50 transition-all hover:scale-105 z-10"
                           >
-                            <ChevronRight size={24} strokeWidth={2} className="ml-0.5" />
+                            <ArrowRight size={18} strokeWidth={2} className="md:w-6 md:h-6" />
                           </button>
 
                           {/* Dots */}
@@ -203,42 +229,31 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
                     </p>
                   </div>
 
-                  {/* Amenities (Movidos aquí) */}
-                  <div className="mb-8 hidden md:block">
-                    <h3 className="font-playfair text-xl md:text-2xl font-light text-forest mb-4">Servicios</h3>
-                    <div className="grid grid-cols-2 gap-y-3 gap-x-4">
-                      {room.amenities.map((amenity, idx) => {
-                        const isBreakfast = amenity.toLowerCase().includes('desayuno');
+                  {/* Amenities Section */}
+                  <div className="mb-10">
+                    <h3 className="font-playfair text-xl md:text-2xl font-light text-forest mb-6">Servicios de Habitación</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-10">
+                      {roomFeatures.map((amenity, idx) => {
+                        const Icon = getAmenityIcon(amenity);
                         return (
-                          <div key={idx} className="flex items-center gap-3 text-forest/90">
-                            {isBreakfast ? (
-                              <Coffee size={16} strokeWidth={1.5} />
-                            ) : (
-                              <Check size={16} strokeWidth={1.5} />
-                            )}
-                            <span className="font-inter text-xs font-light tracking-wide">
+                          <div key={idx} className="flex items-center gap-4 text-forest/90">
+                            <Icon size={20} strokeWidth={1.5} className="text-forest/60 shrink-0" />
+                            <span className="font-inter text-sm font-light tracking-wide leading-snug">
                               {amenity}
                             </span>
                           </div>
                         );
                       })}
                     </div>
-                  </div>
-                  
-                  {/* Amenities en Móvil */}
-                  <div className="mb-8 md:hidden">
-                    <h3 className="font-playfair text-2xl font-light text-forest mb-4">Servicios</h3>
-                    <div className="grid grid-cols-2 gap-y-3 gap-x-4">
-                      {room.amenities.map((amenity, idx) => {
-                        const isBreakfast = amenity.toLowerCase().includes('desayuno');
+
+                    <h3 className="font-playfair text-xl md:text-2xl font-light text-forest mb-6 border-t border-forest/10 pt-10">Incluido en tu estadía</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6">
+                      {resortFeatures.map((amenity, idx) => {
+                        const Icon = getAmenityIcon(amenity);
                         return (
-                          <div key={idx} className="flex items-center gap-3 text-forest/90">
-                            {isBreakfast ? (
-                              <Coffee size={16} strokeWidth={1.5} />
-                            ) : (
-                              <Check size={16} strokeWidth={1.5} />
-                            )}
-                            <span className="font-inter text-xs font-light tracking-wide">
+                          <div key={idx} className="flex items-center gap-4 text-forest/90">
+                            <Icon size={20} strokeWidth={1.5} className="text-gold shrink-0" />
+                            <span className="font-inter text-sm font-light tracking-wide leading-snug">
                               {amenity}
                             </span>
                           </div>

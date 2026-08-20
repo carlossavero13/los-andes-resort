@@ -3,16 +3,17 @@
 import Image from "next/image";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export default function About() {
   const stats = [
-    { number: "+3", label: "Años de Tradición" },
-    { number: "5k+", label: "Familias Felices" },
-    { number: "100%", label: "Desconexión Total" },
+    { value: 3, prefix: "+", suffix: "", label: "Años de Tradición" },
+    { value: 5, prefix: "", suffix: "k+", label: "Familias Felices" },
+    { value: 100, prefix: "", suffix: "%", label: "Desconexión Total" },
   ];
 
   return (
-    <section id="nosotros" className="py-24 md:py-32 bg-light-bg relative overflow-hidden">
+    <section id="nosotros" className="py-24 md:py-32 bg-white relative overflow-hidden">
       
       {/* Elementos Decorativos */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-white/40 -z-10 clip-path-slant shadow-2xl" />
@@ -103,7 +104,7 @@ export default function About() {
                 className="text-center group"
               >
                 <div className="font-playfair text-5xl md:text-6xl lg:text-7xl font-light text-forest mb-4 group-hover:text-gold transition-colors duration-500">
-                  {stat.number}
+                  <AnimatedCounter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} duration={1.5} />
                 </div>
                 <div className="font-inter text-[10px] md:text-xs text-forest/50 uppercase tracking-[0.4em] font-medium">
                   {stat.label}

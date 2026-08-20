@@ -3,6 +3,7 @@ import { Room, Testimonial, FAQ, NavLink } from "@/types";
 export const WHATSAPP_NUMBER = "51924899204";
 export const WHATSAPP_DEFAULT_MESSAGE = "Hola, me gustaría obtener más información sobre Los Andes Club Resort";
 export const RESORT_PHONE = "+51 924 899 204";
+export const RESORT_LANDLINE = "(01) 748 - 3726";
 export const RESORT_EMAIL = "clientes@restaurantlosandes.com.pe";
 export const RESORT_ADDRESS = "Los Andes Club Resort, Cieneguilla, Lima, Perú";
 export const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/HF5sNn4YHAZWRQKA6";
@@ -16,12 +17,13 @@ export const SOCIAL_LINKS = {
 };
 
 export const NAV_LINKS: NavLink[] = [
-  { name: "Full Day", href: "#fullday" },
-  { name: "Habitaciones", href: "#habitaciones" },
-  { name: "Galería", href: "#galeria" },
-  { name: "Servicios", href: "#areas" },
   { name: "Nosotros", href: "#nosotros" },
-  { name: "Contacto", href: "#ubicacion" },
+  { name: "Hotel", href: "#habitaciones" },
+  { name: "Full Day", href: "#fullday" },
+  { name: "Ubicación", href: "#ubicacion" },
+  { name: "Turismo", href: "#turismo" },
+  { name: "Eventos", href: "#eventos" },
+  { name: "Galería", href: "#galeria" },
 ];
 
 export const ROOMS: Room[] = [
@@ -38,7 +40,7 @@ export const ROOMS: Room[] = [
       "/images/rooms/h_matri2_v2.png",
       "/images/rooms/h_matri3_v2.png"
     ],
-    amenities: ["1 Cama Queen", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
+    amenities: ["1 Cama Queen", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
   {
     id: "matrimonial-suite-junior",
@@ -53,7 +55,7 @@ export const ROOMS: Room[] = [
       "/images/rooms/hmatrisjunior2.png",
       "/images/rooms/hmatrisjunior3.png"
     ],
-    amenities: ["1 Cama King Size", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
+    amenities: ["1 Cama King Size", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
     featured: true,
   },
 
@@ -71,7 +73,7 @@ export const ROOMS: Room[] = [
       "/images/rooms/h_doble_sup3.png",
       "/images/rooms/h_doble_sup4.png"
     ],
-    amenities: ["1 Cama Queen", "1 Cama 2 Plazas", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
+    amenities: ["1 Cama Queen", "1 Cama 2 Plazas", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
   {
     id: "doble-suite-junior",
@@ -86,7 +88,7 @@ export const ROOMS: Room[] = [
       "/images/rooms/hdsjunior2.png",
       "/images/rooms/hdsjunior3.png"
     ],
-    amenities: ["2 Camas Queen", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
+    amenities: ["2 Camas Queen", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
   {
     id: "doble-estandar",
@@ -102,7 +104,7 @@ export const ROOMS: Room[] = [
       "/images/rooms/h_doble3.png",
       "/images/rooms/h_doble4.png"
     ],
-    amenities: ["1 Cama Queen", "1 Cama 1.5 Plazas", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
+    amenities: ["1 Cama Queen", "1 Cama 1.5 Plazas", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
   {
     id: "familiar",
@@ -118,7 +120,7 @@ export const ROOMS: Room[] = [
       "/images/rooms/room-piedra (3).png",
       "/images/rooms/room-piedra (4).png"
     ],
-    amenities: ["1 Cama King Size", "2 Camas 2 Plazas", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
+    amenities: ["1 Cama King Size", "2 Camas 2 Plazas", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
     featured: true,
   },
 ];
