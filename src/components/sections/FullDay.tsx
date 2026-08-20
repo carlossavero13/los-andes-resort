@@ -46,7 +46,7 @@ export default function FullDay() {
             <SectionHeading 
               subtitle="Pasa el día con nosotros" 
               title="Experiencia Full Day" 
-              align="left" 
+              centered={false} 
             />
             
             <p className="text-forest/70 font-inter font-light text-base md:text-lg leading-relaxed mb-10 mt-6 max-w-lg">
