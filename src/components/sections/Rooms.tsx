@@ -117,7 +117,7 @@ export default function Rooms() {
                               <span className="block text-[9px] font-inter uppercase tracking-[0.2em] text-forest/50">Desde</span>
                               <div className="flex items-start">
                                 <span className="text-sm font-medium text-gold mt-0.5 mr-0.5">S/</span>
-                                <span className="text-3xl font-playfair font-medium text-forest">{room.price.toFixed(0)}</span>
+                                <span className="text-3xl font-playfair font-medium text-forest">{room.price ? room.price.toFixed(0) : "0"}</span>
                               </div>
                             </div>
                           </div>
@@ -264,7 +264,7 @@ export default function Rooms() {
                         <span className="block text-[9px] font-inter uppercase tracking-[0.2em] text-forest/50 mb-0.5">Desde</span>
                         <div className="flex items-start">
                           <span className="text-sm font-medium text-gold mt-1 mr-1">S/</span>
-                          <span className="text-4xl font-playfair font-semibold text-forest">{activeRoom.price.toFixed(0)}</span>
+                          <span className="text-4xl font-playfair font-semibold text-forest">{activeRoom.price ? activeRoom.price.toFixed(0) : "0"}</span>
                           <span className="text-[10px] text-forest/50 font-inter ml-1.5 self-end mb-1.5">/ noche</span>
                         </div>
                       </div>
