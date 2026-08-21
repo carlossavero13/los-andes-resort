@@ -39,13 +39,13 @@ export default function Testimonials() {
                 key={testimonial.id}
                 variant="fadeUp"
                 delay={index * 0.1}
-                className={`w-[85vw] md:w-auto flex-shrink-0 snap-center bg-white/[0.02] backdrop-blur-sm border border-gold/20 rounded-2xl p-8 md:p-12 relative flex flex-col group transition-all duration-700 hover:border-gold/50 hover:bg-white/[0.05] hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(196,162,101,0.1)] ${
+                className={`w-[85vw] md:w-auto flex-shrink-0 snap-center bg-white shadow-[0_10px_40px_rgba(0,0,0,0.15)] rounded-2xl p-8 md:p-12 relative flex flex-col group transition-all duration-700 hover:border-[#722F37]/10 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.25)] ${
                   isLastRow && index === 3 ? "lg:col-start-1 lg:translate-x-1/2" : ""
                 } ${
                   isLastRow && index === 4 ? "lg:col-start-2 lg:translate-x-1/2" : ""
                 }`}
               >
-                <div className="absolute top-8 right-8 text-gold/10 group-hover:text-gold/20 transition-all duration-700 transform group-hover:scale-110">
+                <div className="absolute top-8 right-8 text-[#722F37]/5 group-hover:text-[#722F37]/10 transition-all duration-700 transform group-hover:scale-110">
                   <Quote size={50} strokeWidth={1} />
                 </div>
 
@@ -53,26 +53,26 @@ export default function Testimonials() {
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-3.5 h-3.5 text-gold fill-current drop-shadow-[0_0_5px_rgba(196,162,101,0.5)]"
+                      className="w-3.5 h-3.5 text-gold fill-current"
                     />
                   ))}
                 </div>
 
-                <p className="text-white/90 font-playfair text-lg md:text-xl font-light leading-relaxed mb-10 flex-1 relative z-10 italic">
+                <p className="text-[#722F37] font-playfair text-lg md:text-xl font-medium leading-relaxed mb-10 flex-1 relative z-10 italic">
                   &quot;{testimonial.comment}&quot;
                 </p>
 
-                <div className="w-16 h-[1px] bg-gold/30 mb-8 transition-all duration-700 group-hover:w-full group-hover:bg-gold/50" />
+                <div className="w-16 h-[1px] bg-[#722F37]/10 mb-8 transition-all duration-700 group-hover:w-full group-hover:bg-gold/50" />
 
                 <div className="flex items-center gap-4 relative z-10">
-                  <div className="w-11 h-11 rounded-full border border-gold/30 flex items-center justify-center font-playfair font-light text-gold text-lg bg-gold/5 shadow-inner">
+                  <div className="w-11 h-11 rounded-full border border-[#722F37]/20 flex items-center justify-center font-playfair font-medium text-[#722F37] text-lg bg-[#722F37]/5 shadow-sm">
                     {testimonial.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-inter font-light text-gold text-[10px] md:text-[11px] uppercase tracking-[0.25em]">
+                    <h4 className="font-inter font-bold text-[#722F37] text-[10px] md:text-[11px] uppercase tracking-[0.25em]">
                       {testimonial.name}
                     </h4>
-                    <span className="font-inter text-white/40 text-[9px] tracking-[0.3em] uppercase block mt-1">
+                    <span className="font-inter text-[#722F37]/50 text-[9px] tracking-[0.3em] uppercase block mt-1 font-semibold">
                       {testimonial.date}
                     </span>
                   </div>

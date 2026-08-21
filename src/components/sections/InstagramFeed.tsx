@@ -21,24 +21,26 @@ const feedMedia = [
   { type: "video", src: "/videos/ig3.mp4", href: "https://www.instagram.com/reel/DamUXGMvnEM/" },
   { type: "video", src: "/videos/ig4.mp4", href: "https://www.instagram.com/reel/Dabhk6zvPtB/" },
   { type: "video", src: "/videos/ig5.mp4", href: "https://www.instagram.com/reel/DaHCubYPGTE/" },
+  { type: "video", src: "/videos/ig6.mp4", href: "https://www.instagram.com/reel/DYFmM0cvFVx/" },
 ];
 
 export default function InstagramFeed() {
   return (
-    <section id="instagram" className="py-24 md:py-32 bg-[#faf3e8] relative overflow-hidden">
+    <section id="instagram" className="py-24 md:py-32 bg-[#FDFBF7] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16 relative z-20">
         <AnimatedSection variant="fadeUp" className="flex flex-col items-center justify-center text-center">
           <SectionHeading
             subtitle="@losandescieneguilla"
-            title="Vive la Experiencia"
+            title="Vive la Experiencia Los Andes"
             light={false}
             centered={true}
           />
+
           <a 
             href="https://www.instagram.com/losandescieneguilla/" 
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 px-8 py-4 bg-forest hover:bg-forest-light text-gold rounded-full font-inter text-xs tracking-[0.2em] uppercase font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 -mt-2"
+            className="flex items-center justify-center gap-3 px-8 py-4 bg-forest hover:bg-forest-light text-gold rounded-full font-inter text-xs tracking-[0.2em] uppercase font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
           >
             <InstagramIcon className="w-5 h-5" />
             Síguenos
@@ -48,7 +50,7 @@ export default function InstagramFeed() {
 
       {/* Grid de Instagram Simulado Moderno */}
       <div className="w-full relative z-20 pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 px-4 md:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 px-4 md:px-8">
           {feedMedia.map((media, idx) => {
             return (
               <InstagramCard key={idx} media={media} idx={idx} />

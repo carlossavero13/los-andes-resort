@@ -55,7 +55,7 @@ export const ROOMS: Room[] = [
       "/images/rooms/hmatrisjunior2.png",
       "/images/rooms/hmatrisjunior3.png"
     ],
-    amenities: ["1 Cama King Size", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
+    amenities: ["1 Cama King Size", "Jacuzzi", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
     featured: true,
   },
 

@@ -1,12 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, HTMLMotionProps } from "framer-motion";
 import * as animations from "@/lib/animations";
 
 type VariantName = "fadeUp" | "fadeLeft" | "fadeRight" | "fadeIn" | "zoomIn" | "slideUp";
 
-interface AnimatedSectionProps {
+interface AnimatedSectionProps extends HTMLMotionProps<"div"> {
   children: React.ReactNode;
   className?: string;
   variant?: VariantName;
@@ -18,6 +18,7 @@ export default function AnimatedSection({
   className,
   variant = "fadeUp",
   delay = 0,
+  ...props
 }: AnimatedSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -41,6 +42,7 @@ export default function AnimatedSection({
       variants={selectedVariant}
       transition={{ delay }}
       className={className}
+      {...props}
     >
       {children}
     </motion.div>

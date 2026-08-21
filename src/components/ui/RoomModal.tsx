@@ -29,7 +29,7 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
     if (a.includes("agua caliente")) return Droplets;
     if (a.includes("wifi")) return Wifi;
     if (a.includes("área") || a.includes("medición") || a.includes("metros")) return Maximize;
-    if (a.includes("toalla")) return Bath;
+    if (a.includes("toalla") || a.includes("jacuzzi")) return Bath;
     if (a.includes("verde") || a.includes("naturaleza")) return TreePine;
     if (a.includes("estacionamiento")) return Car;
     if (a.includes("aire acondicionado")) return Snowflake;
@@ -74,10 +74,9 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 z-[100] backdrop-blur-sm"
+            className="fixed inset-0 bg-black/70 z-[100] backdrop-blur-md"
             data-lenis-prevent="true"
           />
-
           {/* Contenedor del Modal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}

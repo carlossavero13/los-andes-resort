@@ -7,6 +7,8 @@ import ExitIntentPopup from "@/components/ui/ExitIntentPopup";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import Preloader from "@/components/ui/Preloader";
 
+import CookieBanner from "@/components/ui/CookieBanner";
+
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
@@ -108,6 +110,7 @@ export default function RootLayout({
           {children}
           <BookingModal />
           <ExitIntentPopup />
+          <CookieBanner />
         </SmoothScroll>
       </body>
     </html>

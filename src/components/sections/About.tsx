@@ -3,15 +3,8 @@
 import Image from "next/image";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
-import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export default function About() {
-  const stats = [
-    { value: 3, prefix: "+", suffix: "", label: "Años de Tradición" },
-    { value: 5, prefix: "", suffix: "k+", label: "Familias Felices" },
-    { value: 100, prefix: "", suffix: "%", label: "Desconexión Total" },
-  ];
-
   return (
     <section id="nosotros" className="py-24 md:py-32 bg-white relative overflow-hidden">
       
@@ -20,8 +13,8 @@ export default function About() {
       
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
-          subtitle="Nuestra Historia"
-          title="Un Refugio de Naturaleza"
+          subtitle="Sobre Nosotros"
+          title="Nuestra Historia"
         />
 
         <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center mt-20">
@@ -94,25 +87,6 @@ export default function About() {
           </div>
         </div>
 
-        <div className="mt-32 pt-16 border-t border-forest/10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            {stats.map((stat, index) => (
-              <AnimatedSection
-                key={stat.label}
-                variant="slideUp"
-                delay={index * 0.1}
-                className="text-center group"
-              >
-                <div className="font-playfair text-5xl md:text-6xl lg:text-7xl font-light text-forest mb-4 group-hover:text-gold transition-colors duration-500">
-                  <AnimatedCounter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} duration={1.5} />
-                </div>
-                <div className="font-inter text-[10px] md:text-xs text-forest/50 uppercase tracking-[0.4em] font-medium">
-                  {stat.label}
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
       </div>
       
       {/* Estilo local para el fondo inclinado */}

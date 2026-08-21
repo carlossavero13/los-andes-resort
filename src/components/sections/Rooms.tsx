@@ -28,7 +28,7 @@ export default function Rooms() {
     if (a.includes("agua caliente")) return Droplets;
     if (a.includes("wifi")) return Wifi;
     if (a.includes("área") || a.includes("medición") || a.includes("metros")) return Maximize;
-    if (a.includes("toalla")) return Bath;
+    if (a.includes("toalla") || a.includes("jacuzzi")) return Bath;
     if (a.includes("verde") || a.includes("naturaleza")) return TreePine;
     if (a.includes("estacionamiento")) return Car;
     if (a.includes("aire acondicionado")) return Snowflake;
@@ -41,7 +41,7 @@ export default function Rooms() {
   };
 
   return (
-    <section id="habitaciones" className="py-24 md:py-32 bg-[#faf3e8] min-h-screen relative overflow-hidden">
+    <section id="habitaciones" className="py-24 md:py-32 bg-[#FDFBF7] min-h-screen relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#F3EFEA] to-transparent opacity-50 pointer-events-none" />
       
@@ -110,6 +110,34 @@ export default function Rooms() {
                                 <Users size={12} className="text-gold" />
                                 {room.capacity} Personas
                             </span>
+                          </div>
+
+                          <div className="mb-6">
+                            <h4 className="font-playfair text-lg text-forest mb-3 border-b border-forest/10 pb-2">Servicios de Habitación</h4>
+                            <div className="grid grid-cols-2 gap-y-3 gap-x-2 mb-4">
+                              {room.amenities.filter(a => !['desayuno', 'piscina', 'fútbol', 'juegos', 'verdes', 'estacionamiento'].some(k => a.toLowerCase().includes(k))).map((amenity, idx) => {
+                                const Icon = getAmenityIcon(amenity);
+                                return (
+                                  <div key={idx} className="flex items-center gap-2 text-forest/90">
+                                    <Icon size={14} strokeWidth={1.5} className="text-forest/60 shrink-0" />
+                                    <span className="font-inter text-[11px] font-light leading-tight">{amenity}</span>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                            
+                            <h4 className="font-playfair text-lg text-forest mb-3 border-b border-forest/10 pb-2 pt-2">Incluido en tu estadía</h4>
+                            <div className="grid grid-cols-2 gap-y-3 gap-x-2">
+                              {room.amenities.filter(a => ['desayuno', 'piscina', 'fútbol', 'juegos', 'verdes', 'estacionamiento'].some(k => a.toLowerCase().includes(k))).map((amenity, idx) => {
+                                const Icon = getAmenityIcon(amenity);
+                                return (
+                                  <div key={idx} className="flex items-center gap-2 text-forest/90">
+                                    <Icon size={14} strokeWidth={1.5} className="text-gold shrink-0" />
+                                    <span className="font-inter text-[11px] font-light leading-tight">{amenity}</span>
+                                  </div>
+                                );
+                              })}
+                            </div>
                           </div>
 
                           <div className="flex items-center justify-between mb-6 border-t border-forest/10 pt-6">

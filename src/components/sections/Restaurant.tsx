@@ -25,7 +25,7 @@ export default function Restaurant() {
   }, []);
 
   return (
-    <section id="restaurante" className="py-24 md:py-32 bg-[#faf3e8] relative overflow-hidden">
+    <section id="restaurante" className="py-24 md:py-32 bg-[#FDFBF7] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-20">
         <div className="text-center mb-16">
           <SectionHeading 
@@ -102,7 +102,6 @@ export default function Restaurant() {
                   }`}
                 />
               ))}
-              
               {/* Controles del Carrusel (Dots) */}
               <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10">
                 {RESTAURANT_IMAGES.map((_, index) => (

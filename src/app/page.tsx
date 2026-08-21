@@ -31,14 +31,14 @@ export default function Home() {
         {/* 2. NOSOTROS */}
         <About />
 
+        {/* 5. VIVE LA EXPERIENCIA */}
+        <InstagramFeed />
+
         {/* 3. HOTEL */}
         <Rooms />
 
         {/* 4. FULL DAY */}
         <FullDay />
-
-        {/* 5. VIVE LA EXPERIENCIA */}
-        <InstagramFeed />
 
         {/* 6. UBICACIÓN */}
         <Location />

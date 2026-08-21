@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Map, Mountain, UtensilsCrossed, ArrowRight } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -16,24 +17,50 @@ const TOURIST_SPOTS = [
     icon: Map,
   },
   {
+    id: "antioquia",
+    title: "Pueblo de Antioquía",
+    description: "Famoso por sus calles empedradas y coloridas casas pintadas con flores y aves. Un lugar perfecto para fotos inolvidables.",
+    distance: "A 1 hora",
+    image: "/images/tourism/antioquia.jpg",
+    icon: Mountain,
+  },
+  {
+    id: "nieve",
+    title: "Valle de Nieve Nieve",
+    description: "Un pueblito encantador en la ruta hacia Antioquía, rodeado de campos de manzanos, membrillos y restos arqueológicos.",
+    distance: "A 30 min",
+    image: "/images/tourism/nieve.jpg",
+    icon: Map,
+  },
+  {
+    id: "plaza",
+    title: "Plaza de Cieneguilla",
+    description: "El punto de encuentro tradicional del distrito. Ideal para una caminata relajada, disfrutar de su clima cálido y comprar artesanías.",
+    distance: "A 5 min (2.5 km)",
+    image: "/images/tourism/plaza.jpg",
+    icon: Mountain,
+  },
+  {
     id: "rio",
-    title: "El Río y Pueblos del Valle",
-    description: "Conecta con el Río Lurín y visita pueblos pintorescos río arriba como Nieve Nieve y Antioquía, famosos por sus fachadas de colores.",
-    distance: "A 15 - 30 min",
+    title: "Ribera del Río Lurín",
+    description: "El corazón natural del valle. Disfruta del sonido del agua, relájate en sus orillas y conecta con la naturaleza en estado puro.",
+    distance: "A 5 min",
     image: "/images/tourism/rio.jpg",
     icon: Mountain,
   },
   {
-    id: "plaza",
-    title: "Plaza y Gastronomía",
-    description: "Cieneguilla es famosa por sus restaurantes campestres. Disfruta de la mejor pachamanca y pasea por su tradicional plaza principal.",
-    distance: "A 5 min (2.5 km)",
-    image: "/images/tourism/plaza.jpg",
+    id: "comida",
+    title: "Ruta Gastronómica",
+    description: "Cieneguilla es el paraíso de los restaurantes campestres. Disfruta de la mejor pachamanca al pozo, chancho al palo y truchas frescas.",
+    distance: "A 10 min",
+    image: "/images/tourism/comida.jpg",
     icon: UtensilsCrossed,
   }
 ];
 
 export default function Tourism() {
+  const [activeSpot, setActiveSpot] = useState(TOURIST_SPOTS[0].id);
+
   return (
     <section id="turismo" className="py-24 md:py-32 bg-white relative overflow-hidden">
       
@@ -56,48 +83,85 @@ export default function Tourism() {
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="flex flex-col lg:flex-row w-full h-[700px] lg:h-[550px] gap-2 lg:gap-4">
           {TOURIST_SPOTS.map((spot, index) => {
+            const isActive = activeSpot === spot.id;
             const Icon = spot.icon;
             return (
-              <AnimatedSection 
-                key={spot.id} 
-                variant="fadeUp" 
-                delay={0.2 + (index * 0.15)}
-                className="group relative rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.08)] bg-white border border-forest/10 hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] hover:-translate-y-2 transition-all duration-500 flex flex-col h-[450px]"
+              <AnimatedSection
+                key={spot.id}
+                variant="fadeUp"
+                delay={0.1 * index}
+                onMouseEnter={() => setActiveSpot(spot.id)}
+                onClick={() => setActiveSpot(spot.id)}
+                className={cn(
+                  "relative overflow-hidden rounded-3xl transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer group flex-shrink-0",
+                  isActive 
+                    ? "flex-grow-[5] basis-[250px] lg:basis-0" 
+                    : "flex-grow-[1] basis-[60px] lg:basis-0"
+                )}
               >
-                {/* Image Section */}
-                <div className="relative w-full h-[55%] overflow-hidden">
-                  <Image 
-                    src={spot.image}
-                    alt={spot.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-[2000ms]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  
-                  {/* Floating Icon */}
-                  <div className="absolute bottom-4 left-6 bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30 text-white group-hover:bg-[#722F37] group-hover:border-[#722F37] group-hover:text-gold transition-colors duration-500">
-                    <Icon size={20} strokeWidth={1.5} />
-                  </div>
-                </div>
+                <Image
+                  src={spot.image}
+                  alt={spot.title}
+                  fill
+                  className={cn(
+                    "object-cover transition-transform duration-[2000ms] ease-out",
+                    isActive ? "scale-105" : "scale-100"
+                  )}
+                />
+                
+                {/* Gradiente oscuro que siempre cubre un poco para legibilidad */}
+                <div className={cn(
+                  "absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-700",
+                  isActive ? "opacity-80" : "opacity-90 lg:opacity-60 group-hover:opacity-80"
+                )} />
 
-                {/* Content Section */}
-                <div className="p-6 md:p-8 flex flex-col flex-1 bg-white relative">
-                  {/* Distance Badge */}
-                  <div className="inline-flex items-center gap-1.5 bg-gold/10 text-[#722F37] px-3 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase mb-3 w-fit">
-                    {spot.distance}
+                <div className="absolute inset-0 p-5 md:p-8 flex flex-col justify-end z-10 overflow-hidden">
+                  
+                  {/* Vista Inactiva (Solo Desktop: Título vertical) */}
+                  <div className={cn(
+                    "absolute bottom-0 left-0 right-0 top-0 hidden lg:flex items-end justify-center pb-8 transition-opacity duration-300",
+                    isActive ? "opacity-0 pointer-events-none" : "opacity-100"
+                  )}>
+                    <h3 className="text-white/90 font-playfair text-xl tracking-wide whitespace-nowrap rotate-180" style={{ writingMode: 'vertical-rl' }}>
+                      {spot.title}
+                    </h3>
                   </div>
-                  
-                  <h3 className="font-playfair text-2xl text-forest mb-3 font-medium group-hover:text-[#722F37] transition-colors duration-300">
-                    {spot.title}
-                  </h3>
-                  <p className="font-inter text-sm text-forest/70 font-light leading-relaxed flex-1">
-                    {spot.description}
-                  </p>
-                  
-                  {/* Elegant decorative line */}
-                  <div className="w-10 h-[1px] bg-gold mt-6 group-hover:w-full transition-all duration-700 ease-in-out opacity-60" />
+
+                  {/* Vista Inactiva (Solo Móvil: Título normal pero pequeñito) */}
+                  <div className={cn(
+                    "absolute bottom-4 left-4 right-4 lg:hidden transition-opacity duration-300",
+                    isActive ? "opacity-0 pointer-events-none" : "opacity-100"
+                  )}>
+                    <h3 className="text-white font-playfair text-base truncate">
+                      {spot.title}
+                    </h3>
+                  </div>
+
+                  {/* Vista Activa: Contenido Completo */}
+                  <div className={cn(
+                    "transition-all duration-700 ease-out flex flex-col",
+                    isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                  )}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="bg-white/20 backdrop-blur-md p-2 rounded-full border border-white/30 text-white shadow-sm">
+                        <Icon size={16} strokeWidth={1.5} />
+                      </div>
+                      <span className="bg-white/90 text-forest px-3 py-1.5 rounded-full text-[9px] font-bold tracking-widest uppercase shadow-md">
+                        {spot.distance}
+                      </span>
+                    </div>
+                    
+                    <h3 className="font-playfair text-2xl lg:text-3xl text-white font-medium mb-2 leading-tight">
+                      {spot.title}
+                    </h3>
+                    
+                    <p className="font-inter text-sm lg:text-base text-white/80 font-light leading-relaxed line-clamp-2 md:line-clamp-none">
+                      {spot.description}
+                    </p>
+                  </div>
+
                 </div>
               </AnimatedSection>
             );

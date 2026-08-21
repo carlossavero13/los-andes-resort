@@ -44,7 +44,7 @@ export default function Events() {
   ];
 
   return (
-    <section id="eventos" className="py-24 md:py-32 bg-[#faf3e8] relative overflow-hidden">
+    <section id="eventos" className="py-24 md:py-32 bg-[#FDFBF7] relative overflow-hidden">
       
       {/* Background ambient glow */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[150px] pointer-events-none" />

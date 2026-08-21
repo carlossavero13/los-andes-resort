@@ -2,18 +2,27 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Calendar, Users, BedDouble, MessageCircle } from "lucide-react";
+import { X, Calendar, Users, BedDouble, MessageCircle, ChevronDown } from "lucide-react";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 import Image from "next/image";
 
+const EXPERIENCES = [
+  { group: "Zona Hotel (Suites)", items: ["Hotel - Matrimonial Suite Junior", "Hotel - Doble Suite Junior"] },
+  { group: "Zona Cabañas", items: ["Cabaña - Matrimonial Estándar", "Cabaña - Doble Superior", "Cabaña - Doble Estándar", "Cabaña - Familiar"] },
+  { group: "Otros Servicios", items: ["Full Day", "Eventos Especiales", "Consulta General"] }
+];
+
 export default function BookingModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [formData, setFormData] = useState({
     service: "Cabaña - Matrimonial Estándar",
     checkIn: "",
     checkOut: "",
     guests: "2",
+    rooms: "1",
+    comments: "",
   });
 
   useEffect(() => {
@@ -31,10 +40,26 @@ export default function BookingModal() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Hola, me gustaría consultar disponibilidad.\n\n*Servicio:* ${formData.service}\n*Llegada:* ${formData.checkIn}\n*Salida:* ${formData.checkOut}\n*Personas:* ${formData.guests}\n\nQuedo a la espera de su respuesta.`;
+    const commentsText = formData.comments.trim() ? `\n*Comentarios:* ${formData.comments.trim()}` : "";
+    const message = `Hola, me gustaría consultar disponibilidad.\n\n*Servicio:* ${formData.service}\n*Llegada:* ${formData.checkIn}\n*Salida:* ${formData.checkOut}\n*Personas:* ${formData.guests}\n*Habitaciones:* ${formData.rooms}${commentsText}\n\nQuedo a la espera de su respuesta.`;
     window.open(getWhatsAppUrl(message), "_blank");
     setIsOpen(false);
   };
+
+  // Bloquear el scroll del fondo cuando el modal está abierto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = "15px"; // Evita el salto de la barra de desplazamiento en Windows
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    };
+  }, [isOpen]);
 
   return (
     <AnimatePresence>
@@ -45,6 +70,7 @@ export default function BookingModal() {
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-md"
           onClick={() => setIsOpen(false)}
+          data-lenis-prevent
         >
           <motion.div
             initial={{ scale: 0.95, opacity: 0, y: 30 }}
@@ -52,7 +78,8 @@ export default function BookingModal() {
             exit={{ scale: 0.95, opacity: 0, y: 30 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden relative flex flex-col md:flex-row"
+            data-lenis-prevent
+            className="bg-white w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden relative flex flex-col md:flex-row max-h-[90vh] overflow-y-auto"
           >
             {/* Left Side - Image (Hidden on mobile) */}
             <div className="hidden md:block md:w-5/12 relative bg-black">
@@ -101,36 +128,64 @@ export default function BookingModal() {
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-8">
                 
-                {/* Servicio */}
+                {/* Servicio - Custom Dropdown */}
                 <div className="relative group">
-                  <label className="block font-inter text-[10px] font-semibold uppercase tracking-[0.2em] text-forest/50 mb-2 transition-colors group-focus-within:text-gold">
+                  <label className="block font-inter text-[10px] font-semibold uppercase tracking-[0.2em] text-forest/50 mb-2 transition-colors">
                     Experiencia Deseada
                   </label>
-                  <div className="flex items-center gap-3 border-b border-forest/20 pb-2 group-focus-within:border-gold transition-colors">
-                    <BedDouble size={18} className="text-forest/40 group-focus-within:text-gold transition-colors" />
-                    <select 
-                      required
-                      value={formData.service}
-                      onChange={(e) => setFormData({...formData, service: e.target.value})}
-                      className="w-full bg-transparent text-forest font-playfair text-lg focus:outline-none cursor-pointer appearance-none"
-                    >
-                      <optgroup label="Zona Hotel (Suites)" className="font-inter text-xs uppercase tracking-widest text-forest/50">
-                        <option value="Hotel - Matrimonial Suite Junior" className="font-playfair text-base">Matrimonial Suite Junior</option>
-                        <option value="Hotel - Doble Suite Junior" className="font-playfair text-base">Doble Suite Junior</option>
-                      </optgroup>
-                      <optgroup label="Zona Cabañas" className="font-inter text-xs uppercase tracking-widest text-forest/50">
-                        <option value="Cabaña - Matrimonial Estándar" className="font-playfair text-base">Matrimonial Estándar</option>
-                        <option value="Cabaña - Doble Superior" className="font-playfair text-base">Doble Superior</option>
-                        <option value="Cabaña - Doble Estándar" className="font-playfair text-base">Doble Estándar</option>
-                        <option value="Cabaña - Familiar" className="font-playfair text-base">Familiar (hasta 6 pax)</option>
-                      </optgroup>
-                      <optgroup label="Otros Servicios" className="font-inter text-xs uppercase tracking-widest text-forest/50">
-                        <option value="Full Day" className="font-playfair text-base">Full Day (Pasadía)</option>
-                        <option value="Eventos Especiales" className="font-playfair text-base">Eventos Especiales</option>
-                        <option value="Consulta General" className="font-playfair text-base">Consulta General</option>
-                      </optgroup>
-                    </select>
+                  
+                  <div 
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="flex items-center justify-between border-b border-forest/20 pb-2 cursor-pointer hover:border-gold transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <BedDouble size={18} className={`transition-colors ${isDropdownOpen ? 'text-gold' : 'text-forest/40'}`} />
+                      <span className="text-forest font-playfair text-lg">
+                        {formData.service.replace("Hotel - ", "").replace("Cabaña - ", "")}
+                      </span>
+                    </div>
+                    <ChevronDown size={18} className={`text-forest/40 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`} />
                   </div>
+
+                  {/* Menu Desplegable Customizado */}
+                  <AnimatePresence>
+                    {isDropdownOpen && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: -10, scaleY: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scaleY: 1 }}
+                        exit={{ opacity: 0, y: -10, scaleY: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                        onWheel={(e) => e.stopPropagation()}
+                        onTouchMove={(e) => e.stopPropagation()}
+                        data-lenis-prevent
+                        className="absolute top-full left-0 w-full mt-2 bg-white rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-[#722F37]/10 z-[60] max-h-[300px] overflow-y-auto origin-top overscroll-contain"
+                      >
+                        {EXPERIENCES.map((group, idx) => (
+                          <div key={idx}>
+                            <div className="px-5 py-2.5 font-inter text-[10px] font-bold uppercase tracking-widest text-[#722F37]/70 bg-[#722F37]/5 border-y border-[#722F37]/10 first:border-t-0">
+                              {group.group}
+                            </div>
+                            {group.items.map(item => (
+                              <div 
+                                key={item}
+                                onClick={() => {
+                                  setFormData({...formData, service: item});
+                                  setIsDropdownOpen(false);
+                                }}
+                                className={`px-5 py-3 font-playfair text-base cursor-pointer transition-all ${
+                                  formData.service === item 
+                                    ? 'bg-[#722F37]/10 text-[#722F37] font-semibold pl-6 border-l-2 border-[#722F37]' 
+                                    : 'text-forest hover:bg-forest/5 hover:pl-6'
+                                }`}
+                              >
+                                {item.replace("Hotel - ", "").replace("Cabaña - ", "")}
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 {/* Fechas */}
@@ -170,21 +225,58 @@ export default function BookingModal() {
                   </div>
                 </div>
 
-                {/* Personas */}
-                <div className="relative group">
-                  <label className="block font-inter text-[10px] font-semibold uppercase tracking-[0.2em] text-forest/50 mb-2 transition-colors group-focus-within:text-gold">
-                    Huéspedes
-                  </label>
-                  <div className="flex items-center gap-3 border-b border-forest/20 pb-2 group-focus-within:border-gold transition-colors">
-                    <Users size={18} className="text-forest/40 group-focus-within:text-gold transition-colors" />
-                    <input 
-                      type="number" 
-                      min="1"
-                      required
-                      value={formData.guests}
-                      onChange={(e) => setFormData({...formData, guests: e.target.value})}
-                      className="w-full bg-transparent text-forest font-playfair text-lg focus:outline-none"
-                    />
+                {/* Personas, Habitaciones y Comentarios (Agrupados) */}
+                <div className="space-y-8">
+                  <div className="grid grid-cols-2 gap-8">
+                    <div className="relative group">
+                      <label className="block font-inter text-[10px] font-semibold uppercase tracking-[0.2em] text-forest/50 mb-2 transition-colors group-focus-within:text-gold">
+                        Huéspedes
+                      </label>
+                      <div className="flex items-center gap-3 border-b border-forest/20 pb-2 group-focus-within:border-gold transition-colors">
+                        <Users size={18} className="text-forest/40 group-focus-within:text-gold transition-colors" />
+                        <input 
+                          type="number" 
+                          min="1"
+                          required
+                          value={formData.guests}
+                          onChange={(e) => setFormData({...formData, guests: e.target.value})}
+                          className="w-full bg-transparent text-forest font-playfair text-lg focus:outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="relative group">
+                      <label className="block font-inter text-[10px] font-semibold uppercase tracking-[0.2em] text-forest/50 mb-2 transition-colors group-focus-within:text-gold">
+                        Habitaciones
+                      </label>
+                      <div className="flex items-center gap-3 border-b border-forest/20 pb-2 group-focus-within:border-gold transition-colors">
+                        <BedDouble size={18} className="text-forest/40 group-focus-within:text-gold transition-colors" />
+                        <input 
+                          type="number" 
+                          min="1"
+                          required
+                          value={formData.rooms}
+                          onChange={(e) => setFormData({...formData, rooms: e.target.value})}
+                          className="w-full bg-transparent text-forest font-playfair text-lg focus:outline-none"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative group">
+                    <label className="block font-inter text-[10px] font-semibold uppercase tracking-[0.2em] text-forest/50 mb-2 transition-colors group-focus-within:text-gold">
+                      Comentarios o Pedidos Especiales <span className="text-forest/30 normal-case tracking-normal">(Opcional)</span>
+                    </label>
+                    <div className="flex items-start gap-3 border-b border-forest/20 pb-2 group-focus-within:border-gold transition-colors">
+                      <MessageCircle size={18} className="text-forest/40 mt-1 group-focus-within:text-gold transition-colors" />
+                      <textarea 
+                        rows={2}
+                        value={formData.comments}
+                        onChange={(e) => setFormData({...formData, comments: e.target.value})}
+                        placeholder="Ej. Viajo con mi mascota, aniversario, alergias..."
+                        className="w-full bg-transparent text-forest font-inter text-sm focus:outline-none resize-none placeholder:text-forest/20"
+                      />
+                    </div>
                   </div>
                 </div>
 
