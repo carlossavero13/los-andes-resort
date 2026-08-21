@@ -37,59 +37,70 @@ export default function ExitIntentPopup() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md"
+          className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md"
           onClick={() => setIsOpen(false)}
+          data-lenis-prevent
         >
           <motion.div
-            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden relative text-center"
+            className="bg-[#FDFBF7] w-full max-w-md rounded-2xl shadow-2xl overflow-hidden relative flex flex-col p-8 md:p-10 text-center"
           >
-            {/* Botón Cerrar Flotante */}
+            {/* Botón Cerrar */}
             <button 
               onClick={() => setIsOpen(false)}
-              className="absolute top-5 right-5 text-gray-400 hover:text-forest bg-gray-100 hover:bg-gray-200 p-2 rounded-full transition-colors z-10"
+              className="absolute top-5 right-5 text-forest/40 hover:text-forest transition-colors"
               type="button"
+              aria-label="Cerrar"
             >
-              <X size={20} />
+              <X size={24} strokeWidth={1.5} />
             </button>
 
-            {/* Header Clean Luxury */}
-            <div className="pt-10 px-8 pb-4 text-center relative">
-              <div className="w-20 h-20 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Gift size={36} className="text-gold" />
+            {/* Título */}
+            <div className="mb-8 mt-2">
+              <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-5">
+                <Gift size={28} className="text-gold" />
               </div>
-              <h3 className="font-playfair text-3xl md:text-4xl font-bold text-forest mb-3">
+              <h3 className="font-playfair text-3xl md:text-4xl font-bold text-[#722F37] mb-3 leading-tight">
                 ¡Un Regalo <br/> Exclusivo!
               </h3>
-              <div className="w-12 h-1 bg-gold mx-auto rounded-full mb-4" />
-              <p className="font-poppins text-gray-500 text-sm px-4 leading-relaxed">
-                Antes de que te vayas, queremos obsequiarte un descuento especial para tu próxima aventura.
+              <p className="font-inter text-forest/60 text-sm leading-relaxed px-2">
+                Antes de irte, queremos obsequiarte un cupón especial para que disfrutes de tu estadía en Los Andes Resort.
               </p>
             </div>
             
-            <div className="px-8 pb-8">
-              <div className="bg-gray-50 border border-gray-100 rounded-2xl py-4 mb-6">
-                <p className="font-poppins text-gray-600 text-sm">
-                  Obtén un <span className="font-bold text-forest text-xl block mt-1">10% de descuento</span> en Full Day o Estadía.
-                </p>
-              </div>
+            {/* Ticket Voucher */}
+            <div className="relative bg-white border-2 border-dashed border-gold/40 rounded-xl p-5 mb-8 flex items-center justify-center overflow-hidden mx-2">
+              <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#FDFBF7] rounded-full border-r-2 border-dashed border-gold/40" />
+              <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#FDFBF7] rounded-full border-l-2 border-dashed border-gold/40" />
               
+              <div className="text-center z-10">
+                <span className="block font-inter text-[10px] font-bold uppercase tracking-[0.2em] text-forest/50 mb-1">
+                  Válido para tu Estadía
+                </span>
+                <span className="block font-playfair text-3xl text-forest font-bold">
+                  10% DE DESCT.
+                </span>
+              </div>
+            </div>
+            
+            {/* Botones */}
+            <div className="space-y-4">
               <button
                 onClick={handleClaim}
-                className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white px-8 py-4 rounded-xl font-inter font-bold transition-all shadow-[0_8px_20px_rgba(37,211,102,0.3)] hover:-translate-y-1 mb-4"
+                className="w-full flex items-center justify-center gap-3 bg-[#722F37] hover:bg-[#5a252b] text-white px-8 py-4 rounded-xl font-inter text-sm font-semibold transition-all shadow-[0_8px_20px_rgba(114,47,55,0.2)] hover:-translate-y-1"
               >
-                <MessageCircle size={22} />
-                Reclamar Descuento
+                <MessageCircle size={20} />
+                Reclamarlo por WhatsApp
               </button>
               
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 text-xs font-inter hover:text-gray-600 underline transition-colors"
+                className="w-full text-center text-forest/40 text-xs font-inter hover:text-[#722F37] underline transition-colors"
               >
-                No gracias, prefiero perder esta oferta
+                No gracias, prefiero perder la promoción
               </button>
             </div>
           </motion.div>
