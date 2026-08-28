@@ -45,7 +45,9 @@ const EVENTS_DATA = [
     desc: "Un escenario de ensueño para el día más importante de tu vida, rodeado de hermosos jardines y elegancia rústica.",
     images: [
       "/images/gallery/matrimonio.png",
-      "/images/events/Matrimonio.png"
+      "/images/gallery/matrimonio (1).png",
+      "/images/gallery/matrimonio (2).png",
+      "/images/gallery/matrimonio (3).png"
     ]
   },
   {
@@ -53,11 +55,7 @@ const EVENTS_DATA = [
     icon: Cake,
     desc: "Celebra tu día especial en un entorno natural con piscinas, áreas verdes y atención personalizada para ti y tus invitados.",
     images: [
-      "/images/gallery/cumpleanos2.png",
-      "/images/gallery/cumpleanos3.png",
-      "/images/gallery/cumpleanos4.png",
-      "/images/gallery/cumpleanos5.png",
-      "/images/events/Cumpleanos.png"
+      "/images/gallery/cumpleanos2.png"
     ]
   },
 ];

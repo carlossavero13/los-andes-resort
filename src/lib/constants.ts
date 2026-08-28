@@ -28,6 +28,38 @@ export const NAV_LINKS: NavLink[] = [
 
 export const ROOMS: Room[] = [
   {
+    id: "matrimonial-suite-junior",
+    name: "Matrimonial Suite Junior",
+    slug: "matrimonial-suite-junior",
+    capacity: 2,
+    category: "hotel",
+    price: 300.00,
+    description: "Una suite matrimonial premium con cama King Size y todas las comodidades modernas en la zona del hotel.",
+    images: [
+      "/images/rooms/205 - Suite Rjecutiva.jpeg",
+      "/images/rooms/hmatrisjunior2.png",
+      "/images/rooms/hmatrisjunior3.png"
+    ],
+    amenities: ["1 Cama King Size", "Tina", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
+    featured: true,
+  },
+  {
+    id: "junior-ejecutiva",
+    name: "Junior Ejecutiva",
+    slug: "junior-ejecutiva",
+    capacity: 2,
+    category: "hotel",
+    price: 350.00,
+    description: "Una suite ejecutiva ideal para quienes buscan comodidad, elegancia y un espacio perfecto para el descanso.",
+    images: [
+      "/images/rooms/205 - Suite Rjecutiva.jpeg",
+      "/images/rooms/hdsjunior1.png",
+      "/images/rooms/hdsjunior2.png"
+    ],
+    amenities: ["1 Cama King Size", "Jacuzzi", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
+    featured: true,
+  },
+  {
     id: "matrimonial-estandar",
     name: "Matrimonial Estándar",
     slug: "matrimonial-estandar",
@@ -42,22 +74,6 @@ export const ROOMS: Room[] = [
       "/images/rooms/h_matri1_v2.png"
     ],
     amenities: ["1 Cama Queen", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
-  },
-  {
-    id: "matrimonial-suite-junior",
-    name: "Matrimonial Suite Junior",
-    slug: "matrimonial-suite-junior",
-    capacity: 2,
-    category: "hotel",
-    price: 300.00,
-    description: "Una suite matrimonial premium con cama King Size y todas las comodidades modernas en la zona del hotel.",
-    images: [
-      "/images/rooms/205 - Suite Rjecutiva.jpeg",
-      "/images/rooms/hmatrisjunior2.png",
-      "/images/rooms/hmatrisjunior3.png"
-    ],
-    amenities: ["1 Cama King Size", "Jacuzzi", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
-    featured: true,
   },
 
   {

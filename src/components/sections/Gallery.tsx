@@ -51,7 +51,6 @@ const highlightItems = [
 const gridItems: GalleryImage[] = [
   { id: 1, category: "Piscinas", src: "/images/hero/hero-1.png", label: "Piscina Principal", className: "md:col-span-2 md:row-span-2" },
   { id: 2, category: "Familias", src: "/images/hero/hero-2.png", label: "Diversión en Familia" },
-  { id: 21, category: "Familias", src: "/images/areas/j_demesa.png", label: "Juegos de Mesa" },
   { id: 22, category: "Familias", src: "/images/areas/j_futbolmesa.png", label: "Fútbol de Mesa" },
   { id: 23, category: "Familias", src: "/images/areas/j_inflables.png", label: "Juegos Inflables" },
   { id: 24, category: "Familias", src: "/images/areas/j_inflables2.png", label: "Diversión en Inflables" },
@@ -81,7 +80,6 @@ const gridItems: GalleryImage[] = [
   { id: 5, category: "Habitaciones", src: "/images/rooms/205 - Suite Rjecutiva.jpeg", label: "Suite Ejecutiva", className: "md:col-span-2" },
   { id: 6, category: "Piscinas", src: "/images/hero/hero-5.png", label: "Piscina Infantil" },
   { id: 7, category: "Restaurante", src: "/images/restaurant/res1.png", label: "Área de Restaurante", className: "md:col-span-2 md:row-span-2" },
-  { id: 71, category: "Restaurante", src: "/images/restaurant/res3.png", label: "Platos a la Carta" },
   { id: 72, category: "Restaurante", src: "/images/restaurant/res4.png", label: "Bar y Bebidas" },
   { id: 8, category: "Habitaciones", src: "/images/rooms/h_matri1_v2.png", label: "Matrimonial Estándar" },
   { id: 9, category: "Habitaciones", src: "/images/rooms/h_doble_sup1.png", label: "Doble Superior" },
@@ -102,10 +100,10 @@ const gridItems: GalleryImage[] = [
   { id: 95, category: "Restaurante", src: "/images/gallery/restaurante_1.png", label: "Nuestro Restaurante" },
   { id: 96, category: "Restaurante", src: "/images/gallery/restaurante_2.png", label: "Gastronomía Local" },
   { id: 97, category: "Restaurante", src: "/images/gallery/bar1.png", label: "Bar y Cócteles" },
-  { id: 98, category: "Eventos", src: "/images/gallery/matrimonio.png", label: "Bodas de Ensueño", className: "md:col-span-2" },
-  { id: 99, category: "Eventos", src: "/images/gallery/cumpleanos3.png", label: "Fiesta de Cumpleaños" },
-  { id: 100, category: "Eventos", src: "/images/gallery/cumpleanos4.png", label: "Cumpleaños Especiales" },
-  { id: 101, category: "Eventos", src: "/images/gallery/cumpleanos5.png", label: "Decoración de Cumpleaños" },
+  { id: 975, category: "Eventos", src: "/images/gallery/matrimonio.png", label: "El Gran Día", className: "md:col-span-2" },
+  { id: 98, category: "Eventos", src: "/images/gallery/matrimonio (1).png", label: "Bodas de Ensueño" },
+  { id: 99, category: "Eventos", src: "/images/gallery/matrimonio (2).png", label: "Celebración de Matrimonio" },
+  { id: 100, category: "Eventos", src: "/images/gallery/matrimonio (3).png", label: "Detalles de Matrimonio" },
   
   // Nuevas Habitaciones
   { id: 103, category: "Habitaciones", src: "/images/gallery/matrimonial_estandar2.png", label: "Matrimonial Estándar" },

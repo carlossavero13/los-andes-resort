@@ -55,7 +55,7 @@ export default function FullDay() {
               ))}
 
               {/* Botones de Navegación del Carrusel */}
-              <div className="absolute inset-0 flex items-center justify-between p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 flex items-center justify-between p-4 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                 <button 
                   onClick={prevImage}
                   className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/50 transition-colors shadow-lg"
@@ -85,9 +85,9 @@ export default function FullDay() {
                 ))}
               </div>
               
-              {/* Etiqueta flotante 10 a 5 */}
+              {/* Etiqueta flotante 9:30 a 5 */}
               <div className="absolute bottom-12 md:bottom-20 left-4 md:left-10 bg-white/95 backdrop-blur-md px-4 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl shadow-xl border border-white flex flex-col gap-0.5 md:gap-1 z-30">
-                <span className="font-playfair text-lg md:text-2xl text-forest font-medium">De 10:00 AM</span>
+                <span className="font-playfair text-lg md:text-2xl text-forest font-medium">De 9:30 AM</span>
                 <span className="font-inter text-[10px] md:text-xs text-forest/60 uppercase tracking-widest font-semibold">a 5:00 PM</span>
               </div>
 

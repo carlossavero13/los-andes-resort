@@ -97,7 +97,10 @@ export default function Rooms() {
                             alt={room.name}
                             fill
                             sizes="100vw"
-                            className="object-cover"
+                            className={cn(
+                              "transition-all duration-1000",
+                              room.id === "matrimonial-estandar" ? "object-contain bg-black/5" : "object-cover"
+                            )}
                           />
                         </div>
                         
@@ -230,7 +233,10 @@ export default function Rooms() {
                     alt={activeRoom.name}
                     fill
                     sizes="75vw"
-                    className="object-cover"
+                    className={cn(
+                      "transition-all duration-1000",
+                      activeRoom.id === "matrimonial-estandar" ? "object-contain bg-black/5" : "object-cover"
+                    )}
                     priority
                   />
                   {/* Subtle gradient overlay to make image look premium */}

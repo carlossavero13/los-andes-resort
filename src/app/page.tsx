@@ -44,18 +44,19 @@ export default function Home() {
         {/* 4. FULL DAY */}
         <FullDay />
 
-        {/* 6. UBICACIÓN */}
-        <Location />
-
-        {/* 7. LUGARES TURÍSTICOS */}
-        <Tourism />
-
         {/* 7. EVENTOS ESPECIALES */}
         <Events />
+
+        {/* 6. UBICACIÓN */}
+        <Location />
 
         {/* TODO LO DEMÁS */}
         <Restaurant />
         <Gallery />
+
+        {/* 7. LUGARES TURÍSTICOS */}
+        <Tourism />
+        
         <FAQ />
         
         {/* 8. TESTIMONIOS (ÚLTIMO) */}

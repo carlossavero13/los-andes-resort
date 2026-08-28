@@ -102,8 +102,8 @@ export default function Navbar() {
               <div className={cn(
                 "relative transition-all duration-500",
                 isScrolled 
-                  ? "w-[96px] h-[36px] md:w-[120px] md:h-[44px] brightness-0 opacity-80" 
-                  : "w-[128px] h-[128px] md:w-[176px] md:h-[176px] drop-shadow-2xl"
+                  ? "w-[150px] h-[56px] md:w-[120px] md:h-[44px] brightness-0 opacity-80" 
+                  : "w-[154px] h-[154px] md:w-[176px] md:h-[176px] drop-shadow-2xl"
               )}>
                 <Image 
                   src="/images/los_andes_logo.png" 
