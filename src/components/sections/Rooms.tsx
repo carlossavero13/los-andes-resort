@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { Users, Info, MessageCircle, ChevronDown, CheckCircle2, BedDouble, Waves, Activity, Coffee, Refrigerator, Droplets, Wifi, Maximize, Bath, TreePine, Car, Snowflake, ConciergeBell, Sparkles, Tv, SprayCan, Sun } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 export default function Rooms() {
   const [activeTab, setActiveTab] = useState(ROOMS[0].id);
   const [selectedRoomModal, setSelectedRoomModal] = useState<Room | null>(null);
+  const desktopRef = useRef<HTMLDivElement>(null);
 
   const activeRoom = ROOMS.find(r => r.id === activeTab) || ROOMS[0];
 
@@ -113,27 +114,27 @@ export default function Rooms() {
                           </div>
 
                           <div className="mb-6">
-                            <h4 className="font-playfair text-lg text-forest mb-3 border-b border-forest/10 pb-2">Servicios de Habitación</h4>
-                            <div className="grid grid-cols-2 gap-y-3 gap-x-2 mb-4">
+                            <h4 className="font-playfair text-lg text-forest mb-4 border-b border-forest/10 pb-2">Servicios de Habitación</h4>
+                            <div className="grid grid-cols-2 gap-y-3.5 gap-x-4 mb-6">
                               {room.amenities.filter(a => !['desayuno', 'piscina', 'fútbol', 'juegos', 'verdes', 'estacionamiento'].some(k => a.toLowerCase().includes(k))).map((amenity, idx) => {
                                 const Icon = getAmenityIcon(amenity);
                                 return (
-                                  <div key={idx} className="flex items-center gap-2 text-forest/90">
-                                    <Icon size={14} strokeWidth={1.5} className="text-forest/60 shrink-0" />
-                                    <span className="font-inter text-[11px] font-light leading-tight">{amenity}</span>
+                                  <div key={idx} className="flex items-center gap-2.5 border-b border-forest/[0.06] pb-2">
+                                    <Icon size={14} strokeWidth={1.5} className="text-[#722F37]/80 shrink-0" />
+                                    <span className="font-inter text-[9px] uppercase tracking-[0.1em] text-forest/70 font-medium truncate">{amenity}</span>
                                   </div>
                                 );
                               })}
                             </div>
                             
-                            <h4 className="font-playfair text-lg text-forest mb-3 border-b border-forest/10 pb-2 pt-2">Incluido en tu estadía</h4>
-                            <div className="grid grid-cols-2 gap-y-3 gap-x-2">
+                            <h4 className="font-playfair text-lg text-forest mb-4 border-b border-forest/10 pb-2 pt-2">Incluido en tu estadía</h4>
+                            <div className="grid grid-cols-2 gap-y-3.5 gap-x-4">
                               {room.amenities.filter(a => ['desayuno', 'piscina', 'fútbol', 'juegos', 'verdes', 'estacionamiento'].some(k => a.toLowerCase().includes(k))).map((amenity, idx) => {
                                 const Icon = getAmenityIcon(amenity);
                                 return (
-                                  <div key={idx} className="flex items-center gap-2 text-forest/90">
+                                  <div key={idx} className="flex items-center gap-2.5 border-b border-forest/[0.06] pb-2">
                                     <Icon size={14} strokeWidth={1.5} className="text-gold shrink-0" />
-                                    <span className="font-inter text-[11px] font-light leading-tight">{amenity}</span>
+                                    <span className="font-inter text-[9px] uppercase tracking-[0.1em] text-forest/70 font-medium truncate">{amenity}</span>
                                   </div>
                                 );
                               })}
@@ -181,7 +182,7 @@ export default function Rooms() {
         {/* =========================================
             VISTA DESKTOP (TABS MODERNOS) - 'lg' en adelante
             ========================================= */}
-        <div className="hidden lg:block mt-8">
+        <div ref={desktopRef} className="hidden lg:block mt-8">
           
           {/* Segmented Control Tabs */}
           <AnimatedSection variant="fadeUp" delay={0.1} className="flex justify-center mb-16 relative z-20">
@@ -213,7 +214,7 @@ export default function Rooms() {
           <AnimatedSection variant="fadeUp" delay={0.2} className="relative w-full flex items-center py-6 lg:py-8 min-h-[400px] xl:min-h-[480px]">
             
             {/* Background Image Container (Right 65%) */}
-            <div className="absolute right-0 top-0 bottom-0 w-[65%] rounded-3xl overflow-hidden shadow-2xl">
+            <div className="absolute right-0 top-0 bottom-0 w-[65%] rounded-3xl overflow-hidden shadow-2xl bg-forest/5">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeRoom.id}
@@ -221,7 +222,8 @@ export default function Rooms() {
                   animate={{ opacity: 1, filter: "blur(0px)" }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
-                  className="w-full h-full relative"
+                  className="absolute inset-[-15%] w-[130%] h-[130%]"
+                  style={{ y: useTransform(useScroll({ target: desktopRef, offset: ["start end", "end start"] }).scrollYProgress, [0, 1], ["0%", "15%"]) }}
                 >
                   <Image
                     src={activeRoom.images[0]}
@@ -232,7 +234,7 @@ export default function Rooms() {
                     priority
                   />
                   {/* Subtle gradient overlay to make image look premium */}
-                  <div className="absolute inset-0 bg-gradient-to-l from-transparent via-black/10 to-black/50" />
+                  <div className="absolute inset-0 bg-gradient-to-l from-transparent via-black/10 to-black/50 pointer-events-none" />
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -263,26 +265,24 @@ export default function Rooms() {
                     {activeRoom.description}
                   </p>
 
-                  <div className="flex flex-col gap-4 mb-8">
-                    <div className="flex flex-wrap gap-x-6 gap-y-4">
-                      <div className="flex items-center gap-3">
-                        <Users size={16} strokeWidth={1.5} className="text-forest/70" />
-                        <span className="font-inter text-xs text-forest/80 font-medium tracking-wide">
-                          Max {activeRoom.capacity} Pers.
-                        </span>
-                      </div>
-                      {activeRoom.amenities.slice(0, 5).map((amenity, idx) => {
-                        const Icon = getAmenityIcon(amenity);
-                        return (
-                          <div key={idx} className="flex items-center gap-3">
-                            <Icon size={16} strokeWidth={1.5} className="text-forest/70" />
-                            <span className="font-inter text-xs text-forest/80 font-medium tracking-wide">
-                              {amenity}
-                            </span>
-                          </div>
-                        );
-                      })}
+                  <div className="grid grid-cols-2 gap-x-8 gap-y-3.5 mb-8">
+                    <div className="flex items-center gap-3 border-b border-forest/[0.06] pb-2.5">
+                      <Users size={14} className="text-gold shrink-0" strokeWidth={1.5} />
+                      <span className="font-inter text-[9.5px] xl:text-[10.5px] uppercase tracking-[0.15em] text-forest/70 font-medium">
+                        Max {activeRoom.capacity} Pax
+                      </span>
                     </div>
+                    {activeRoom.amenities.slice(0, 5).map((amenity, idx) => {
+                      const Icon = getAmenityIcon(amenity);
+                      return (
+                        <div key={idx} className="flex items-center gap-3 border-b border-forest/[0.06] pb-2.5">
+                          <Icon size={14} className="text-[#722F37]/80 shrink-0" strokeWidth={1.5} />
+                          <span className="font-inter text-[9.5px] xl:text-[10.5px] uppercase tracking-[0.15em] text-forest/70 font-medium truncate">
+                            {amenity}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
 
                   {/* Price and Buttons */}

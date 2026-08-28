@@ -94,165 +94,135 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
             </button>
 
             {/* CONTENIDO DEL MODAL */}
+            {/* CONTENIDO DEL MODAL: Infografía (Split Screen) */}
             <div 
-              className="flex-1 overflow-y-auto overscroll-contain custom-scrollbar bg-[#FDFBF7] pb-24 md:pb-0"
+              className="flex-1 flex flex-col md:flex-row h-full w-full bg-[#FDFBF7] overflow-y-auto md:overflow-hidden pb-24 md:pb-0"
               data-lenis-prevent="true"
             >
-              {/* TÍTULO PRINCIPAL (Arriba de todo) */}
-              <div className="max-w-[1500px] w-full mx-auto px-5 pt-14 md:px-10 md:pt-12 md:pb-2 flex flex-col items-start gap-3 md:gap-4">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <span className="border border-forest/20 text-forest text-[9px] uppercase tracking-[0.3em] px-3 py-1.5 font-medium rounded-sm">
-                    {room.category === 'hotel' ? 'Hotel' : 'Cabaña'}
-                  </span>
-                  {room.featured && (
-                    <span className="bg-forest text-white border border-forest text-[9px] uppercase tracking-[0.3em] px-3 py-1.5 font-medium rounded-sm">
-                      Destacada
-                    </span>
-                  )}
-                </div>
-                <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-light text-forest leading-tight">
-                  {room.name}
-                </h2>
+              
+              {/* IZQUIERDA: Galería a pantalla completa (55%) */}
+              <div className="w-full md:w-[55%] h-[40vh] md:h-full relative bg-black flex-shrink-0 group">
+                <Image 
+                  src={room.images[activeImageIndex]} 
+                  alt={room.name} 
+                  fill 
+                  className="object-cover transition-opacity duration-700 opacity-90 group-hover:opacity-100" 
+                  priority
+                />
+                
+                {/* Controles de Galería */}
+                {room.images.length > 1 && (
+                  <>
+                    <button 
+                      onClick={(e) => { 
+                        e.stopPropagation(); 
+                        setActiveImageIndex((prev) => (prev - 1 + room.images.length) % room.images.length); 
+                      }}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:text-forest shadow-lg border border-white/30 transition-all hover:scale-105 z-10"
+                    >
+                      <ArrowLeft size={20} strokeWidth={2} />
+                    </button>
+                    <button 
+                      onClick={(e) => { 
+                        e.stopPropagation(); 
+                        setActiveImageIndex((prev) => (prev + 1) % room.images.length); 
+                      }}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:text-forest shadow-lg border border-white/30 transition-all hover:scale-105 z-10"
+                    >
+                      <ArrowRight size={20} strokeWidth={2} />
+                    </button>
+
+                    {/* Dots / Thumbnails flotantes en la parte inferior */}
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10 bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                      {room.images.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={(e) => { e.stopPropagation(); setActiveImageIndex(idx); }}
+                          className={cn(
+                            "w-2 h-2 rounded-full transition-all",
+                            activeImageIndex === idx ? "bg-white scale-125 w-4" : "bg-white/50 hover:bg-white/90"
+                          )}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
 
-              <div className="max-w-[1500px] w-full mx-auto flex flex-col md:flex-row gap-8 md:gap-16 p-6 md:p-10 pt-6 md:pt-6">
-                {/* Columna Izquierda (Galería + Detalles) */}
-                <div className="w-full md:w-[60%] flex flex-col">
-                  
-                  {/* GALERÍA DE IMÁGENES (Main + Thumbnails) */}
-                  <div className="w-full flex flex-col gap-3 mb-8">
-                    {/* Main Image */}
-                    <div className="relative w-full aspect-[4/3] md:aspect-[3/2] rounded-xl overflow-hidden group shadow-sm bg-forest/5">
-                      <Image 
-                        src={room.images[activeImageIndex]} 
-                        alt={room.name} 
-                        fill 
-                        className="object-cover transition-opacity duration-500" 
-                        priority
-                      />
-                      
-                      {/* Arrows */}
-                      {room.images.length > 1 && (
-                        <>
-                          <button 
-                            onClick={(e) => { 
-                              e.stopPropagation(); 
-                              setActiveImageIndex((prev) => (prev - 1 + room.images.length) % room.images.length); 
-                            }}
-                            className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-9 h-9 md:w-11 md:h-11 bg-white/40 hover:bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-forest shadow-md border border-white/50 transition-all hover:scale-105 z-10"
-                          >
-                            <ArrowLeft size={18} strokeWidth={2} className="md:w-6 md:h-6" />
-                          </button>
-                          <button 
-                            onClick={(e) => { 
-                              e.stopPropagation(); 
-                              setActiveImageIndex((prev) => (prev + 1) % room.images.length); 
-                            }}
-                            className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 w-9 h-9 md:w-11 md:h-11 bg-white/40 hover:bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-forest shadow-md border border-white/50 transition-all hover:scale-105 z-10"
-                          >
-                            <ArrowRight size={18} strokeWidth={2} className="md:w-6 md:h-6" />
-                          </button>
-
-                          {/* Dots */}
-                          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
-                            {room.images.map((_, idx) => (
-                              <button
-                                key={idx}
-                                onClick={(e) => { e.stopPropagation(); setActiveImageIndex(idx); }}
-                                className={cn(
-                                  "w-2 h-2 rounded-full transition-all shadow-sm",
-                                  activeImageIndex === idx ? "bg-white scale-125" : "bg-white/60 hover:bg-white/90"
-                                )}
-                              />
-                            ))}
-                          </div>
-                        </>
-                      )}
-                    </div>
-                    
-                    {/* Thumbnails (Solo Desktop) */}
-                    {room.images.length > 1 && (
-                      <div className="hidden md:flex items-center gap-3 overflow-x-auto pb-2 custom-scrollbar mt-1">
-                        {room.images.map((img, idx) => (
-                          <button
-                            key={idx}
-                            onClick={() => setActiveImageIndex(idx)}
-                            className={cn(
-                              "relative w-20 h-20 md:w-24 md:h-24 flex-shrink-0 rounded-lg overflow-hidden transition-all duration-300",
-                              activeImageIndex === idx 
-                                ? "border-2 border-gold ring-2 ring-gold/20 opacity-100 shadow-md" 
-                                : "border border-transparent opacity-50 hover:opacity-100 grayscale-[30%] hover:grayscale-0"
-                            )}
-                          >
-                            <Image 
-                              src={img} 
-                              alt={`${room.name} thumbnail ${idx + 1}`} 
-                              fill 
-                              className="object-cover"
-                            />
-                          </button>
-                        ))}
-                      </div>
+              {/* DERECHA: Información compacta (45%) */}
+              <div className="w-full md:w-[45%] h-full flex flex-col p-6 md:p-8 lg:p-12 md:overflow-y-auto custom-scrollbar relative">
+                
+                {/* Header (Tags + Title) */}
+                <div className="mb-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="border border-forest/20 text-forest text-[8px] lg:text-[9px] uppercase tracking-[0.3em] px-2.5 py-1 font-semibold rounded-sm">
+                      {room.category === 'hotel' ? 'Hotel' : 'Cabaña'}
+                    </span>
+                    {room.featured && (
+                      <span className="bg-forest text-white border border-forest text-[8px] lg:text-[9px] uppercase tracking-[0.3em] px-2.5 py-1 font-semibold rounded-sm">
+                        Destacada
+                      </span>
                     )}
                   </div>
-                  
-                  {/* Highlights Rápidos */}
-                  <div className="flex flex-wrap gap-2 md:gap-4 mb-4 md:mb-10">
-                    <div className="flex items-center gap-2 md:gap-3 border border-forest/10 rounded-lg py-2.5 px-3 md:py-3 md:px-4 w-max bg-white/50 backdrop-blur-sm">
-                      <Users className="w-4 h-4 md:w-5 md:h-5 text-forest/70" strokeWidth={1.5} />
-                      <p className="font-inter font-medium text-forest text-[9px] md:text-[11px] uppercase tracking-widest">{room.capacity} huéspedes</p>
-                    </div>
-                    <div className="flex items-center gap-2 md:gap-3 border border-forest/10 rounded-lg py-2.5 px-3 md:py-3 md:px-4 w-max bg-white/50 backdrop-blur-sm">
-                      <Maximize2 className="w-4 h-4 md:w-5 md:h-5 text-forest/70" strokeWidth={1.5} />
-                      <p className="font-inter font-medium text-forest text-[9px] md:text-[11px] uppercase tracking-widest">Espacio amplio</p>
-                    </div>
+                  <h2 className="font-playfair text-3xl lg:text-5xl font-light text-forest leading-tight">
+                    {room.name}
+                  </h2>
+                </div>
+
+                {/* Price (Top right or below title) */}
+                {room.price && (
+                  <div className="flex items-end gap-1 border-b border-forest/10 pb-5 mb-5">
+                    <span className="text-sm lg:text-base text-forest/50 font-inter mb-1.5">S/</span>
+                    <span className="font-playfair text-4xl lg:text-5xl font-light text-forest">{room.price.toFixed(0)}</span>
+                    <span className="text-forest/40 text-[9px] lg:text-[10px] uppercase tracking-widest ml-1 mb-2">/ noche</span>
+                  </div>
+                )}
+
+                {/* Quick Highlights */}
+                <div className="flex gap-3 mb-5">
+                  <div className="flex items-center gap-2 bg-forest/5 rounded-lg py-2 px-3">
+                    <Users className="w-4 h-4 text-forest/70" strokeWidth={1.5} />
+                    <p className="font-inter font-semibold text-forest text-[9px] uppercase tracking-widest">{room.capacity} huéspedes</p>
+                  </div>
+                  <div className="flex items-center gap-2 bg-forest/5 rounded-lg py-2 px-3">
+                    <Maximize2 className="w-4 h-4 text-forest/70" strokeWidth={1.5} />
+                    <p className="font-inter font-semibold text-forest text-[9px] uppercase tracking-widest">Amplio</p>
                   </div>
                 </div>
 
-                {/* Columna Derecha (Tarjeta Flotante Sticky y Título en Desktop) */}
-                <div className="w-full md:w-[40%] flex flex-col pt-0">
+                {/* Description */}
+                <p className="font-inter font-light text-forest/80 text-xs lg:text-sm leading-relaxed mb-6">
+                  {room.description}
+                </p>
 
-                  {/* Descripción (Movida aquí) */}
-                  <div className="hidden md:block mb-8">
-                    <h3 className="font-playfair text-xl md:text-2xl font-light text-forest mb-3">Sobre este alojamiento</h3>
-                    <p className="font-inter font-light text-forest/80 leading-relaxed text-sm tracking-wide">
-                      {room.description}
-                    </p>
-                  </div>
-
-                  {/* Descripción en Móvil (Visible solo en móvil, antes de la tarjeta) */}
-                  <div className="md:hidden mb-6 mt-4">
-                    <h3 className="font-playfair text-2xl font-light text-forest mb-3">Sobre este alojamiento</h3>
-                    <p className="font-inter font-light text-forest/80 leading-relaxed text-sm tracking-wide">
-                      {room.description}
-                    </p>
-                  </div>
-
-                  {/* Amenities Section */}
-                  <div className="mb-10">
-                    <h3 className="font-playfair text-xl md:text-2xl font-light text-forest mb-6">Servicios de Habitación</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-10">
+                {/* Amenities Split (Minimalist List) */}
+                <div className="flex-1 flex flex-col gap-6 overflow-y-auto custom-scrollbar pr-2 pb-2">
+                  <div>
+                    <h3 className="font-playfair text-base lg:text-lg font-medium text-forest mb-2">Servicios de Habitación</h3>
+                    <div className="grid grid-cols-2 gap-x-6 md:gap-x-10">
                       {roomFeatures.map((amenity, idx) => {
                         const Icon = getAmenityIcon(amenity);
                         return (
-                          <div key={idx} className="flex items-center gap-4 text-forest/90">
-                            <Icon size={20} strokeWidth={1.5} className="text-forest/60 shrink-0" />
-                            <span className="font-inter text-sm font-light tracking-wide leading-snug">
+                          <div key={idx} className="flex items-center gap-3 py-3 md:py-3.5 border-b border-forest/10">
+                            <Icon size={16} strokeWidth={1.5} className="text-[#A67B5B] shrink-0" />
+                            <span className="font-inter text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-medium text-[#5c4a3d]">
                               {amenity}
                             </span>
                           </div>
                         );
                       })}
                     </div>
+                  </div>
 
-                    <h3 className="font-playfair text-xl md:text-2xl font-light text-forest mb-6 border-t border-forest/10 pt-10">Incluido en tu estadía</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6">
+                  <div>
+                    <h3 className="font-playfair text-base lg:text-lg font-medium text-forest mb-2 pt-2">Incluido en tu estadía</h3>
+                    <div className="grid grid-cols-2 gap-x-6 md:gap-x-10">
                       {resortFeatures.map((amenity, idx) => {
                         const Icon = getAmenityIcon(amenity);
                         return (
-                          <div key={idx} className="flex items-center gap-4 text-forest/90">
-                            <Icon size={20} strokeWidth={1.5} className="text-gold shrink-0" />
-                            <span className="font-inter text-sm font-light tracking-wide leading-snug">
+                          <div key={idx} className="flex items-center gap-3 py-3 md:py-3.5 border-b border-forest/10">
+                            <Icon size={16} strokeWidth={1.5} className="text-gold shrink-0" />
+                            <span className="font-inter text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-medium text-[#5c4a3d]">
                               {amenity}
                             </span>
                           </div>
@@ -260,45 +230,22 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
                       })}
                     </div>
                   </div>
+                </div>
 
-                  <div className="hidden md:block sticky top-6 bg-white border border-forest/10 rounded-xl p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] mt-2 md:mt-0">
-                    <div className="mb-6 border-b border-forest/5 pb-6">
-                      {room.price && (
-                        <div className="flex items-start gap-1">
-                          <span className="text-sm text-forest/50 font-inter mt-1.5">S/</span>
-                          <span className="font-playfair text-4xl md:text-5xl font-light text-forest">{room.price.toFixed(0)}</span>
-                          <span className="text-forest/40 text-[10px] uppercase tracking-widest ml-2 mt-auto mb-1.5">/ noche</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Simple Guest Info - No Dates */}
-                    <div className="border border-forest/10 rounded-lg overflow-hidden mb-6 bg-forest/[0.02]">
-                      <div className="p-4 flex items-center gap-4">
-                        <div className="bg-forest/5 p-3 rounded-full text-forest">
-                          <Users size={20} strokeWidth={1.5} />
-                        </div>
-                        <div>
-                          <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-forest/50 mb-1">Capacidad Sugerida</p>
-                          <p className="text-sm font-inter text-forest">{room.capacity} huéspedes</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={() => {
-                        onClose();
-                        setTimeout(() => window.dispatchEvent(new CustomEvent('open-booking-modal', { detail: { service: room.name } })), 300);
-                      }}
-                      className="w-full flex items-center justify-center gap-3 bg-[#A67B5B] hover:bg-[#8e694e] text-white py-4 rounded-lg font-inter font-bold uppercase tracking-[0.2em] text-[10px] transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-                    >
-                      Reservar ahora
-                    </button>
-                    
-                    <p className="text-center text-[10px] text-forest/40 mt-4 font-inter uppercase tracking-wider">
-                      Confirmación Inmediata
-                    </p>
-                  </div>
+                {/* Bottom Booking Button */}
+                <div className="mt-8 pt-6 border-t border-forest/10 flex flex-col gap-3 shrink-0">
+                  <button
+                    onClick={() => {
+                      onClose();
+                      setTimeout(() => window.dispatchEvent(new CustomEvent('open-booking-modal', { detail: { service: room.name } })), 300);
+                    }}
+                    className="w-full flex items-center justify-center gap-2 bg-[#A67B5B] hover:bg-[#8e694e] text-white py-4 rounded-xl font-inter font-bold uppercase tracking-[0.2em] text-[10px] lg:text-[11px] transition-all shadow-md hover:-translate-y-0.5"
+                  >
+                    Reservar Esta Habitación
+                  </button>
+                  <p className="text-center text-[9px] text-forest/40 font-inter uppercase tracking-[0.2em]">
+                    Confirmación Inmediata vía WhatsApp
+                  </p>
                 </div>
 
               </div>

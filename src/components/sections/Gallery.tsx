@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Search, X } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -22,7 +22,7 @@ const highlightItems = [
     category: "Alojamiento", 
     title: "Suite Premium",
     desc: "Máximo confort y elegancia para momentos inolvidables.",
-    src: "/images/rooms/hmatrisjunior1.png" 
+    src: "/images/rooms/205 - Suite Rjecutiva.jpeg" 
   },
   { 
     id: 3, 
@@ -63,19 +63,54 @@ const gridItems: GalleryImage[] = [
   { id: 32, category: "Áreas verdes", src: "/images/areas/areaverde2.png", label: "Jardines y Naturaleza" },
   { id: 33, category: "Piscinas", src: "/images/areas/areapiscina.png", label: "Área de Piscina" },
   { id: 34, category: "Piscinas", src: "/images/areas/areapiscina2.png", label: "Piscina y Recreación" },
-  { id: 4, category: "Eventos", src: "/images/events/ev1.png", label: "Celebraciones Familiares" },
-  { id: 41, category: "Eventos", src: "/images/events/ev2.png", label: "Matrimonios y Bodas" },
-  { id: 42, category: "Eventos", src: "/images/events/ev3.png", label: "Eventos Corporativos" },
+  
+  // Novedades en Eventos
+  { id: 4, category: "Eventos", src: "/images/events/Corporativo.png", label: "Eventos Corporativos" },
+  { id: 41, category: "Eventos", src: "/images/events/Matrimonio.png", label: "Matrimonios" },
+  { id: 42, category: "Eventos", src: "/images/events/Cumpleanos.png", label: "Cumpleaños" },
+  { id: 45, category: "Eventos", src: "/images/events/corp1.png", label: "Team Building" },
+  { id: 46, category: "Eventos", src: "/images/events/corp2.png", label: "Reuniones de Trabajo" },
+  { id: 47, category: "Eventos", src: "/images/events/corp3.jpeg", label: "Capacitaciones" },
+  { id: 48, category: "Eventos", src: "/images/events/corp4.jpeg", label: "Eventos de Empresa" },
+  { id: 49, category: "Eventos", src: "/images/events/Corporativo.png", label: "Eventos de Integración" },
+  { id: 50, category: "Eventos", src: "/images/events/corp6.jpeg", label: "Conferencias" },
   { id: 43, category: "Eventos", src: "/images/areas/baile1.png", label: "Danzas y Shows" },
   { id: 44, category: "Eventos", src: "/images/areas/baile2.png", label: "Entretenimiento en Vivo" },
-  { id: 5, category: "Habitaciones", src: "/images/rooms/hmatrisjunior1.png", label: "Suite Premium", className: "md:col-span-2" },
+
+  // Novedades en Habitaciones
+  { id: 5, category: "Habitaciones", src: "/images/rooms/205 - Suite Rjecutiva.jpeg", label: "Suite Ejecutiva", className: "md:col-span-2" },
   { id: 6, category: "Piscinas", src: "/images/hero/hero-5.png", label: "Piscina Infantil" },
   { id: 7, category: "Restaurante", src: "/images/restaurant/res1.png", label: "Área de Restaurante", className: "md:col-span-2 md:row-span-2" },
   { id: 71, category: "Restaurante", src: "/images/restaurant/res3.png", label: "Platos a la Carta" },
   { id: 72, category: "Restaurante", src: "/images/restaurant/res4.png", label: "Bar y Bebidas" },
   { id: 8, category: "Habitaciones", src: "/images/rooms/h_matri1_v2.png", label: "Matrimonial Estándar" },
   { id: 9, category: "Habitaciones", src: "/images/rooms/h_doble_sup1.png", label: "Doble Superior" },
-  { id: 10, category: "Habitaciones", src: "/images/rooms/hdsjunior1.png", label: "Interiores", className: "md:col-span-2" },
+  { id: 10, category: "Habitaciones", src: "/images/rooms/114 - Doble Suite.jpeg", label: "Doble Suite", className: "md:col-span-2" },
+  { id: 11, category: "Habitaciones", src: "/images/rooms/DobleSuiteJunior1.jpeg", label: "Doble Suite Junior" },
+  { id: 12, category: "Habitaciones", src: "/images/rooms/204 - Doble Suite.jpeg", label: "Doble Suite" },
+  
+  // Novedades en Historia
+  { id: 90, category: "Eventos", src: "/images/gallery/danza.jpeg", label: "Danzas y Tradiciones" },
+  { id: 91, category: "Áreas verdes", src: "/images/gallery/vista.jpeg", label: "Vista Panorámica", className: "md:col-span-2" },
+  
+  // Nuevas Adiciones
+  { id: 92, category: "Piscinas", src: "/images/gallery/piscina (3).jpeg", label: "Piscina Relajante" },
+  { id: 93, category: "Habitaciones", src: "/images/gallery/hotel_lado.jpeg", label: "Exteriores del Hotel" },
+  { id: 94, category: "Eventos", src: "/images/gallery/cumpleanos2.png", label: "Celebración de Cumpleaños" },
+  
+  // Últimas Subidas
+  { id: 95, category: "Restaurante", src: "/images/gallery/restaurante_1.png", label: "Nuestro Restaurante" },
+  { id: 96, category: "Restaurante", src: "/images/gallery/restaurante_2.png", label: "Gastronomía Local" },
+  { id: 97, category: "Restaurante", src: "/images/gallery/bar1.png", label: "Bar y Cócteles" },
+  { id: 98, category: "Eventos", src: "/images/gallery/matrimonio.png", label: "Bodas de Ensueño", className: "md:col-span-2" },
+  { id: 99, category: "Eventos", src: "/images/gallery/cumpleanos3.png", label: "Fiesta de Cumpleaños" },
+  { id: 100, category: "Eventos", src: "/images/gallery/cumpleanos4.png", label: "Cumpleaños Especiales" },
+  { id: 101, category: "Eventos", src: "/images/gallery/cumpleanos5.png", label: "Decoración de Cumpleaños" },
+  
+  // Nuevas Habitaciones
+  { id: 103, category: "Habitaciones", src: "/images/gallery/matrimonial_estandar2.png", label: "Matrimonial Estándar" },
+  { id: 102, category: "Habitaciones", src: "/images/gallery/matrimonial_estandar.png", label: "Detalles Matrimonial Estándar" },
+  { id: 104, category: "Habitaciones", src: "/images/gallery/matrimonial_estandar3.png", label: "Cabaña Matrimonial Estándar" },
 ];
 
 const categories = ["Todas", "Piscinas", "Habitaciones", "Restaurante", "Eventos", "Áreas verdes", "Familias"];
@@ -105,7 +140,7 @@ export default function Gallery() {
         {/* === PARTE 1: ACORDEÓN DE HIGHLIGHTS === */}
         <AnimatedSection variant="fadeUp" className="mb-12 md:mb-16">
           <SectionHeading subtitle="El Resort en Imágenes" title="Nuestra Esencia" />
-          <p className="text-center text-text-secondary font-poppins max-w-2xl mx-auto mt-6">
+          <p className="text-center text-forest/80 font-inter font-light max-w-2xl mx-auto mt-6">
             Descubre los rincones más hermosos de Los Andes Club Resort. Un diseño pensado para armonizar el lujo con la naturaleza.
           </p>
         </AnimatedSection>

@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { heroReveal } from "@/lib/animations";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
 const heroImages = [
+  "/images/gallery/piscina (1).jpeg",
   "/images/hero/hero-1.png",
   "/images/hero/hero-2.png",
   "/images/hero/hero-3.png",
@@ -18,6 +19,14 @@ const heroImages = [
 
 export default function Hero() {
   const [currentImage, setCurrentImage] = useState(0);
+  const heroRef = useRef<HTMLElement>(null);
+
+  const { scrollY } = useScroll();
+
+  // El fondo se mueve ligeramente hacia abajo basado en el scroll global (ya que el contenedor es sticky)
+  const backgroundY = useTransform(scrollY, [0, 1000], ["0%", "25%"]);
+  // Oscurecemos el hero al bajar para que el inicio de la siguiente sección destaque más
+  const scrollOverlayOpacity = useTransform(scrollY, [0, 800], [0, 0.6]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -27,9 +36,13 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-[100svh] flex items-center justify-center">
-      {/* Background Slider */}
-      <div className="absolute inset-0 z-0 bg-forest-dark overflow-hidden">
+    <section ref={heroRef} id="hero" className="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-forest-dark">
+      
+      {/* Background Slider con Parallax */}
+      <motion.div 
+        style={{ y: backgroundY }} 
+        className="absolute top-[-15%] left-0 right-0 h-[130%] z-0"
+      >
         {heroImages.map((src, index) => (
           <Image
             key={src}
@@ -40,17 +53,22 @@ export default function Hero() {
             priority={index === 0}
             quality={100}
             className={cn(
-              "object-cover transition-opacity duration-[4000ms] ease-in-out scale-105",
+              "object-cover object-[center_top] md:object-center transition-opacity duration-[4000ms] ease-in-out scale-[1.03]",
               currentImage === index ? "opacity-100" : "opacity-0"
             )}
           />
         ))}
-        {/* Enhanced dark overlay for better text contrast */}
+        {/* Capas de degradado originales */}
         <div className="absolute inset-0 bg-black/30 z-10" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 z-10" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-black/40 via-transparent to-transparent z-10" />
-      </div>
+      </motion.div>
 
+      {/* Capa dinámica que oscurece el hero al hacer scroll hacia abajo */}
+      <motion.div 
+        style={{ opacity: scrollOverlayOpacity }} 
+        className="absolute inset-0 bg-black z-10 pointer-events-none"
+      />
 
       {/* Content */}
       <div className="relative z-20 w-full max-w-5xl mx-auto px-6 text-center text-white mt-16">
@@ -92,9 +110,9 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator (Solo en Móviles) */}
+      {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer md:hidden"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 cursor-pointer"
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
         onClick={() => document.getElementById("fullday")?.scrollIntoView({ behavior: "smooth" })}

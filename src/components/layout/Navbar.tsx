@@ -158,9 +158,9 @@ export default function Navbar() {
             {/* Botón Reservar */}
             <button 
               onClick={() => window.dispatchEvent(new CustomEvent('open-booking-modal', { detail: { service: "Consulta General" } }))}
-              className="hidden lg:flex items-center gap-2 bg-gold hover:bg-gold-light text-forest px-6 py-2.5 rounded-full font-inter font-semibold transition-all shadow-lg hover:-translate-y-0.5"
+              className="hidden lg:flex items-center gap-2 bg-[#25D366] hover:bg-[#20b858] text-white px-6 py-2.5 rounded-full font-inter font-semibold transition-all shadow-lg shadow-[#25D366]/20 hover:-translate-y-0.5"
             >
-              <MessageCircle size={18} className="text-forest" />
+              <MessageCircle size={18} className="text-white" />
               Reservar
             </button>
 

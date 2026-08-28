@@ -36,9 +36,10 @@ export const ROOMS: Room[] = [
     price: 270.00,
     description: "Una cabaña íntima y acogedora, perfecta para parejas que buscan tranquilidad rodeados de naturaleza.",
     images: [
-      "/images/rooms/h_matri1_v2.png",
-      "/images/rooms/h_matri2_v2.png",
-      "/images/rooms/h_matri3_v2.png"
+      "/images/gallery/matrimonial_estandar2.png",
+      "/images/gallery/matrimonial_estandar.png",
+      "/images/gallery/matrimonial_estandar3.png",
+      "/images/rooms/h_matri1_v2.png"
     ],
     amenities: ["1 Cama Queen", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
@@ -51,7 +52,7 @@ export const ROOMS: Room[] = [
     price: 300.00,
     description: "Una suite matrimonial premium con cama King Size y todas las comodidades modernas en la zona del hotel.",
     images: [
-      "/images/rooms/hmatrisjunior1.png",
+      "/images/rooms/205 - Suite Rjecutiva.jpeg",
       "/images/rooms/hmatrisjunior2.png",
       "/images/rooms/hmatrisjunior3.png"
     ],
@@ -84,9 +85,9 @@ export const ROOMS: Room[] = [
     price: 400.00,
     description: "Comodidad de lujo para 4 personas con dos camas Queen en nuestra exclusiva zona de hotel.",
     images: [
-      "/images/rooms/hdsjunior1.png",
-      "/images/rooms/hdsjunior2.png",
-      "/images/rooms/hdsjunior3.png"
+      "/images/rooms/114 - Doble Suite.jpeg",
+      "/images/rooms/DobleSuiteJunior1.jpeg",
+      "/images/rooms/204 - Doble Suite.jpeg"
     ],
     amenities: ["2 Camas Queen", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },

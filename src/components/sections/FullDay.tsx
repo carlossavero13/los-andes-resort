@@ -1,12 +1,25 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { ArrowRight, Palmtree, Waves, Medal, Castle, ChefHat, Flower2, Compass, PawPrint } from "lucide-react";
+import { ArrowRight, Palmtree, Waves, Medal, Castle, ChefHat, Flower2, Compass, PawPrint, ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { getWhatsAppUrl } from "@/lib/utils";
 
+const FULLDAY_IMAGES = [
+  "/images/gallery/piscina (2).jpeg",
+  "/images/gallery/vista.jpeg",
+  "/images/gallery/piscina (3).jpeg",
+  "/images/areas/areaverde.png",
+  "/images/areas/j_inflables.png"
+];
+
 export default function FullDay() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % FULLDAY_IMAGES.length);
+  const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + FULLDAY_IMAGES.length) % FULLDAY_IMAGES.length);
   const fullDayIncludes = [
     { text: "Acceso libre a todas las instalaciones", icon: Palmtree },
     { text: "Uso de piscinas para adultos y niños", icon: Waves },
@@ -22,25 +35,64 @@ export default function FullDay() {
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
-          {/* Columna Izquierda: Imagen */}
-          <AnimatedSection variant="fadeRight" className="order-2 lg:order-1">
-            <div className="relative aspect-[4/3] md:aspect-[4/5] lg:h-[700px] w-full rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-xl md:shadow-2xl">
-              <Image 
-                src="/images/hero/hero-1.png" // O cualquier otra imagen bonita de exteriores/piscina
-                alt="Piscina Full Day en Los Andes"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-1000"
-                quality={90}
-              />
+          {/* Columna Izquierda: Carrusel de Imagen */}
+          <AnimatedSection variant="fadeRight" className="order-2 lg:order-1 min-w-0">
+            <div className="relative aspect-[4/3] md:aspect-[4/5] lg:h-[700px] w-full rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-xl md:shadow-2xl group">
+              {FULLDAY_IMAGES.map((src, index) => (
+                <Image 
+                  key={src}
+                  src={src}
+                  alt={`Full Day en Los Andes ${index + 1}`}
+                  fill
+                  className={`object-cover transition-all duration-1000 ${
+                    index === currentImageIndex 
+                      ? 'opacity-100 scale-100' 
+                      : 'opacity-0 scale-105 pointer-events-none'
+                  }`}
+                  quality={100}
+                  unoptimized
+                />
+              ))}
+
+              {/* Botones de Navegación del Carrusel */}
+              <div className="absolute inset-0 flex items-center justify-between p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button 
+                  onClick={prevImage}
+                  className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/50 transition-colors shadow-lg"
+                  aria-label="Foto anterior"
+                >
+                  <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+                </button>
+                <button 
+                  onClick={nextImage}
+                  className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/50 transition-colors shadow-lg"
+                  aria-label="Siguiente foto"
+                >
+                  <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+                </button>
+              </div>
+
+              {/* Indicadores de página (dots) */}
+              <div className="absolute bottom-6 md:bottom-12 left-0 right-0 flex justify-center gap-2 z-20">
+                {FULLDAY_IMAGES.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentImageIndex(idx)}
+                    className={`h-1.5 md:h-2 rounded-full transition-all duration-300 ${
+                      idx === currentImageIndex ? 'bg-white w-6 md:w-8' : 'bg-white/50 w-2 hover:bg-white/80'
+                    }`}
+                  />
+                ))}
+              </div>
               
               {/* Etiqueta flotante 10 a 5 */}
-              <div className="absolute bottom-4 md:bottom-10 left-4 md:left-10 bg-white/95 backdrop-blur-md px-4 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl shadow-xl border border-white flex flex-col gap-0.5 md:gap-1">
+              <div className="absolute bottom-12 md:bottom-20 left-4 md:left-10 bg-white/95 backdrop-blur-md px-4 py-3 md:px-6 md:py-4 rounded-xl md:rounded-2xl shadow-xl border border-white flex flex-col gap-0.5 md:gap-1 z-30">
                 <span className="font-playfair text-lg md:text-2xl text-forest font-medium">De 10:00 AM</span>
                 <span className="font-inter text-[10px] md:text-xs text-forest/60 uppercase tracking-widest font-semibold">a 5:00 PM</span>
               </div>
 
               {/* Etiqueta flotante Pet Friendly */}
-              <div className="absolute top-4 md:top-8 right-4 md:right-8 bg-white/95 backdrop-blur-md px-3 py-2 md:px-4 md:py-3 rounded-full shadow-xl border border-[#722F37]/10 flex items-center gap-2 transform hover:scale-105 transition-transform duration-300">
+              <div className="absolute top-4 md:top-8 right-4 md:right-8 bg-white/95 backdrop-blur-md px-3 py-2 md:px-4 md:py-3 rounded-full shadow-xl border border-[#722F37]/10 flex items-center gap-2 transform hover:scale-105 transition-transform duration-300 z-30">
                 <PawPrint className="text-[#722F37] w-4 h-4 md:w-5 md:h-5" strokeWidth={2.5} />
                 <span className="font-inter font-bold text-forest text-[10px] md:text-sm tracking-wide">100% Pet Friendly</span>
               </div>
@@ -76,16 +128,32 @@ export default function FullDay() {
               )})}
             </div>
 
-            {/* Nota Cuatrimotos */}
-            <div className="bg-gold/10 border border-gold/30 rounded-xl p-4 mb-8 md:mb-10 flex items-start gap-4 shadow-sm">
-              <div className="bg-[#722F37] text-white p-2 md:p-2.5 rounded-lg flex-shrink-0 mt-0.5">
-                <Compass className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} /> 
-              </div>
-              <div>
-                <h5 className="font-playfair text-[#722F37] font-semibold text-base md:text-lg mb-1">¡Suma aventura a tu día!</h5>
-                <p className="font-inter text-forest/80 text-xs md:text-sm font-light leading-relaxed">
-                  Pregunta por nuestro servicio de alquiler de <span className="font-medium text-forest">Cuatrimotos</span> para recorrer Cieneguilla. <span className="text-[#722F37]/70 text-[10px] md:text-xs block mt-0.5 uppercase tracking-wider">(Actividad con costo adicional)</span>
-                </p>
+            {/* Nota Cuatrimotos (Diseño Moderno) */}
+            <div className="relative overflow-hidden bg-gradient-to-br from-white to-[#722F37]/[0.03] border border-[#722F37]/15 rounded-2xl p-6 md:p-7 mb-8 md:mb-10 shadow-[0_4px_20px_rgba(0,0,0,0.02)] group hover:shadow-[0_8px_30px_rgba(114,47,55,0.06)] transition-all duration-300">
+              
+              {/* Icono de fondo decorativo */}
+              <Compass className="absolute -right-4 -bottom-4 w-32 h-32 text-[#722F37]/[0.04] rotate-[-15deg] group-hover:rotate-0 group-hover:scale-110 transition-transform duration-700 ease-out" strokeWidth={1} />
+
+              <div className="relative z-10 flex flex-col sm:flex-row gap-4 sm:gap-5 items-start">
+                
+                <div className="flex-shrink-0 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-[0_4px_15px_rgba(114,47,55,0.08)] border border-[#722F37]/10 group-hover:scale-110 transition-transform duration-500">
+                  <Compass className="w-5 h-5 text-[#722F37]" strokeWidth={1.5} /> 
+                </div>
+                
+                <div className="flex-1 w-full">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-2 mb-2.5">
+                    <h5 className="font-playfair text-[#722F37] font-medium text-xl md:text-2xl tracking-wide">
+                      ¡Suma aventura a tu día!
+                    </h5>
+                    <span className="inline-flex w-max bg-[#722F37]/5 border border-[#722F37]/10 text-[#722F37] px-3 py-1.5 rounded-full text-[9px] uppercase tracking-[0.2em] font-semibold">
+                      Costo Adicional
+                    </span>
+                  </div>
+                  <p className="font-inter text-forest/80 text-sm font-light leading-relaxed max-w-[95%]">
+                    Pregunta por nuestro exclusivo servicio de alquiler de <strong className="font-semibold text-[#722F37]">Cuatrimotos</strong> y recorre los paisajes de Cieneguilla para vivir una experiencia inolvidable.
+                  </p>
+                </div>
+
               </div>
             </div>
 

@@ -8,10 +8,12 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const RESTAURANT_IMAGES = [
+  "/images/gallery/restaurante_1.png",
+  "/images/gallery/restaurante_2.png",
+  "/images/gallery/bar1.png",
   "/images/restaurant/res1.png",
   "/images/restaurant/res2.png",
-  "/images/restaurant/res3.png",
-  "/images/restaurant/res4.png"
+  "/images/restaurant/res3.png"
 ];
 
 export default function Restaurant() {
@@ -37,7 +39,7 @@ export default function Restaurant() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           
           {/* Content (Left) */}
-          <AnimatedSection variant="fadeRight" className="flex flex-col">
+          <AnimatedSection variant="fadeRight" className="flex flex-col min-w-0">
             <h3 className="font-playfair text-3xl md:text-4xl lg:text-5xl text-[#722F37] mb-8 font-light leading-tight">
               Sabores que complementan tu descanso
             </h3>
@@ -56,40 +58,42 @@ export default function Restaurant() {
             </div>
 
             {/* Menu Buttons */}
-            <div className="grid grid-cols-3 gap-4 max-w-lg">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 max-w-lg w-full">
               <a 
                 href={getWhatsAppUrl("Hola, me gustaría ver la Carta del restaurante")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#722F37] rounded-2xl p-6 flex flex-col items-center justify-center text-white hover:bg-[#5a252b] transition-all hover:-translate-y-1 shadow-lg"
+                className="bg-[#722F37] rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center text-white hover:bg-[#5a252b] transition-all hover:-translate-y-1 shadow-lg"
               >
-                <UtensilsCrossed className="w-8 h-8 mb-3" strokeWidth={1.5} />
-                <span className="font-inter font-medium underline underline-offset-4 text-sm md:text-base">Carta</span>
+                <UtensilsCrossed className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-2 md:mb-3" strokeWidth={1.5} />
+                <span className="font-inter font-medium underline underline-offset-2 md:underline-offset-4 text-[10px] sm:text-sm md:text-base">Carta</span>
               </a>
               <a 
                 href={getWhatsAppUrl("Hola, me gustaría ver la carta del Bar")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#722F37] rounded-2xl p-6 flex flex-col items-center justify-center text-white hover:bg-[#5a252b] transition-all hover:-translate-y-1 shadow-lg"
+                className="bg-[#722F37] rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center text-white hover:bg-[#5a252b] transition-all hover:-translate-y-1 shadow-lg"
               >
-                <Martini className="w-8 h-8 mb-3" strokeWidth={1.5} />
-                <span className="font-inter font-medium underline underline-offset-4 text-sm md:text-base">Bar</span>
+                <Martini className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-2 md:mb-3" strokeWidth={1.5} />
+                <span className="font-inter font-medium underline underline-offset-2 md:underline-offset-4 text-[10px] sm:text-sm md:text-base">Bar</span>
               </a>
               <a 
                 href={getWhatsAppUrl("Hola, me gustaría ver la carta de Vinos")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#722F37] rounded-2xl p-6 flex flex-col items-center justify-center text-white hover:bg-[#5a252b] transition-all hover:-translate-y-1 shadow-lg"
+                className="bg-[#722F37] rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center text-white hover:bg-[#5a252b] transition-all hover:-translate-y-1 shadow-lg"
               >
-                <Wine className="w-8 h-8 mb-3" strokeWidth={1.5} />
-                <span className="font-inter font-medium underline underline-offset-4 text-sm md:text-base">Vinos</span>
+                <Wine className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-2 md:mb-3" strokeWidth={1.5} />
+                <span className="font-inter font-medium underline underline-offset-2 md:underline-offset-4 text-[10px] sm:text-sm md:text-base">Vinos</span>
               </a>
             </div>
           </AnimatedSection>
 
-          {/* Image Slideshow (Right) */}
-          <AnimatedSection variant="fadeLeft">
-            <div className="relative aspect-square md:aspect-[4/5] lg:h-[650px] w-full rounded-[2.5rem] overflow-hidden shadow-2xl bg-forest/5">
+          {/* Premium Image Gallery (Right) */}
+          <AnimatedSection variant="fadeLeft" className="w-full flex flex-col gap-4 lg:gap-6 mt-8 lg:mt-0 min-w-0">
+            
+            {/* Imagen Principal */}
+            <div className="relative aspect-[4/3] lg:aspect-[4/5] lg:h-[520px] w-full rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl border border-forest/10 group">
               {RESTAURANT_IMAGES.map((src, index) => (
                 <Image 
                   key={src}
@@ -97,24 +101,39 @@ export default function Restaurant() {
                   alt={`Platillo del restaurante ${index + 1}`}
                   fill 
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className={`object-cover transition-opacity duration-1000 ${
-                    index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                  className={`object-cover transition-all duration-1000 ${
+                    index === currentImageIndex 
+                      ? 'opacity-100 scale-100' 
+                      : 'opacity-0 scale-105 pointer-events-none'
                   }`}
                 />
               ))}
-              {/* Controles del Carrusel (Dots) */}
-              <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10">
-                {RESTAURANT_IMAGES.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === currentImageIndex ? 'bg-white w-6' : 'bg-white/50 w-2 hover:bg-white/80'
-                    }`}
-                    aria-label={`Ir a foto ${index + 1}`}
+              {/* Degradado inferior para resaltar fotos muy claras */}
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            </div>
+
+            {/* Miniaturas (Thumbnails) */}
+            <div className="flex gap-3 overflow-x-auto pb-4 snap-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              {RESTAURANT_IMAGES.map((src, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`relative h-20 md:h-24 min-w-[5.5rem] md:min-w-[6.5rem] rounded-xl overflow-hidden shrink-0 snap-start transition-all duration-300 ${
+                    index === currentImageIndex 
+                      ? 'ring-2 ring-gold ring-offset-2 ring-offset-[#FDFBF7] shadow-lg opacity-100' 
+                      : 'opacity-50 hover:opacity-100 hover:scale-[1.02]'
+                  }`}
+                  aria-label={`Ir a foto ${index + 1}`}
+                >
+                  <Image 
+                    src={src}
+                    alt={`Miniatura ${index + 1}`}
+                    fill
+                    sizes="100px"
+                    className="object-cover"
                   />
-                ))}
-              </div>
+                </button>
+              ))}
             </div>
           </AnimatedSection>
 

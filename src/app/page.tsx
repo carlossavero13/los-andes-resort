@@ -24,12 +24,16 @@ export default function Home() {
     <>
       <Navbar />
       
-      <main className="flex-1">
-        {/* 1. PORTADA */}
-        <Hero />
+      <main className="flex-1 relative">
+        {/* 1. PORTADA (Sticky Stacking Effect) */}
+        <div className="sticky top-0 h-[100dvh] w-full z-0 overflow-hidden">
+          <Hero />
+        </div>
 
-        {/* 2. NOSOTROS */}
-        <About />
+        {/* 2. NOSOTROS (Desliza por encima del Hero) */}
+        <div className="relative z-10 bg-white shadow-[0_-20px_50px_rgba(0,0,0,0.5)] rounded-t-[40px] overflow-hidden">
+          <About />
+        </div>
 
         {/* 5. VIVE LA EXPERIENCIA */}
         <InstagramFeed />
