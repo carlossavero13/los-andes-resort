@@ -21,7 +21,7 @@ const TOURIST_SPOTS = [
     title: "Pueblo de Antioquía",
     description: "Famoso por sus calles empedradas y coloridas casas pintadas con flores y aves. Un lugar perfecto para fotos inolvidables.",
     distance: "A 1 hora",
-    image: "/images/tourism/Antioquia.jpg",
+    image: "/images/tourism/antioquia.jpg",
     icon: Mountain,
   },
   {

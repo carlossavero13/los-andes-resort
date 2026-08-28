@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Phone, Mail, MapPin, BookOpen } from "lucide-react";
 import {
   NAV_LINKS,
@@ -132,14 +133,16 @@ export default function Footer() {
           
           <div className="flex flex-col items-center md:items-end gap-3">
             <a 
-              href="https://docs.google.com/forms/d/e/1FAIpQLSc0VG3oVtmCzIdtHY-i1ojPD2mCV1cq_fwmbfFwuHL457PqWw/viewform" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-forest/70 hover:text-white transition-all bg-white px-5 py-2.5 rounded-xl border border-forest/10 hover:bg-forest hover:border-forest shadow-sm group"
+              href="/libro-de-reclamaciones" 
+              className="relative w-[240px] h-[72px] hover:scale-105 transition-transform"
               title="Libro de Reclamaciones"
             >
-              <BookOpen size={18} className="text-[#722F37] group-hover:text-gold transition-colors" />
-              <span className="font-poppins text-xs font-semibold uppercase tracking-wider">Libro de Reclamaciones</span>
+              <Image 
+                src="/images/gallery/libro_de_reclamaciones.png" 
+                alt="Libro de Reclamaciones" 
+                fill
+                className="object-contain"
+              />
             </a>
             <p className="text-forest/40 text-xs font-poppins">
               Diseñado con ♥ para crear experiencias inolvidables
