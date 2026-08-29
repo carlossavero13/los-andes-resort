@@ -134,35 +134,29 @@ export default function Events() {
                       
                       {/* En móvil, mostrar la imagen debajo del texto cuando está activo */}
                       <div className="lg:hidden relative h-64 w-full rounded-2xl overflow-hidden mb-8 border border-forest/10 shadow-lg group">
-                         <Image
-                           src={event.images[isActive ? currentImageIndex : 0] || event.images[0]}
-                           alt={event.title}
-                           fill
-                           className="object-cover transition-all duration-1000"
-                         />
-                         
-                         {/* Flechas y Controles en Móvil */}
-                         {isActive && event.images.length > 1 && (
-                           <>
-                             <button 
-                               onClick={(e) => handlePrevImage(e, event.images.length)}
-                               className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-black/30 hover:bg-black/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all z-20 backdrop-blur-sm"
-                             >
-                               <ChevronLeft size={20} />
-                             </button>
-                             <button 
-                               onClick={(e) => handleNextImage(e, event.images.length)}
-                               className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-black/30 hover:bg-black/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all z-20 backdrop-blur-sm"
-                             >
-                               <ChevronRight size={20} />
-                             </button>
-                             
-                             <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
-                               {event.images.map((_, i) => (
-                                 <div key={i} className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentImageIndex ? 'bg-gold w-4' : 'bg-white/50'}`} />
-                               ))}
+                         <div 
+                           className="w-full h-full flex overflow-x-auto snap-x snap-mandatory scrollbar-hide hide-scrollbar"
+                           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                           onScroll={(e) => {
+                             const el = e.currentTarget;
+                             const idx = Math.round(el.scrollLeft / el.clientWidth);
+                             if (idx !== currentImageIndex) setCurrentImageIndex(idx);
+                           }}
+                         >
+                           {event.images.map((img, i) => (
+                             <div key={i} className="w-full h-full flex-shrink-0 snap-center relative">
+                               <Image src={img} alt={event.title} fill className="object-cover" />
                              </div>
-                           </>
+                           ))}
+                         </div>
+                         
+                         {/* Indicadores en Móvil */}
+                         {isActive && event.images.length > 1 && (
+                           <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10 pointer-events-none">
+                             {event.images.map((_, i) => (
+                               <div key={i} className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentImageIndex ? 'bg-gold w-4' : 'bg-white/50'}`} />
+                             ))}
+                           </div>
                          )}
                       </div>
 

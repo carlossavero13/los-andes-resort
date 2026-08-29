@@ -91,17 +91,35 @@ export default function Rooms() {
                       className="overflow-hidden"
                     >
                       <div className="pb-8 px-2 flex flex-col gap-6">
-                        <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
-                          <Image
-                            src={room.images[0]}
-                            alt={room.name}
-                            fill
-                            sizes="100vw"
-                            className={cn(
-                              "transition-all duration-1000",
-                              room.id === "matrimonial-estandar" ? "object-contain bg-black/5" : "object-cover"
-                            )}
-                          />
+                        <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg group">
+                          <div 
+                            className="w-full h-full flex overflow-x-auto snap-x snap-mandatory scrollbar-hide hide-scrollbar"
+                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                          >
+                            {room.images.map((img, i) => (
+                              <div key={i} className="w-full h-full flex-shrink-0 snap-center relative">
+                                <Image
+                                  src={img}
+                                  alt={`${room.name} - ${i + 1}`}
+                                  fill
+                                  sizes="100vw"
+                                  className={cn(
+                                    "transition-all duration-1000",
+                                    room.id === "matrimonial-estandar" ? "object-contain bg-black/5" : "object-cover"
+                                  )}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                          
+                          {/* Indicadores (Dots) opcionales */}
+                          {room.images.length > 1 && (
+                            <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 z-10 pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity">
+                              {room.images.map((_, i) => (
+                                <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/70 shadow-sm" />
+                              ))}
+                            </div>
+                          )}
                         </div>
                         
                         <div>

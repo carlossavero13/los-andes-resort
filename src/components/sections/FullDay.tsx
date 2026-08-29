@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowRight, Palmtree, Waves, Medal, Castle, ChefHat, Flower2, Compass, PawPrint, ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -19,17 +19,41 @@ const FULLDAY_IMAGES = [
 
 export default function FullDay() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % FULLDAY_IMAGES.length);
-  const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + FULLDAY_IMAGES.length) % FULLDAY_IMAGES.length);
+  const scrollToImage = (index: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({
+        left: index * scrollRef.current.clientWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const nextImage = () => scrollToImage((currentImageIndex + 1) % FULLDAY_IMAGES.length);
+  const prevImage = () => scrollToImage((currentImageIndex - 1 + FULLDAY_IMAGES.length) % FULLDAY_IMAGES.length);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % FULLDAY_IMAGES.length);
-    }, 5000); // Cambia de foto cada 5 segundos
+      setCurrentImageIndex((prev) => {
+        const next = (prev + 1) % FULLDAY_IMAGES.length;
+        if (scrollRef.current) {
+          scrollRef.current.scrollTo({ left: next * scrollRef.current.clientWidth, behavior: 'smooth' });
+        }
+        return next;
+      });
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const index = Math.round(el.scrollLeft / el.clientWidth);
+    if (index !== currentImageIndex) {
+      setCurrentImageIndex(index);
+    }
+  };
 
   const fullDayIncludes = [
     { text: "Acceso libre a todas las instalaciones", icon: Palmtree },
@@ -49,34 +73,40 @@ export default function FullDay() {
           {/* Columna Izquierda: Carrusel de Imagen */}
           <AnimatedSection variant="fadeRight" className="order-2 lg:order-1 min-w-0">
             <div className="relative aspect-[4/3] md:aspect-[4/5] lg:h-[700px] w-full rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-xl md:shadow-2xl group">
-              {FULLDAY_IMAGES.map((src, index) => (
-                <Image 
-                  key={src}
-                  src={src}
-                  alt={`Full Day en Los Andes ${index + 1}`}
-                  fill
-                  className={`object-cover transition-all duration-1000 ${
-                    index === currentImageIndex 
-                      ? 'opacity-100 scale-100' 
-                      : 'opacity-0 scale-105 pointer-events-none'
-                  }`}
-                  quality={100}
-                  unoptimized
-                />
-              ))}
+              
+              {/* Contenedor escroleable swipe */}
+              <div 
+                ref={scrollRef}
+                onScroll={handleScroll}
+                className="w-full h-full flex overflow-x-auto snap-x snap-mandatory scrollbar-hide hide-scrollbar relative"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {FULLDAY_IMAGES.map((src, index) => (
+                  <div key={src} className="w-full h-full flex-shrink-0 snap-center relative">
+                    <Image 
+                      src={src}
+                      alt={`Full Day en Los Andes ${index + 1}`}
+                      fill
+                      className="object-cover"
+                      quality={100}
+                      unoptimized
+                    />
+                  </div>
+                ))}
+              </div>
 
               {/* Botones de Navegación del Carrusel */}
-              <div className="absolute inset-0 flex items-center justify-between p-4 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 flex items-center justify-between p-4 z-20 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                 <button 
                   onClick={prevImage}
-                  className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/50 transition-colors shadow-lg"
+                  className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/50 transition-colors shadow-lg pointer-events-auto"
                   aria-label="Foto anterior"
                 >
                   <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
                 </button>
                 <button 
                   onClick={nextImage}
-                  className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/50 transition-colors shadow-lg"
+                  className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/50 transition-colors shadow-lg pointer-events-auto"
                   aria-label="Siguiente foto"
                 >
                   <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
@@ -88,7 +118,7 @@ export default function FullDay() {
                 {FULLDAY_IMAGES.map((_, idx) => (
                   <button
                     key={idx}
-                    onClick={() => setCurrentImageIndex(idx)}
+                    onClick={() => scrollToImage(idx)}
                     className={`h-1.5 md:h-2 rounded-full transition-all duration-300 ${
                       idx === currentImageIndex ? 'bg-white w-6 md:w-8' : 'bg-white/50 w-2 hover:bg-white/80'
                     }`}

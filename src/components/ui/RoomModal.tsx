@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Users, Check, Maximize2, Coffee, ArrowLeft, ArrowRight, BedDouble, Waves, Activity, Refrigerator, Droplets, Wifi, Maximize, Bath, TreePine, Car, Snowflake, ConciergeBell, Sparkles, Tv, SprayCan, Sun } from "lucide-react";
@@ -18,6 +18,16 @@ interface RoomModalProps {
 export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
   const lenis = useLenis();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollToImage = (index: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({
+        left: index * scrollRef.current.clientWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const getAmenityIcon = (amenity: string) => {
     const a = amenity.toLowerCase();
@@ -102,44 +112,64 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
               
               {/* IZQUIERDA: Galería a pantalla completa (55%) */}
               <div className="w-full md:w-[55%] h-[40vh] md:h-full relative bg-black flex-shrink-0 group">
-                <Image 
-                  src={room.images[activeImageIndex]} 
-                  alt={room.name} 
-                  fill 
-                  className="object-cover transition-opacity duration-700 opacity-90 group-hover:opacity-100" 
-                  priority
-                />
+                <div 
+                  ref={scrollRef}
+                  className="w-full h-full flex overflow-x-auto snap-x snap-mandatory scrollbar-hide hide-scrollbar"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                  onScroll={(e) => {
+                    const el = e.currentTarget;
+                    const idx = Math.round(el.scrollLeft / el.clientWidth);
+                    if (idx !== activeImageIndex) setActiveImageIndex(idx);
+                  }}
+                >
+                  {room.images.map((img, i) => (
+                    <div key={i} className="w-full h-full flex-shrink-0 snap-center relative">
+                      <Image 
+                        src={img} 
+                        alt={room.name} 
+                        fill 
+                        className="object-cover transition-opacity duration-700 opacity-90 group-hover:opacity-100" 
+                        priority={i === 0}
+                      />
+                    </div>
+                  ))}
+                </div>
                 
-                {/* Controles de Galería */}
+                {/* Controles de Galería (Desktop) */}
                 {room.images.length > 1 && (
                   <>
                     <button 
                       onClick={(e) => { 
                         e.stopPropagation(); 
-                        setActiveImageIndex((prev) => (prev - 1 + room.images.length) % room.images.length); 
+                        const next = (activeImageIndex - 1 + room.images.length) % room.images.length;
+                        scrollToImage(next);
                       }}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:text-forest shadow-lg border border-white/30 transition-all hover:scale-105 z-10"
+                      className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/90 backdrop-blur-md rounded-full items-center justify-center text-white hover:text-forest shadow-lg border border-white/30 transition-all hover:scale-105 z-10"
                     >
                       <ArrowLeft size={20} strokeWidth={2} />
                     </button>
                     <button 
                       onClick={(e) => { 
                         e.stopPropagation(); 
-                        setActiveImageIndex((prev) => (prev + 1) % room.images.length); 
+                        const next = (activeImageIndex + 1) % room.images.length;
+                        scrollToImage(next);
                       }}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:text-forest shadow-lg border border-white/30 transition-all hover:scale-105 z-10"
+                      className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/90 backdrop-blur-md rounded-full items-center justify-center text-white hover:text-forest shadow-lg border border-white/30 transition-all hover:scale-105 z-10"
                     >
                       <ArrowRight size={20} strokeWidth={2} />
                     </button>
 
                     {/* Dots / Thumbnails flotantes en la parte inferior */}
-                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10 bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10 bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 pointer-events-none md:pointer-events-auto">
                       {room.images.map((_, idx) => (
                         <button
                           key={idx}
-                          onClick={(e) => { e.stopPropagation(); setActiveImageIndex(idx); }}
+                          onClick={(e) => { 
+                            e.stopPropagation(); 
+                            scrollToImage(idx); 
+                          }}
                           className={cn(
-                            "w-2 h-2 rounded-full transition-all",
+                            "w-2 h-2 rounded-full transition-all pointer-events-auto",
                             activeImageIndex === idx ? "bg-white scale-125 w-4" : "bg-white/50 hover:bg-white/90"
                           )}
                         />
