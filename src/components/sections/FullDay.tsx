@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight, Palmtree, Waves, Medal, Castle, ChefHat, Flower2, Compass, PawPrint, ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -9,6 +9,8 @@ import { getWhatsAppUrl } from "@/lib/utils";
 
 const FULLDAY_IMAGES = [
   "/images/gallery/piscina (2).jpeg",
+  "/images/gallery/cuatrimoto_1.webp",
+  "/images/gallery/cuatrimoto_2.webp",
   "/images/gallery/vista.jpeg",
   "/images/gallery/piscina (3).jpeg",
   "/images/areas/areaverde.png",
@@ -20,6 +22,15 @@ export default function FullDay() {
 
   const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % FULLDAY_IMAGES.length);
   const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + FULLDAY_IMAGES.length) % FULLDAY_IMAGES.length);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % FULLDAY_IMAGES.length);
+    }, 5000); // Cambia de foto cada 5 segundos
+
+    return () => clearInterval(interval);
+  }, []);
+
   const fullDayIncludes = [
     { text: "Acceso libre a todas las instalaciones", icon: Palmtree },
     { text: "Uso de piscinas para adultos y niños", icon: Waves },

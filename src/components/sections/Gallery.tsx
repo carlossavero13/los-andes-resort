@@ -109,9 +109,13 @@ const gridItems: GalleryImage[] = [
   { id: 103, category: "Habitaciones", src: "/images/gallery/matrimonial_estandar2.png", label: "Matrimonial Estándar" },
   { id: 102, category: "Habitaciones", src: "/images/gallery/matrimonial_estandar.png", label: "Detalles Matrimonial Estándar" },
   { id: 104, category: "Habitaciones", src: "/images/gallery/matrimonial_estandar3.png", label: "Cabaña Matrimonial Estándar" },
+  
+  // Actividades
+  { id: 105, category: "Actividades", src: "/images/gallery/cuatrimoto_1.webp", label: "Paseo en Cuatrimoto" },
+  { id: 106, category: "Actividades", src: "/images/gallery/cuatrimoto_2.webp", label: "Aventura en Cieneguilla" },
 ];
 
-const categories = ["Todas", "Piscinas", "Habitaciones", "Restaurante", "Eventos", "Áreas verdes", "Familias"];
+const categories = ["Todas", "Piscinas", "Habitaciones", "Restaurante", "Eventos", "Áreas verdes", "Familias", "Actividades"];
 
 export default function Gallery() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
