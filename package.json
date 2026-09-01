@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.112.4",
     "framer-motion": "^12.42.2",
     "heic-convert": "^2.1.0",
     "jimp": "^1.6.1",
