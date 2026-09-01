@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
-import { Loader2, Search, Filter, LogOut, CheckCircle2, Clock, Inbox, ChevronRight, X, User, Calendar, MapPin, Mail, Phone, FileText } from "lucide-react";
+import { Loader2, Search, Filter, LogOut, CheckCircle2, Clock, Inbox, ChevronRight, X, User, Calendar, MapPin, Mail, Phone, FileText, AlertCircle } from "lucide-react";
 
 export default function AdminDashboard() {
   const [session, setSession] = useState<any>(null);
