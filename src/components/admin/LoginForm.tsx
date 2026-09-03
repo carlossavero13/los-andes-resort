@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Loader2 } from "lucide-react";
+import { Loader2, Mail, Lock, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import type { AuthError } from "@supabase/supabase-js";
 
 interface LoginFormProps {
@@ -18,57 +20,84 @@ export function LoginForm({ onLogin }: LoginFormProps) {
     setLoginError("");
     
     const { error } = await onLogin(email, password);
-    if (error) setLoginError("Correo o contraseña incorrectos");
+    if (error) setLoginError("Credenciales incorrectas");
     setIsLoggingIn(false);
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFCFB] flex items-center justify-center p-4 font-inter text-forest">
-      <div className="bg-white p-8 sm:p-10 rounded-3xl shadow-xl w-full max-w-[400px] border border-gray-100">
-        <div className="mb-8 text-center flex flex-col items-center">
-          <div className="bg-forest px-8 py-5 rounded-2xl mb-8 w-52 flex items-center justify-center shadow-lg shadow-forest/20">
+    <div className="min-h-screen w-full flex items-center justify-center p-4 relative font-inter">
+      {/* Fondo de pantalla completa (Naturaleza/Bosque) */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/gallery/piscina (1).webp" 
+          alt="Fondo Los Andes"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Overlay oscuro para resaltar el panel (Color de la empresa) */}
+        <div className="absolute inset-0 bg-[#0F1115]/60 mix-blend-multiply" />
+      </div>
+
+      {/* Tarjeta Glassmorphism Limpia */}
+      <div className="relative z-10 w-full max-w-[420px] bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl rounded-2xl p-8 sm:p-10 text-gray-900 overflow-hidden">
+        
+        {/* Botón X de cerrar */}
+        <Link href="/" className="absolute top-4 right-4 bg-gray-900/80 hover:bg-black text-white p-1.5 rounded-lg transition-colors shadow-sm">
+          <X className="w-4 h-4" />
+        </Link>
+
+        {/* Logo de la Empresa (Reemplaza al texto "Login") */}
+        <div className="mb-10 text-center flex justify-center">
+          <div className="w-40 drop-shadow-md">
             <img 
               src="/images/los_andes_logo.webp" 
               alt="Los Andes Logo" 
-              className="object-contain w-full h-auto drop-shadow-md"
+              className="object-contain w-full h-auto brightness-0 invert"
             />
           </div>
-          <h1 className="text-2xl font-playfair font-bold">Iniciar sesión</h1>
-          <p className="text-sm text-gray-500 mt-2">Acceso al Panel Administrativo</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-1.5">
-            <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Email</label>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Email Input con fondo blanco como en su foto */}
+          <div className="relative group">
             <input 
               type="email" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@empresa.com"
-              className="w-full h-11 px-4 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest focus:border-forest transition-shadow" 
+              placeholder="Email"
+              className="w-full bg-white text-gray-900 placeholder:text-gray-400 h-11 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest rounded-md shadow-sm transition-all peer" 
               required 
             />
+            <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 peer-focus:text-forest transition-colors" />
           </div>
-          <div className="space-y-1.5">
-            <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Contraseña</label>
+          
+          {/* Password Input con fondo blanco */}
+          <div className="relative group">
             <input 
               type="password" 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              className="w-full h-11 px-4 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-forest focus:border-forest transition-shadow" 
+              placeholder="Password"
+              className="w-full bg-white text-gray-900 placeholder:text-gray-400 h-11 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest rounded-md shadow-sm transition-all peer" 
               required 
             />
+            <Lock className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 peer-focus:text-forest transition-colors" />
           </div>
           
-          {loginError && <p className="text-red-600 text-sm text-center font-medium pt-1 bg-red-50 py-2 rounded-lg">{loginError}</p>}
+          {loginError && (
+            <p className="text-red-700 text-xs text-center font-bold py-2 bg-red-100/80 rounded-lg">
+              {loginError}
+            </p>
+          )}
           
+          {/* Botón de Login (Color de la empresa: Forest) */}
           <button 
             type="submit" 
             disabled={isLoggingIn}
-            className="w-full h-12 mt-4 bg-forest text-white text-sm font-bold uppercase tracking-wider rounded-lg hover:bg-forest-light transition-colors flex justify-center items-center disabled:opacity-50"
+            className="w-full h-11 mt-6 bg-forest text-white text-sm font-semibold rounded-md hover:bg-forest-light transition-all flex justify-center items-center shadow-lg disabled:opacity-50 hover:scale-[1.02] active:scale-[0.98]"
           >
-            {isLoggingIn ? <Loader2 className="w-5 h-5 animate-spin" /> : "Ingresar"}
+            {isLoggingIn ? <Loader2 className="w-5 h-5 animate-spin" /> : "Login"}
           </button>
         </form>
       </div>

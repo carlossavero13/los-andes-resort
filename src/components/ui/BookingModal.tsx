@@ -85,7 +85,7 @@ export default function BookingModal() {
             {/* Left Side - Image (Hidden on mobile) */}
             <div className="hidden md:block md:w-5/12 relative bg-black">
               <Image 
-                src="/images/rooms/hmatrisjunior1.webp"
+                src="/images/rooms/sui_mat_jun/sui_mat_jun1.webp"
                 alt="Los Andes Resort"
                 fill
                 className="object-cover opacity-80"

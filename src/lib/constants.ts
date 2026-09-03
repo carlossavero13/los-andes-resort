@@ -17,13 +17,13 @@ export const SOCIAL_LINKS = {
 };
 
 export const NAV_LINKS: NavLink[] = [
-  { name: "Nosotros", href: "#nosotros" },
-  { name: "Hotel", href: "#habitaciones" },
-  { name: "Full Day", href: "#fullday" },
-  { name: "Ubicación", href: "#ubicacion" },
-  { name: "Turismo", href: "#turismo" },
-  { name: "Eventos", href: "#eventos" },
-  { name: "Galería", href: "#galeria" },
+  { name: "Nosotros", href: "/#nosotros" },
+  { name: "Hotel", href: "/#habitaciones" },
+  { name: "Full Day", href: "/#fullday" },
+  { name: "Ubicación", href: "/#ubicacion" },
+  { name: "Turismo", href: "/#turismo" },
+  { name: "Eventos", href: "/#eventos" },
+  { name: "Galería", href: "/#galeria" },
 ];
 
 export const ROOMS: Room[] = [

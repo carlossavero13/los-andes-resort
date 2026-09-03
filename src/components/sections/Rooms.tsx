@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { Users, Info, MessageCircle, ChevronDown } from "lucide-react";
+import { Users, Info, MessageCircle, ChevronDown, Eye } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 import { getAmenityIcon } from "@/lib/amenity-icons";
@@ -165,10 +165,11 @@ export default function Rooms() {
                             
                             <button
                               onClick={() => setSelectedRoomModal(room)}
-                              className="flex w-full items-center justify-center gap-2 bg-white text-forest border border-forest/20 px-6 py-3.5 rounded-full font-inter text-sm font-medium shadow-sm hover:bg-light-bg transition-colors"
+                              className="group relative overflow-hidden flex w-full items-center justify-center gap-2 bg-gradient-to-r from-gold/10 via-gold/5 to-transparent text-forest border border-gold/40 px-6 py-3.5 rounded-full font-inter text-sm font-semibold shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5"
                             >
-                              <Info size={16} className="text-forest/60" />
-                              Ver Detalles
+                              <div className="absolute inset-0 bg-gold/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                              <Eye size={18} className="text-gold group-hover:scale-110 transition-transform duration-300 relative z-10" />
+                              <span className="relative z-10">Ver Fotos y Detalles</span>
                             </button>
                           </div>
                         </div>
@@ -315,10 +316,11 @@ export default function Rooms() {
                       
                       <button
                         onClick={() => setSelectedRoomModal(activeRoom)}
-                        className="flex-1 flex items-center justify-center gap-2 bg-white hover:bg-forest/5 text-forest border border-forest/20 px-4 py-3 rounded-full font-inter text-xs font-medium transition-all shadow-sm hover:shadow-md"
+                        className="group relative overflow-hidden flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-gold/10 via-gold/5 to-transparent text-forest border border-gold/40 px-4 py-3 rounded-full font-inter text-xs font-bold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
                       >
-                        <Info size={14} className="text-forest/60" />
-                        Detalles
+                        <div className="absolute inset-0 bg-gold/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                        <Eye size={16} className="text-gold group-hover:scale-110 transition-transform duration-300 relative z-10" />
+                        <span className="relative z-10 text-[10px] md:text-xs">Ver Fotos y Detalles</span>
                       </button>
                     </div>
                   </div>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { useLenis } from 'lenis/react';
 import { Menu, X, MessageCircle } from "lucide-react";
@@ -31,31 +32,30 @@ const TiktokIcon = ({ size = 24, className = "" }) => (
 
 export default function Navbar() {
   const scrollY = useScrollPosition();
+  const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const lenis = useLenis();
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      setIsMobileMenuOpen(false);
-      
-      // Intentamos encontrar el elemento directamente en el DOM
-      const targetEl = document.querySelector(href) as HTMLElement | null;
-      
-      if (targetEl) {
-        if (lenis) {
-          // Cambiado el offset de -80 a 0 para que la cabecera cubra el padding vacío de la sección
-          // y el título quede perfectamente encuadrado debajo del menú.
+    const isAnchor = href.startsWith('/#') || href.startsWith('#');
+    const targetId = href.startsWith('/#') ? href.substring(1) : href;
+
+    if (isAnchor) {
+      if (pathname === "/") {
+        // Estamos en el Home, hacemos scroll local
+        e.preventDefault();
+        setIsMobileMenuOpen(false);
+        const targetEl = document.querySelector(targetId) as HTMLElement | null;
+        if (targetEl && lenis) {
           lenis.scrollTo(targetEl, { offset: 0, duration: 1.5 });
-        } else {
+        } else if (targetEl) {
           targetEl.scrollIntoView({ behavior: 'smooth' });
         }
       } else {
-        // Fallback
-        window.history.pushState(null, '', href);
-        const el = document.getElementById(href.replace('#', ''));
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        // Estamos en otra página (ej. /eventos). 
+        // Permitimos la navegación natural hacia "/" cerrando el menú móvil.
+        setIsMobileMenuOpen(false);
       }
     }
   };
@@ -89,10 +89,12 @@ export default function Navbar() {
           {/* Logo (Izquierda) */}
           <div className="flex-1 flex justify-start">
             <Link 
-              href="#" 
+              href="/" 
               onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                if (pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
               }}
               className={cn(
                 "transition-transform duration-300 hover:scale-105 z-[60]",
@@ -116,25 +118,27 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Enlaces (Centro Matemático Perfecto) */}
-          <nav className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-6 xl:gap-8 whitespace-nowrap z-[100]">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleScrollTo(e, link.href)}
-                className={cn(
-                  "font-inter text-[10px] uppercase tracking-[0.2em] relative group transition-colors",
-                  isScrolled
-                    ? "text-forest/70 hover:text-forest font-medium"
-                    : "text-white/80 hover:text-white font-medium"
-                )}
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 h-0.5 bg-gold w-0 group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
-          </nav>
+          {/* Enlaces Condicionales: Solo se muestran en la página de inicio */}
+          {pathname === "/" && (
+            <nav className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-6 xl:gap-8 whitespace-nowrap z-[100]">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleScrollTo(e, link.href)}
+                  className={cn(
+                    "font-inter text-[10px] uppercase tracking-[0.2em] relative group transition-colors",
+                    isScrolled
+                      ? "text-forest/70 hover:text-forest font-medium"
+                      : "text-white/80 hover:text-white font-medium"
+                  )}
+                >
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 h-0.5 bg-gold w-0 group-hover:w-full transition-all duration-300" />
+                </a>
+              ))}
+            </nav>
+          )}
 
           {/* Redes y Botón Reservar (Derecha) */}
           <div className="flex-1 flex justify-end items-center gap-4 md:gap-5 z-50">
@@ -201,7 +205,7 @@ export default function Navbar() {
             {/* Header del menú */}
             <div className="flex justify-between items-center p-6 md:p-8 border-b border-white/5">
               <Link 
-                href="#"
+                href="/"
                 onClick={(e) => {
                   e.preventDefault();
                   setIsMobileMenuOpen(false);
