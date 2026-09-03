@@ -1,6 +1,16 @@
+# Los Andes Club Resort - robots.txt
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /api/
 
+# Sitemaps
 Sitemap: https://losandesclubresort.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 5

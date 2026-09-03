@@ -209,7 +209,7 @@ export default function Events() {
             {/* Botón Separado y Centrado debajo de la imagen */}
             <div className="flex justify-center mt-2">
               <Link 
-                href={`/eventos#${activeEventId}`}
+                href="/eventos"
                 className="inline-flex items-center gap-2 bg-[#722F37] text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-[#5a252b] transition-all hover:scale-105 active:scale-95 group/btn"
               >
                 Ver más y galería
