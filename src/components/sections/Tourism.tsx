@@ -49,12 +49,12 @@ const TOURIST_SPOTS = [
     icon: Mountain,
   },
   {
-    id: "comida",
-    title: "Ruta Gastronómica",
-    description: "Cieneguilla es el paraíso de los restaurantes campestres. Disfruta de la mejor pachamanca al pozo, chancho al palo y truchas frescas.",
-    distance: "A 10 min",
-    image: "/images/tourism/comida.webp",
-    icon: UtensilsCrossed,
+    id: "pachacamac",
+    title: "Ciudadela de Pachacamac",
+    description: "Santuario arqueológico más grande e importante de la costa limeña. Descubre sus majestuosos templos preincas e incas llenos de historia.",
+    distance: "A 35 min",
+    image: "/images/tourism/ciudadela_de_pachacamac.webp",
+    icon: Map,
   }
 ];
 

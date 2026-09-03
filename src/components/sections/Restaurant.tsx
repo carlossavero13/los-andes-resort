@@ -99,37 +99,37 @@ export default function Restaurant() {
           {/* Premium Image Gallery (Right) */}
           <AnimatedSection variant="fadeLeft" className="w-full flex flex-col items-center gap-8 lg:gap-12 mt-12 lg:mt-0 min-w-0">
             
-            {/* Imagen Principal (Plato Circular) */}
-            <div className="relative aspect-square w-[85%] max-w-[320px] md:max-w-[420px] lg:max-w-[480px] mx-auto">
-              {/* Borde decorativo exterior (Estilo Plato de Lujo) */}
-              <div className="absolute inset-[-15px] rounded-full border border-gold/40 border-dashed animate-[spin_40s_linear_infinite]" />
-              <div className="absolute inset-[-25px] rounded-full border-[0.5px] border-forest/10" />
+            {/* Imagen Principal (Formato Cuadrado) */}
+            <div className="relative aspect-square w-[90%] max-w-[360px] md:max-w-[450px] lg:max-w-[500px] mx-auto">
+              {/* Borde decorativo exterior */}
+              <div className="absolute inset-[-15px] rounded-[2.5rem] border border-gold/30" />
+              <div className="absolute inset-[-25px] rounded-[3rem] border-[0.5px] border-forest/10" />
 
-              <div className="relative w-full h-full rounded-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-[6px] md:ring-[10px] ring-white">
+              <div className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-[6px] md:ring-[10px] ring-white">
                 {RESTAURANT_IMAGES.map((src, index) => (
                   <Image 
                     key={src}
                     src={src}
-                    alt={`Platillo del restaurante ${index + 1}`}
+                    alt={`Especialidad del restaurante ${index + 1}`}
                     fill 
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className={`object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
                       index === currentImageIndex 
-                        ? 'opacity-100 rotate-0 scale-100' 
-                        : 'opacity-0 rotate-[45deg] scale-75 pointer-events-none'
+                        ? 'opacity-100 scale-100' 
+                        : 'opacity-0 scale-[1.05] pointer-events-none'
                     }`}
                   />
                 ))}
               </div>
             </div>
 
-            {/* Miniaturas Circulares (Thumbnails) */}
-            <div className="flex gap-4 md:gap-5 overflow-x-auto pb-6 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-[100vw] lg:w-full -mx-6 lg:mx-0 px-6 lg:px-0">
+            {/* Miniaturas (Thumbnails Cuadrados) */}
+            <div className="flex gap-4 md:gap-5 overflow-x-auto pb-6 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-[100vw] lg:w-full -mx-6 lg:mx-0 px-6 lg:px-0 mt-4">
               {RESTAURANT_IMAGES.map((src, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`relative aspect-square w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden shrink-0 snap-center transition-all duration-300 ${
+                  className={`relative aspect-square w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden shrink-0 snap-center transition-all duration-300 ${
                     index === currentImageIndex 
                       ? 'ring-[3px] ring-gold ring-offset-2 ring-offset-[#FDFBF7] shadow-xl opacity-100 scale-110' 
                       : 'opacity-50 hover:opacity-100 hover:scale-[1.05]'

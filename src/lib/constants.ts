@@ -125,14 +125,10 @@ export const ROOMS: Room[] = [
     price: 320.00,
     description: "Cabaña funcional y cómoda con capacidad para 3 personas, perfecta para una escapada rápida.",
     images: [
-      "/images/rooms/hab_dob_std/hab_dob_std1.webp",
-      "/images/rooms/hab_dob_std/hab_dob_std2.webp",
-      "/images/rooms/hab_dob_std/hab_dob_std3.webp",
+      "/images/rooms/hab_dob_std/hab_dob_std7.webp",
       "/images/rooms/hab_dob_std/hab_dob_std4.webp",
       "/images/rooms/hab_dob_std/hab_dob_std5.webp",
-      "/images/rooms/hab_dob_std/hab_dob_std6.webp",
-      "/images/rooms/hab_dob_std/hab_dob_std7.webp",
-      "/images/rooms/hab_dob_std/hab_dob_std8.webp"
+      "/images/rooms/hab_dob_std/hab_dob_std6.webp"
     ],
     amenities: ["1 Cama Queen", "1 Cama 1.5 Plazas", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
