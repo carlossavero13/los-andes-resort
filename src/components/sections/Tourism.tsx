@@ -13,7 +13,7 @@ const TOURIST_SPOTS = [
     title: "Huaycán de Cieneguilla",
     description: "Zona arqueológica y centro administrativo Inca (Qhapaq Ñan). Descubre la historia antigua del valle con su clásica arquitectura de barro.",
     distance: "A 10 min (4 km)",
-    image: "/images/tourism/huaycan_de_cieneguilla.png",
+    image: "/images/tourism/huaycan_de_cieneguilla.webp",
     icon: Map,
   },
   {
@@ -21,7 +21,7 @@ const TOURIST_SPOTS = [
     title: "Pueblo de Antioquía",
     description: "Famoso por sus calles empedradas y coloridas casas pintadas con flores y aves. Un lugar perfecto para fotos inolvidables.",
     distance: "A 1 hora",
-    image: "/images/tourism/antioquia.jpg",
+    image: "/images/tourism/antioquia.webp",
     icon: Mountain,
   },
   {
@@ -29,7 +29,7 @@ const TOURIST_SPOTS = [
     title: "Valle de Nieve Nieve",
     description: "Un pueblito encantador en la ruta hacia Antioquía, rodeado de campos de manzanos, membrillos y restos arqueológicos.",
     distance: "A 30 min",
-    image: "/images/tourism/valle_nieve_nieve.png",
+    image: "/images/tourism/valle_nieve_nieve.webp",
     icon: Map,
   },
   {
@@ -37,7 +37,7 @@ const TOURIST_SPOTS = [
     title: "Plaza de Cieneguilla",
     description: "El punto de encuentro tradicional del distrito. Ideal para una caminata relajada, disfrutar de su clima cálido y comprar artesanías.",
     distance: "A 5 min (2.5 km)",
-    image: "/images/tourism/plaza_cieneguilla.png",
+    image: "/images/tourism/plaza_cieneguilla.webp",
     icon: Mountain,
   },
   {
@@ -45,7 +45,7 @@ const TOURIST_SPOTS = [
     title: "Ribera del Río Lurín",
     description: "El corazón natural del valle. Disfruta del sonido del agua, relájate en sus orillas y conecta con la naturaleza en estado puro.",
     distance: "A 5 min",
-    image: "/images/tourism/riolurin.jpg",
+    image: "/images/tourism/riolurin.webp",
     icon: Mountain,
   },
   {
@@ -53,7 +53,7 @@ const TOURIST_SPOTS = [
     title: "Ruta Gastronómica",
     description: "Cieneguilla es el paraíso de los restaurantes campestres. Disfruta de la mejor pachamanca al pozo, chancho al palo y truchas frescas.",
     distance: "A 10 min",
-    image: "/images/tourism/comida.jpg",
+    image: "/images/tourism/comida.webp",
     icon: UtensilsCrossed,
   }
 ];

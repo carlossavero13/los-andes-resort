@@ -21,12 +21,19 @@ const EVENTS_DATA = [
     icon: Building2,
     desc: "Espacios versátiles e inspiradores para team buildings, reuniones empresariales y eventos de integración.",
     images: [
-      "/images/events/corp1.png",
-      "/images/events/corp2.png",
-      "/images/events/corp3.jpeg",
-      "/images/events/corp4.jpeg",
-      "/images/events/corp5.jpeg",
-      "/images/events/corp6.jpeg"
+      "/images/events/corporativo/corp1.webp",
+      "/images/events/corporativo/corp2.webp",
+      "/images/events/corporativo/corp3.webp",
+      "/images/events/corporativo/corp4.webp",
+      "/images/events/corporativo/corp5.webp",
+      "/images/events/corporativo/corp6.webp",
+      "/images/events/corporativo/corp7.webp",
+      "/images/events/corporativo/corp8.webp",
+      "/images/events/corporativo/corp9.webp",
+      "/images/events/corporativo/corp10.webp",
+      "/images/events/corporativo/corp11.webp",
+      "/images/events/corporativo/corp12.webp",
+      "/images/events/corporativo/corp13.webp"
     ]
   },
   {
@@ -34,9 +41,11 @@ const EVENTS_DATA = [
     icon: GraduationCap,
     desc: "Programas diseñados para colegios con actividades recreativas, áreas verdes y seguridad garantizada para los estudiantes.",
     images: [
-      "/images/areas/j_inflables.png",
-      "/images/areas/j_niños2.png",
-      "/images/areas/j_futbolmesa.png"
+      "/images/events/fullday_colegios/f_day_cole1.webp",
+      "/images/events/fullday_colegios/f_day_cole2.webp",
+      "/images/events/fullday_colegios/f_day_cole3.webp",
+      "/images/events/fullday_colegios/f_day_cole4.webp",
+      "/images/events/fullday_colegios/f_day_cole5.webp"
     ]
   },
   {
@@ -44,10 +53,10 @@ const EVENTS_DATA = [
     icon: Heart,
     desc: "Un escenario de ensueño para el día más importante de tu vida, rodeado de hermosos jardines y elegancia rústica.",
     images: [
-      "/images/gallery/matrimonio.png",
-      "/images/gallery/matrimonio (1).png",
-      "/images/gallery/matrimonio (2).png",
-      "/images/gallery/matrimonio (3).png"
+      "/images/events/matrimonio/matri1.webp",
+      "/images/events/matrimonio/matri2.webp",
+      "/images/events/matrimonio/matri3.webp",
+      "/images/events/matrimonio/matri4.webp"
     ]
   },
   {
@@ -55,7 +64,7 @@ const EVENTS_DATA = [
     icon: Cake,
     desc: "Celebra tu día especial en un entorno natural con piscinas, áreas verdes y atención personalizada para ti y tus invitados.",
     images: [
-      "/images/gallery/cumpleanos2.png"
+      "/images/events/cumple/cumple.webp"
     ]
   },
 ];

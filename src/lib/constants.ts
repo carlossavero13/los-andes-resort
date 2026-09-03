@@ -36,9 +36,11 @@ export const ROOMS: Room[] = [
     price: 300.00,
     description: "Una suite matrimonial premium con cama King Size y todas las comodidades modernas en la zona del hotel.",
     images: [
-      "/images/rooms/205 - Suite Rjecutiva.jpeg",
-      "/images/rooms/hmatrisjunior2.png",
-      "/images/rooms/hmatrisjunior3.png"
+      "/images/rooms/sui_mat_jun/sui_mat_jun1.webp",
+      "/images/rooms/sui_mat_jun/sui_mat_jun2.webp",
+      "/images/rooms/sui_mat_jun/sui_mat_jun3.webp",
+      "/images/rooms/sui_mat_jun/sui_mat_jun4.webp",
+      "/images/rooms/sui_mat_jun/sui_mat_jun5.webp"
     ],
     amenities: ["1 Cama King Size", "Tina", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
     featured: true,
@@ -52,9 +54,8 @@ export const ROOMS: Room[] = [
     price: 350.00,
     description: "Una suite ejecutiva ideal para quienes buscan comodidad, elegancia y un espacio perfecto para el descanso.",
     images: [
-      "/images/rooms/205 - Suite Rjecutiva.jpeg",
-      "/images/rooms/hdsjunior1.png",
-      "/images/rooms/hdsjunior2.png"
+      "/images/rooms/sui_jun_ejec/sui_jun_ejec1.webp",
+      "/images/rooms/sui_jun_ejec/sui_jun_ejec2.webp"
     ],
     amenities: ["1 Cama King Size", "Jacuzzi", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
     featured: true,
@@ -68,10 +69,12 @@ export const ROOMS: Room[] = [
     price: 270.00,
     description: "Una cabaña íntima y acogedora, perfecta para parejas que buscan tranquilidad rodeados de naturaleza.",
     images: [
-      "/images/gallery/matrimonial_estandar2.png",
-      "/images/gallery/matrimonial_estandar.png",
-      "/images/gallery/matrimonial_estandar3.png",
-      "/images/rooms/h_matri1_v2.png"
+      "/images/rooms/hab_mat_std/hab_mat_std1.webp",
+      "/images/rooms/hab_mat_std/hab_mat_std2.webp",
+      "/images/rooms/hab_mat_std/hab_mat_std3.webp",
+      "/images/rooms/hab_mat_std/hab_mat_std4.webp",
+      "/images/rooms/hab_mat_std/hab_mat_std5.webp",
+      "/images/rooms/hab_mat_std/hab_mat_std6.webp"
     ],
     amenities: ["1 Cama Queen", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
@@ -85,10 +88,13 @@ export const ROOMS: Room[] = [
     price: 400.00,
     description: "Espaciosa cabaña con dos camas grandes, ideal para familias pequeñas o grupos de amigos.",
     images: [
-      "/images/rooms/h_doble_sup1.png",
-      "/images/rooms/h_doble_sup2.png",
-      "/images/rooms/h_doble_sup3.png",
-      "/images/rooms/h_doble_sup4.png"
+      "/images/rooms/hab_dob_sup/hab_dob_sup1.webp",
+      "/images/rooms/hab_dob_sup/hab_dob_sup2.webp",
+      "/images/rooms/hab_dob_sup/hab_dob_sup3.webp",
+      "/images/rooms/hab_dob_sup/hab_dob_sup4.webp",
+      "/images/rooms/hab_dob_sup/hab_dob_sup5.webp",
+      "/images/rooms/hab_dob_sup/hab_dob_sup6.webp",
+      "/images/rooms/hab_dob_sup/hab_dob_sup7.webp"
     ],
     amenities: ["1 Cama Queen", "1 Cama 2 Plazas", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
@@ -101,9 +107,12 @@ export const ROOMS: Room[] = [
     price: 400.00,
     description: "Comodidad de lujo para 4 personas con dos camas Queen en nuestra exclusiva zona de hotel.",
     images: [
-      "/images/rooms/114 - Doble Suite.jpeg",
-      "/images/rooms/DobleSuiteJunior1.jpeg",
-      "/images/rooms/204 - Doble Suite.jpeg"
+      "/images/rooms/sui_dob_jun/sui_dob_jun1.webp",
+      "/images/rooms/sui_dob_jun/sui_dob_jun2.webp",
+      "/images/rooms/sui_dob_jun/sui_dob_jun3.webp",
+      "/images/rooms/sui_dob_jun/sui_dob_jun4.webp",
+      "/images/rooms/sui_dob_jun/sui_dob_jun5.webp",
+      "/images/rooms/sui_dob_jun/sui_dob_jun6.webp"
     ],
     amenities: ["2 Camas Queen", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
@@ -116,10 +125,14 @@ export const ROOMS: Room[] = [
     price: 320.00,
     description: "Cabaña funcional y cómoda con capacidad para 3 personas, perfecta para una escapada rápida.",
     images: [
-      "/images/rooms/h_doble1.png",
-      "/images/rooms/h_doble2.png",
-      "/images/rooms/h_doble3.png",
-      "/images/rooms/h_doble4.png"
+      "/images/rooms/hab_dob_std/hab_dob_std1.webp",
+      "/images/rooms/hab_dob_std/hab_dob_std2.webp",
+      "/images/rooms/hab_dob_std/hab_dob_std3.webp",
+      "/images/rooms/hab_dob_std/hab_dob_std4.webp",
+      "/images/rooms/hab_dob_std/hab_dob_std5.webp",
+      "/images/rooms/hab_dob_std/hab_dob_std6.webp",
+      "/images/rooms/hab_dob_std/hab_dob_std7.webp",
+      "/images/rooms/hab_dob_std/hab_dob_std8.webp"
     ],
     amenities: ["1 Cama Queen", "1 Cama 1.5 Plazas", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
@@ -132,10 +145,13 @@ export const ROOMS: Room[] = [
     price: 520.00,
     description: "Nuestra cabaña más grande, equipada para acomodar a toda la familia con la máxima comodidad y espacio.",
     images: [
-      "/images/rooms/room-piedra (1).png",
-      "/images/rooms/room-piedra (2).png",
-      "/images/rooms/room-piedra (3).png",
-      "/images/rooms/room-piedra (4).png"
+      "/images/rooms/cab_fam_rustica/cab_fam_rustica.webp",
+      "/images/rooms/cab_fam_rustica/cab_fam_rustica2.webp",
+      "/images/rooms/cab_fam_rustica/cab_fam_rustica3.webp",
+      "/images/rooms/cab_fam_rustica/cab_fam_rustica4.webp",
+      "/images/rooms/cab_fam_rustica/cab_fam_rustica5.webp",
+      "/images/rooms/cab_fam_rustica/cab_fam_rustica6.webp",
+      "/images/rooms/cab_fam_rustica/cab_fam_rustica7.webp"
     ],
     amenities: ["1 Cama King Size", "2 Camas 2 Plazas", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
     featured: true,

@@ -50,3 +50,38 @@ export interface GalleryImage {
   label: string;
   className?: string;
 }
+
+export interface Claim {
+  id: string;
+  tracking_code: string;
+  consumer_name: string;
+  consumer_doc_type: string;
+  consumer_doc_number: string;
+  consumer_phone: string;
+  consumer_email: string;
+  consumer_address: string;
+  contracted_type: string;
+  contracted_description: string;
+  incident_date: string;
+  receipt_number: string | null;
+  claim_type: 'Reclamo' | 'Queja';
+  claim_details: string;
+  consumer_request: string;
+  status: 'Pendiente' | 'En Proceso' | 'Resuelto';
+  admin_response: string | null;
+  resolved_at: string | null;
+  created_at: string;
+}
+
+export interface ClaimSearchResult {
+  tracking_code: string;
+  status: 'Pendiente' | 'En Proceso' | 'Resuelto';
+  admin_response: string | null;
+  created_at: string;
+  resolved_at: string | null;
+}
+
+export interface ToastMessage {
+  text: string;
+  type: 'success' | 'error';
+}

@@ -2,9 +2,10 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { Users, Info, MessageCircle, ChevronDown, CheckCircle2, BedDouble, Waves, Activity, Coffee, Refrigerator, Droplets, Wifi, Maximize, Bath, TreePine, Car, Snowflake, ConciergeBell, Sparkles, Tv, SprayCan, Sun } from "lucide-react";
+import { Users, Info, MessageCircle, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
+import { getAmenityIcon } from "@/lib/amenity-icons";
 import SectionHeading from "@/components/ui/SectionHeading";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import RoomModal from "@/components/ui/RoomModal";
@@ -16,30 +17,10 @@ export default function Rooms() {
   const [activeTab, setActiveTab] = useState(ROOMS[0].id);
   const [selectedRoomModal, setSelectedRoomModal] = useState<Room | null>(null);
   const desktopRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: desktopScrollProgress } = useScroll({ target: desktopRef, offset: ["start end", "end start"] });
+  const desktopParallaxY = useTransform(desktopScrollProgress, [0, 1], ["0%", "15%"]);
 
   const activeRoom = ROOMS.find(r => r.id === activeTab) || ROOMS[0];
-
-  const getAmenityIcon = (amenity: string) => {
-    const a = amenity.toLowerCase();
-    if (a.includes("cama")) return BedDouble;
-    if (a.includes("piscina")) return Waves;
-    if (a.includes("fútbol") || a.includes("juegos")) return Activity;
-    if (a.includes("desayuno")) return Coffee;
-    if (a.includes("friobar") || a.includes("cafetera")) return Refrigerator;
-    if (a.includes("agua caliente")) return Droplets;
-    if (a.includes("wifi")) return Wifi;
-    if (a.includes("área") || a.includes("medición") || a.includes("metros")) return Maximize;
-    if (a.includes("toalla") || a.includes("jacuzzi")) return Bath;
-    if (a.includes("verde") || a.includes("naturaleza")) return TreePine;
-    if (a.includes("estacionamiento")) return Car;
-    if (a.includes("aire acondicionado")) return Snowflake;
-    if (a.includes("servicio") || a.includes("habitaciones disponible")) return ConciergeBell;
-    if (a.includes("limpieza")) return Sparkles;
-    if (a.includes("televisión") || a.includes("tv")) return Tv;
-    if (a.includes("aseo") || a.includes("artículos")) return SprayCan;
-    if (a.includes("terraza")) return Sun;
-    return CheckCircle2;
-  };
 
   return (
     <section id="habitaciones" className="py-24 md:py-32 bg-[#FDFBF7] min-h-screen relative overflow-hidden">
@@ -65,6 +46,7 @@ export default function Rooms() {
                 <button
                   onClick={() => setActiveTab(isActive ? '' : room.id)}
                   className="w-full flex justify-between items-center py-5 md:py-6 px-2 group"
+                  aria-label={`${isActive ? 'Cerrar' : 'Ver'} ${room.name}`}
                 >
                   <span className={cn(
                     "font-playfair text-xl md:text-2xl text-left transition-colors duration-300 font-medium",
@@ -244,7 +226,7 @@ export default function Rooms() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
                   className="absolute inset-[-15%] w-[130%] h-[130%]"
-                  style={{ y: useTransform(useScroll({ target: desktopRef, offset: ["start end", "end start"] }).scrollYProgress, [0, 1], ["0%", "15%"]) }}
+                  style={{ y: desktopParallaxY }}
                 >
                   <Image
                     src={activeRoom.images[0]}

@@ -22,7 +22,7 @@ export default function ScrollToTop() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 left-6 z-40 w-12 h-12 rounded-full bg-forest dark:bg-gold text-white dark:text-dark shadow-lg flex items-center justify-center hover:bg-forest-light dark:hover:bg-gold-light transition-colors"
+          className="fixed bottom-6 left-6 z-40 w-12 h-12 rounded-full bg-forest text-white shadow-lg flex items-center justify-center hover:bg-forest-light transition-colors"
           aria-label="Volver arriba"
         >
           <ChevronUp size={24} />

@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "Los Andes Club Resort",
     images: [
       {
-        url: "/images/hero/hero-main.jpg",
+        url: "/images/hero/hero-1.webp",
         width: 1200,
         height: 630,
         alt: "Los Andes Club Resort",
@@ -53,7 +53,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Resort",
   "name": "Los Andes Club Resort",
-  "image": "https://losandesclubresort.com/images/hero/hero-main.jpg",
+  "image": "https://losandesclubresort.com/images/hero/hero-1.webp",
   "description": "Tu escape perfecto entre la naturaleza y el confort. Un resort exclusivo en Cieneguilla.",
   "address": {
     "@type": "PostalAddress",

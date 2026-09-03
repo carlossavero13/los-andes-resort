@@ -15,100 +15,100 @@ const highlightItems = [
     category: "Instalaciones", 
     title: "Piscina Principal",
     desc: "Un oasis de relajación bajo el sol de Cieneguilla.",
-    src: "/images/hero/hero-1.png" 
+    src: "/images/hero/hero-1.webp" 
   },
   { 
     id: 2, 
     category: "Alojamiento", 
     title: "Suite Premium",
     desc: "Máximo confort y elegancia para momentos inolvidables.",
-    src: "/images/rooms/205 - Suite Rjecutiva.jpeg" 
+    src: "/images/rooms/sui_jun_ejec/sui_jun_ejec1.webp" 
   },
   { 
     id: 3, 
     category: "Entorno", 
     title: "Naturaleza Pura",
     desc: "Amplias áreas verdes para desconectar de la ciudad.",
-    src: "/images/hero/hero-3.png" 
+    src: "/images/hero/hero-3.webp" 
   },
   { 
     id: 4, 
     category: "Gastronomía", 
     title: "Restaurante",
     desc: "Sabores exquisitos en un ambiente acogedor.",
-    src: "/images/restaurant/res1.png" 
+    src: "/images/restaurant/platos/platos1.webp" 
   },
   { 
     id: 5, 
     category: "Cabañas", 
     title: "Matrimonial Estándar",
     desc: "Arquitectura rústica con todas las comodidades modernas.",
-    src: "/images/rooms/h_matri1_v2.png" 
+    src: "/images/rooms/hab_mat_std/hab_mat_std1.webp" 
   },
 ];
 
 // Elementos de la Grilla Completa
 const gridItems: GalleryImage[] = [
-  { id: 1, category: "Piscinas", src: "/images/hero/hero-1.png", label: "Piscina Principal", className: "md:col-span-2 md:row-span-2" },
-  { id: 2, category: "Familias", src: "/images/hero/hero-2.png", label: "Diversión en Familia" },
-  { id: 22, category: "Familias", src: "/images/areas/j_futbolmesa.png", label: "Fútbol de Mesa" },
-  { id: 23, category: "Familias", src: "/images/areas/j_inflables.png", label: "Juegos Inflables" },
-  { id: 24, category: "Familias", src: "/images/areas/j_inflables2.png", label: "Diversión en Inflables" },
-  { id: 25, category: "Familias", src: "/images/areas/j_sapito.png", label: "Juego del Sapito" },
-  { id: 26, category: "Familias", src: "/images/areas/j_niños.png", label: "Juegos para Niños" },
-  { id: 27, category: "Familias", src: "/images/areas/j_niños2.png", label: "Zona Infantil" },
-  { id: 3, category: "Áreas verdes", src: "/images/hero/hero-3.png", label: "Jardines del Resort", className: "md:row-span-2" },
-  { id: 31, category: "Áreas verdes", src: "/images/areas/areaverde.png", label: "Áreas Verdes" },
-  { id: 32, category: "Áreas verdes", src: "/images/areas/areaverde2.png", label: "Jardines y Naturaleza" },
-  { id: 33, category: "Piscinas", src: "/images/areas/areapiscina.png", label: "Área de Piscina" },
-  { id: 34, category: "Piscinas", src: "/images/areas/areapiscina2.png", label: "Piscina y Recreación" },
+  { id: 1, category: "Piscinas", src: "/images/hero/hero-1.webp", label: "Piscina Principal", className: "md:col-span-2 md:row-span-2" },
+  { id: 2, category: "Familias", src: "/images/hero/hero-2.webp", label: "Diversión en Familia" },
+  { id: 22, category: "Familias", src: "/images/areas/j_futbolmesa.webp", label: "Fútbol de Mesa" },
+  { id: 23, category: "Familias", src: "/images/areas/j_inflables.webp", label: "Juegos Inflables" },
+  { id: 24, category: "Familias", src: "/images/areas/j_inflables2.webp", label: "Diversión en Inflables" },
+  { id: 25, category: "Familias", src: "/images/areas/j_sapito.webp", label: "Juego del Sapito" },
+  { id: 26, category: "Familias", src: "/images/areas/j_niños.webp", label: "Juegos para Niños" },
+  { id: 27, category: "Familias", src: "/images/areas/j_niños2.webp", label: "Zona Infantil" },
+  { id: 3, category: "Áreas verdes", src: "/images/hero/hero-3.webp", label: "Jardines del Resort", className: "md:row-span-2" },
+  { id: 31, category: "Áreas verdes", src: "/images/areas/areaverde.webp", label: "Áreas Verdes" },
+  { id: 32, category: "Áreas verdes", src: "/images/areas/areaverde2.webp", label: "Jardines y Naturaleza" },
+  { id: 33, category: "Piscinas", src: "/images/areas/areapiscina.webp", label: "Área de Piscina" },
+  { id: 34, category: "Piscinas", src: "/images/areas/areapiscina2.webp", label: "Piscina y Recreación" },
   
   // Novedades en Eventos
-  { id: 4, category: "Eventos", src: "/images/events/Corporativo.png", label: "Eventos Corporativos" },
-  { id: 41, category: "Eventos", src: "/images/events/Matrimonio.png", label: "Matrimonios" },
-  { id: 42, category: "Eventos", src: "/images/events/Cumpleanos.png", label: "Cumpleaños" },
-  { id: 45, category: "Eventos", src: "/images/events/corp1.png", label: "Team Building" },
-  { id: 46, category: "Eventos", src: "/images/events/corp2.png", label: "Reuniones de Trabajo" },
-  { id: 47, category: "Eventos", src: "/images/events/corp3.jpeg", label: "Capacitaciones" },
-  { id: 48, category: "Eventos", src: "/images/events/corp4.jpeg", label: "Eventos de Empresa" },
-  { id: 49, category: "Eventos", src: "/images/events/Corporativo.png", label: "Eventos de Integración" },
-  { id: 50, category: "Eventos", src: "/images/events/corp6.jpeg", label: "Conferencias" },
-  { id: 43, category: "Eventos", src: "/images/areas/baile1.png", label: "Danzas y Shows" },
-  { id: 44, category: "Eventos", src: "/images/areas/baile2.png", label: "Entretenimiento en Vivo" },
+  { id: 4, category: "Eventos", src: "/images/events/corporativo/corp1.webp", label: "Eventos Corporativos" },
+  { id: 41, category: "Eventos", src: "/images/events/matrimonio/matri1.webp", label: "Matrimonios" },
+  { id: 42, category: "Eventos", src: "/images/events/cumple/cumple.webp", label: "Cumpleaños" },
+  { id: 45, category: "Eventos", src: "/images/events/corporativo/corp2.webp", label: "Team Building" },
+  { id: 46, category: "Eventos", src: "/images/events/corporativo/corp3.webp", label: "Reuniones de Trabajo" },
+  { id: 47, category: "Eventos", src: "/images/events/corporativo/corp4.webp", label: "Capacitaciones" },
+  { id: 48, category: "Eventos", src: "/images/events/corporativo/corp5.webp", label: "Eventos de Empresa" },
+  { id: 49, category: "Eventos", src: "/images/events/corporativo/corp1.webp", label: "Eventos de Integración" },
+  { id: 50, category: "Eventos", src: "/images/events/corporativo/corp6.webp", label: "Conferencias" },
+  { id: 43, category: "Eventos", src: "/images/areas/baile1.webp", label: "Danzas y Shows" },
+  { id: 44, category: "Eventos", src: "/images/areas/baile2.webp", label: "Entretenimiento en Vivo" },
 
   // Novedades en Habitaciones
-  { id: 5, category: "Habitaciones", src: "/images/rooms/205 - Suite Rjecutiva.jpeg", label: "Suite Ejecutiva", className: "md:col-span-2" },
-  { id: 6, category: "Piscinas", src: "/images/hero/hero-5.png", label: "Piscina Infantil" },
-  { id: 7, category: "Restaurante", src: "/images/restaurant/res1.png", label: "Área de Restaurante", className: "md:col-span-2 md:row-span-2" },
-  { id: 72, category: "Restaurante", src: "/images/restaurant/res4.png", label: "Bar y Bebidas" },
-  { id: 8, category: "Habitaciones", src: "/images/rooms/h_matri1_v2.png", label: "Matrimonial Estándar" },
-  { id: 9, category: "Habitaciones", src: "/images/rooms/h_doble_sup1.png", label: "Doble Superior" },
-  { id: 10, category: "Habitaciones", src: "/images/rooms/114 - Doble Suite.jpeg", label: "Doble Suite", className: "md:col-span-2" },
-  { id: 11, category: "Habitaciones", src: "/images/rooms/DobleSuiteJunior1.jpeg", label: "Doble Suite Junior" },
-  { id: 12, category: "Habitaciones", src: "/images/rooms/204 - Doble Suite.jpeg", label: "Doble Suite" },
+  { id: 5, category: "Habitaciones", src: "/images/rooms/sui_jun_ejec/sui_jun_ejec1.webp", label: "Suite Ejecutiva", className: "md:col-span-2" },
+  { id: 6, category: "Piscinas", src: "/images/hero/hero-5.webp", label: "Piscina Infantil" },
+  { id: 7, category: "Restaurante", src: "/images/restaurant/platos/platos1.webp", label: "Área de Restaurante", className: "md:col-span-2 md:row-span-2" },
+  { id: 72, category: "Restaurante", src: "/images/restaurant/bebidas/bebida1.webp", label: "Bar y Bebidas" },
+  { id: 8, category: "Habitaciones", src: "/images/rooms/hab_mat_std/hab_mat_std1.webp", label: "Matrimonial Estándar" },
+  { id: 9, category: "Habitaciones", src: "/images/rooms/hab_dob_sup/hab_dob_sup1.webp", label: "Doble Superior" },
+  { id: 10, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun1.webp", label: "Doble Suite", className: "md:col-span-2" },
+  { id: 11, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun2.webp", label: "Doble Suite Junior" },
+  { id: 12, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun3.webp", label: "Doble Suite" },
   
   // Novedades en Historia
-  { id: 90, category: "Eventos", src: "/images/gallery/danza.jpeg", label: "Danzas y Tradiciones" },
-  { id: 91, category: "Áreas verdes", src: "/images/gallery/vista.jpeg", label: "Vista Panorámica", className: "md:col-span-2" },
+  { id: 90, category: "Eventos", src: "/images/gallery/danza.webp", label: "Danzas y Tradiciones" },
+  { id: 91, category: "Áreas verdes", src: "/images/gallery/vista.webp", label: "Vista Panorámica", className: "md:col-span-2" },
   
   // Nuevas Adiciones
-  { id: 92, category: "Piscinas", src: "/images/gallery/piscina (3).jpeg", label: "Piscina Relajante" },
-  { id: 93, category: "Habitaciones", src: "/images/gallery/hotel_lado.jpeg", label: "Exteriores del Hotel" },
-  { id: 94, category: "Eventos", src: "/images/gallery/cumpleanos2.png", label: "Celebración de Cumpleaños" },
+  { id: 92, category: "Piscinas", src: "/images/gallery/piscina (3).webp", label: "Piscina Relajante" },
+  { id: 93, category: "Habitaciones", src: "/images/gallery/hotel_lado.webp", label: "Exteriores del Hotel" },
+  { id: 94, category: "Eventos", src: "/images/events/cumple/cumple.webp", label: "Celebración de Cumpleaños" },
   
   // Últimas Subidas
-  { id: 95, category: "Restaurante", src: "/images/gallery/restaurante_1.png", label: "Nuestro Restaurante" },
-  { id: 96, category: "Restaurante", src: "/images/gallery/restaurante_2.png", label: "Gastronomía Local" },
-  { id: 97, category: "Restaurante", src: "/images/gallery/bar1.png", label: "Bar y Cócteles" },
-  { id: 975, category: "Eventos", src: "/images/gallery/matrimonio.png", label: "El Gran Día", className: "md:col-span-2" },
-  { id: 98, category: "Eventos", src: "/images/gallery/matrimonio (1).png", label: "Bodas de Ensueño" },
-  { id: 99, category: "Eventos", src: "/images/gallery/matrimonio (2).png", label: "Celebración de Matrimonio" },
-  { id: 100, category: "Eventos", src: "/images/gallery/matrimonio (3).png", label: "Detalles de Matrimonio" },
+  { id: 95, category: "Restaurante", src: "/images/restaurant/platos/platos2.webp", label: "Nuestro Restaurante" },
+  { id: 96, category: "Restaurante", src: "/images/restaurant/platos/platos3.webp", label: "Gastronomía Local" },
+  { id: 97, category: "Restaurante", src: "/images/restaurant/bebidas/bebida2.webp", label: "Bar y Cócteles" },
+  { id: 975, category: "Eventos", src: "/images/events/matrimonio/matri2.webp", label: "El Gran Día", className: "md:col-span-2" },
+  { id: 98, category: "Eventos", src: "/images/events/matrimonio/matri3.webp", label: "Bodas de Ensueño" },
+  { id: 99, category: "Eventos", src: "/images/events/matrimonio/matri4.webp", label: "Celebración de Matrimonio" },
+  { id: 100, category: "Eventos", src: "/images/events/matrimonio/matri1.webp", label: "Detalles de Matrimonio" },
   
   // Nuevas Habitaciones
-  { id: 103, category: "Habitaciones", src: "/images/gallery/matrimonial_estandar2.png", label: "Matrimonial Estándar" },
-  { id: 102, category: "Habitaciones", src: "/images/gallery/matrimonial_estandar.png", label: "Detalles Matrimonial Estándar" },
-  { id: 104, category: "Habitaciones", src: "/images/gallery/matrimonial_estandar3.png", label: "Cabaña Matrimonial Estándar" },
+  { id: 103, category: "Habitaciones", src: "/images/rooms/hab_mat_std/hab_mat_std2.webp", label: "Matrimonial Estándar" },
+  { id: 102, category: "Habitaciones", src: "/images/rooms/hab_mat_std/hab_mat_std3.webp", label: "Detalles Matrimonial Estándar" },
+  { id: 104, category: "Habitaciones", src: "/images/rooms/hab_mat_std/hab_mat_std4.webp", label: "Cabaña Matrimonial Estándar" },
   
   // Actividades
   { id: 105, category: "Actividades", src: "/images/gallery/cuatrimoto_1.webp", label: "Paseo en Cuatrimoto" },
@@ -331,6 +331,7 @@ export default function Gallery() {
               <button 
                 onClick={() => setSelectedImage(null)}
                 className="absolute top-4 right-4 md:top-8 md:right-8 z-50 w-12 h-12 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-gold hover:border-gold hover:text-forest transition-all duration-300"
+                aria-label="Cerrar"
               >
                 <X size={24} />
               </button>

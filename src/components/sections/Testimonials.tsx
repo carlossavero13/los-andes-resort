@@ -83,16 +83,6 @@ export default function Testimonials() {
         </div>
       </div>
       
-      {/* Estilos para ocultar la barra de scroll en móviles pero permitir el swipe */}
-      <style dangerouslySetInnerHTML={{__html: `
-        .custom-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .custom-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}} />
     </section>
   );
 }

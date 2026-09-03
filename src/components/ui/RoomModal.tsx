@@ -3,9 +3,10 @@
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Users, Check, Maximize2, Coffee, ArrowLeft, ArrowRight, BedDouble, Waves, Activity, Refrigerator, Droplets, Wifi, Maximize, Bath, TreePine, Car, Snowflake, ConciergeBell, Sparkles, Tv, SprayCan, Sun } from "lucide-react";
+import { X, Users, Check, Maximize2, Coffee, ArrowLeft, ArrowRight } from "lucide-react";
 import { useLenis } from 'lenis/react';
 import { cn } from "@/lib/utils";
+import { getAmenityIcon } from "@/lib/amenity-icons";
 
 import { Room } from "@/types";
 
@@ -27,28 +28,6 @@ export default function RoomModal({ room, isOpen, onClose }: RoomModalProps) {
         behavior: 'smooth'
       });
     }
-  };
-
-  const getAmenityIcon = (amenity: string) => {
-    const a = amenity.toLowerCase();
-    if (a.includes("cama")) return BedDouble;
-    if (a.includes("piscina")) return Waves;
-    if (a.includes("fútbol") || a.includes("juegos")) return Activity;
-    if (a.includes("desayuno")) return Coffee;
-    if (a.includes("friobar") || a.includes("cafetera")) return Refrigerator;
-    if (a.includes("agua caliente")) return Droplets;
-    if (a.includes("wifi")) return Wifi;
-    if (a.includes("área") || a.includes("medición") || a.includes("metros")) return Maximize;
-    if (a.includes("toalla") || a.includes("jacuzzi")) return Bath;
-    if (a.includes("verde") || a.includes("naturaleza")) return TreePine;
-    if (a.includes("estacionamiento")) return Car;
-    if (a.includes("aire acondicionado")) return Snowflake;
-    if (a.includes("servicio") || a.includes("habitaciones disponible")) return ConciergeBell;
-    if (a.includes("limpieza")) return Sparkles;
-    if (a.includes("televisión") || a.includes("tv")) return Tv;
-    if (a.includes("aseo") || a.includes("artículos")) return SprayCan;
-    if (a.includes("terraza")) return Sun;
-    return Check;
   };
 
   // Prevenir scroll de fondo cuando el modal está abierto

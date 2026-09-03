@@ -106,7 +106,7 @@ export default function Navbar() {
                   : "w-[154px] h-[154px] md:w-[176px] md:h-[176px] drop-shadow-2xl"
               )}>
                 <Image 
-                  src="/images/los_andes_logo.png" 
+                  src="/images/los_andes_logo.webp" 
                   alt="Los Andes Logo" 
                   fill
                   className={cn("object-contain", !isScrolled && "object-top")}
@@ -210,7 +210,7 @@ export default function Navbar() {
                 className="w-[100px] relative opacity-80 brightness-0 invert block"
               >
                 <Image 
-                  src="/images/los_andes_logo.png" 
+                  src="/images/los_andes_logo.webp" 
                   alt="Los Andes Logo" 
                   width={100}
                   height={40}

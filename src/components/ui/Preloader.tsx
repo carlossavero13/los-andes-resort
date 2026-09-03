@@ -11,15 +11,30 @@ export default function Preloader() {
     // Evitar scroll mientras carga
     document.body.style.overflow = "hidden";
     
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      document.body.style.overflow = "unset";
-    }, 2500); // 2.5 segundos de pantalla de carga
-
-    return () => {
-      clearTimeout(timer);
-      document.body.style.overflow = "unset";
+    // Función para remover el preloader
+    const handleLoad = () => {
+      // Pequeño delay de 500ms para asegurar que las animaciones iniciales terminen
+      setTimeout(() => {
+        setIsLoading(false);
+        document.body.style.overflow = "unset";
+      }, 500);
     };
+
+    // Si ya cargó completamente
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+      
+      // Fallback máximo de seguridad (por si load no dispara)
+      const fallbackTimer = setTimeout(handleLoad, 2500);
+      
+      return () => {
+        window.removeEventListener('load', handleLoad);
+        clearTimeout(fallbackTimer);
+        document.body.style.overflow = "unset";
+      };
+    }
   }, []);
 
   return (
@@ -43,7 +58,7 @@ export default function Preloader() {
             {/* Logo Ampliado */}
             <div className="relative w-72 h-36 md:w-96 md:h-48 mb-10">
                <Image 
-                  src="/images/los_andes_logo.png" 
+                  src="/images/los_andes_logo.webp" 
                   alt="Los Andes Club Resort"
                   fill
                   priority

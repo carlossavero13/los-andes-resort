@@ -8,12 +8,19 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const RESTAURANT_IMAGES = [
-  "/images/gallery/restaurante_1.png",
-  "/images/gallery/restaurante_2.png",
-  "/images/gallery/bar1.png",
-  "/images/restaurant/res1.png",
-  "/images/restaurant/res2.png",
-  "/images/restaurant/res3.png"
+  "/images/restaurant/platos/platos1.webp",
+  "/images/restaurant/platos/platos2.webp",
+  "/images/restaurant/platos/platos3.webp",
+  "/images/restaurant/platos/platos4.webp",
+  "/images/restaurant/platos/platos5.webp",
+  "/images/restaurant/platos/platos6.webp",
+  "/images/restaurant/platos/platos7.webp",
+  "/images/restaurant/platos/plato8.webp",
+  "/images/restaurant/platos/plato9.webp",
+  "/images/restaurant/bebidas/bebida1.webp",
+  "/images/restaurant/bebidas/bebida2.webp",
+  "/images/restaurant/bebidas/bebida3.webp",
+  "/images/restaurant/bebidas/bebida4.webp"
 ];
 
 export default function Restaurant() {

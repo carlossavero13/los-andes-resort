@@ -8,13 +8,13 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const FULLDAY_IMAGES = [
-  "/images/gallery/piscina (2).jpeg",
+  "/images/gallery/piscina (2).webp",
   "/images/gallery/cuatrimoto_1.webp",
   "/images/gallery/cuatrimoto_2.webp",
-  "/images/gallery/vista.jpeg",
-  "/images/gallery/piscina (3).jpeg",
-  "/images/areas/areaverde.png",
-  "/images/areas/j_inflables.png"
+  "/images/gallery/vista.webp",
+  "/images/gallery/piscina (3).webp",
+  "/images/areas/areaverde.webp",
+  "/images/areas/j_inflables.webp"
 ];
 
 export default function FullDay() {
@@ -88,8 +88,6 @@ export default function FullDay() {
                       alt={`Full Day en Los Andes ${index + 1}`}
                       fill
                       className="object-cover"
-                      quality={100}
-                      unoptimized
                     />
                   </div>
                 ))}

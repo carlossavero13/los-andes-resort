@@ -25,7 +25,7 @@ export async function GET(
     // 2. Return data
     return NextResponse.json(data, { status: 200 })
     
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('API Route GET Error:', err)
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }

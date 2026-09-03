@@ -138,7 +138,7 @@ export default function Footer() {
               title="Libro de Reclamaciones"
             >
               <Image 
-                src="/images/gallery/libro_de_reclamaciones.png" 
+                src="/images/gallery/libro_de_reclamaciones.webp" 
                 alt="Libro de Reclamaciones" 
                 fill
                 className="object-contain"

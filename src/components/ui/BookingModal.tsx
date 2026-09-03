@@ -50,7 +50,8 @@ export default function BookingModal() {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = "15px"; // Evita el salto de la barra de desplazamiento en Windows
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
       document.body.style.overflow = "";
       document.body.style.paddingRight = "";
@@ -84,7 +85,7 @@ export default function BookingModal() {
             {/* Left Side - Image (Hidden on mobile) */}
             <div className="hidden md:block md:w-5/12 relative bg-black">
               <Image 
-                src="/images/rooms/hmatrisjunior1.png"
+                src="/images/rooms/hmatrisjunior1.webp"
                 alt="Los Andes Resort"
                 fill
                 className="object-cover opacity-80"

@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server'
 import { getServiceSupabase } from '@/lib/supabase'
+import { updateClaimSchema } from '@/lib/validations'
 
-// Verifica que el token enviado pertenezca a un usuario autenticado en Supabase
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || ''
+
 async function verifyAdminAuth(request: Request) {
   const authHeader = request.headers.get('Authorization')
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -13,6 +15,12 @@ async function verifyAdminAuth(request: Request) {
   const { data: { user }, error } = await supabase.auth.getUser(token)
   
   if (error || !user) return null
+  
+  // Verify the user is the authorized admin
+  if (ADMIN_EMAIL && user.email !== ADMIN_EMAIL) {
+    return null
+  }
+  
   return user
 }
 
@@ -31,8 +39,9 @@ export async function GET(request: Request) {
     if (error) throw error
 
     return NextResponse.json(data, { status: 200 })
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 })
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Error interno'
+    return NextResponse.json({ error: message }, { status: 500 })
   }
 }
 
@@ -42,16 +51,22 @@ export async function PATCH(request: Request) {
     if (!user) return NextResponse.json({ error: 'No autorizado' }, { status: 401 })
 
     const body = await request.json()
-    const { id, status, admin_response } = body
-
-    if (!id) return NextResponse.json({ error: 'Falta el ID del reclamo' }, { status: 400 })
-
+    
+    // Validate input
+    const result = updateClaimSchema.safeParse(body)
+    if (!result.success) {
+      return NextResponse.json(
+        { error: 'Datos inválidos', details: result.error.flatten().fieldErrors },
+        { status: 400 }
+      )
+    }
+    
+    const { id, status, admin_response } = result.data
     const supabase = getServiceSupabase()
     
-    // Si el estado cambia a 'Resuelto', actualizamos la fecha
     const resolved_at = status === 'Resuelto' ? new Date().toISOString() : null
 
-    const updateData: any = { status, admin_response }
+    const updateData: Record<string, string | null> = { status, admin_response: admin_response ?? null }
     if (resolved_at) updateData.resolved_at = resolved_at
 
     const { error } = await supabase
@@ -62,7 +77,8 @@ export async function PATCH(request: Request) {
     if (error) throw error
 
     return NextResponse.json({ success: true }, { status: 200 })
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 })
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : 'Error interno'
+    return NextResponse.json({ error: message }, { status: 500 })
   }
 }
