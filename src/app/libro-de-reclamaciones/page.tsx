@@ -16,11 +16,11 @@ export default function LibroDeReclamaciones() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col lg:flex-row">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-white relative">
       <CompanyInfoPanel />
 
       {/* RIGHT PANEL - Scrollable Form */}
-      <div className="lg:w-3/5 xl:w-2/3 lg:ml-auto bg-[#FDFCFB] min-h-screen flex flex-col">
+      <div className="w-full lg:w-3/5 xl:w-2/3 lg:ml-auto bg-[#FDFCFB] min-h-screen flex flex-col relative z-0">
         <div className="max-w-3xl mx-auto px-6 py-12 md:py-20 lg:p-24 w-full flex-1">
           
           {/* TABS (Registrar vs Consultar) */}

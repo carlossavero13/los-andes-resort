@@ -37,7 +37,7 @@ export function ClaimSearch() {
         Ingresa el código que te proporcionamos al momento de registrar tu queja o reclamo (Ej. LR-2026-000001).
       </p>
       
-      <form onSubmit={handleSearch} className="flex gap-4 mb-10">
+      <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-4 mb-10">
         <input 
           type="text" 
           placeholder="LR-YYYY-XXXXXX"
@@ -49,7 +49,7 @@ export function ClaimSearch() {
         <button 
           type="submit" 
           disabled={isSearching}
-          className="bg-forest text-white font-semibold px-6 rounded-xl hover:bg-forest-light transition-all flex items-center gap-2 disabled:opacity-70"
+          className="bg-forest text-white font-semibold px-6 py-3 rounded-xl hover:bg-forest-light transition-all flex items-center justify-center gap-2 disabled:opacity-70 md:w-auto w-full"
         >
           {isSearching ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
           Buscar

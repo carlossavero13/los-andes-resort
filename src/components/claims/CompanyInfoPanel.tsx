@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 
 export function CompanyInfoPanel() {
   return (
-    <div className="lg:w-2/5 xl:w-1/3 relative bg-forest flex flex-col justify-between p-8 md:p-12 lg:p-16 lg:fixed lg:h-screen lg:overflow-y-auto">
+    <div className="w-full lg:w-2/5 xl:w-1/3 relative lg:fixed lg:top-0 lg:left-0 bg-forest flex flex-col justify-between p-8 md:p-12 lg:p-16 h-auto lg:h-screen lg:overflow-y-auto z-10">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image 
