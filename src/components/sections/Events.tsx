@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { cn } from "@/lib/utils";
 
 const EVENT_CATEGORIES = [
   {
@@ -34,9 +36,11 @@ const EVENT_CATEGORIES = [
 ];
 
 export default function Events() {
+  const [activeEventId, setActiveEventId] = useState(EVENT_CATEGORIES[0].id);
+  const activeEvent = EVENT_CATEGORIES.find(e => e.id === activeEventId) || EVENT_CATEGORIES[0];
+
   return (
     <section id="eventos" className="py-24 md:py-32 bg-[#FDFBF7] relative overflow-hidden">
-      
       {/* Background ambient glow */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-forest/5 rounded-full blur-[150px] pointer-events-none" />
@@ -47,51 +51,99 @@ export default function Events() {
             subtitle="Celebra con Nosotros"
             title="Eventos Especiales"
           />
-          <AnimatedSection variant="fadeUp" className="max-w-2xl mx-auto mt-6">
-            <p className="font-inter text-forest/70 font-light text-base leading-relaxed">
-              Descubre nuestros espacios diseñados exclusivamente para ti. Desde románticas bodas campestres hasta dinámicos Full Days.
-            </p>
-          </AnimatedSection>
         </div>
 
-        {/* GRID DE CATEGORÍAS DE EVENTOS */}
-        <AnimatedSection variant="fadeUp">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {EVENT_CATEGORIES.map((event) => (
-              <Link
-                key={event.id}
-                href={event.href}
-                className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-              >
-                {/* Imagen de fondo */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+          
+          {/* LADO IZQUIERDO: Menú Elegante */}
+          <AnimatedSection variant="fadeRight" className="lg:col-span-5 flex flex-col gap-2 md:gap-4">
+            {EVENT_CATEGORIES.map((event) => {
+              const isActive = activeEventId === event.id;
+              
+              return (
+                <button
+                  key={event.id}
+                  onClick={() => setActiveEventId(event.id)}
+                  className="group relative text-left py-4 pl-6 md:pl-8 pr-4 transition-all duration-500 overflow-hidden rounded-r-2xl"
+                >
+                  {/* Línea dorada activa */}
+                  <div 
+                    className={cn(
+                      "absolute left-0 top-0 bottom-0 w-1 rounded-full transition-all duration-500 ease-out", 
+                      isActive 
+                        ? "bg-gold scale-y-100 opacity-100" 
+                        : "bg-forest/20 scale-y-50 opacity-0 group-hover:opacity-100 group-hover:scale-y-75"
+                    )} 
+                  />
+                  
+                  {/* Fondo sutil activo */}
+                  <div 
+                    className={cn(
+                      "absolute inset-0 bg-gradient-to-r from-gold/5 to-transparent transition-opacity duration-500",
+                      isActive ? "opacity-100" : "opacity-0 group-hover:opacity-50"
+                    )}
+                  />
+
+                  <div className="relative z-10 flex items-center justify-between">
+                    <h3 
+                      className={cn(
+                        "font-playfair text-xl md:text-2xl lg:text-3xl transition-all duration-500 tracking-tight", 
+                        isActive 
+                          ? "text-gray-900 font-medium translate-x-2" 
+                          : "text-gray-400 font-light group-hover:text-gray-600 group-hover:translate-x-1"
+                      )}
+                    >
+                      {event.title}
+                    </h3>
+                    <Sparkles 
+                      className={cn(
+                        "w-4 h-4 md:w-5 md:h-5 text-gold transition-all duration-500",
+                        isActive ? "opacity-100 rotate-12 scale-100" : "opacity-0 -rotate-45 scale-50"
+                      )}
+                    />
+                  </div>
+                </button>
+              );
+            })}
+          </AnimatedSection>
+
+          {/* LADO DERECHO: Imagen Interactiva + Botón */}
+          <AnimatedSection variant="fadeLeft" className="lg:col-span-7 flex flex-col gap-8 mt-8 lg:mt-0 items-center">
+            
+            {/* Contenedor de la Imagen con Marco Blanco */}
+            <Link href={activeEvent.href} className="relative w-[90%] md:w-[85%] aspect-[4/3] rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-[8px] ring-white bg-white group cursor-pointer">
+              
+              {/* Crossfade de imágenes superpuestas */}
+              {EVENT_CATEGORIES.map((event) => (
                 <Image 
+                  key={event.id}
                   src={event.image}
                   alt={event.title}
                   fill
-                  className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                  priority={event.id === 'matrimonios'}
+                  className={cn(
+                    "object-cover transition-all duration-1000 ease-in-out group-hover:scale-105",
+                    activeEventId === event.id ? "opacity-100 z-10" : "opacity-0 z-0 scale-110"
+                  )}
                 />
-                
-                {/* Overlay oscuro con gradiente */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                
-                {/* Contenido inferior */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Sparkles className="w-4 h-4 text-gold opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                  </div>
-                  <h3 className="font-playfair text-xl md:text-2xl text-white font-medium leading-tight mb-4">
-                    {event.title}
-                  </h3>
-                  <div className="flex items-center gap-2 text-gold text-xs font-inter uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                    Ver más
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </AnimatedSection>
+              ))}
+              
+              {/* Overlay sutil al hover */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 z-20" />
+            </Link>
+            
+            {/* Botón Dinámico Separado */}
+            <Link 
+              href={activeEvent.href}
+              className="inline-flex items-center gap-3 bg-[#722F37] text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-[0.15em] shadow-lg hover:shadow-2xl hover:bg-[#5a252b] transition-all duration-300 hover:-translate-y-1 group/btn"
+            >
+              Ver más y galería
+              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+            </Link>
 
+          </AnimatedSection>
+
+        </div>
       </div>
     </section>
   );
