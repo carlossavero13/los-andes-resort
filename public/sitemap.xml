@@ -7,10 +7,28 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://losandesclubresort.com/eventos</loc>
-    <lastmod>2026-09-03</lastmod>
+    <loc>https://losandesclubresort.com/eventos/matrimonios</loc>
+    <lastmod>2026-09-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://losandesclubresort.com/eventos/full-day</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://losandesclubresort.com/eventos/corporativos</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://losandesclubresort.com/eventos/celebraciones</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://losandesclubresort.com/politicas-de-privacidad</loc>
