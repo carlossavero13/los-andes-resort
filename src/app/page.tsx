@@ -1,23 +1,20 @@
-import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import ScrollToTop from "@/components/layout/ScrollToTop";
-
 import Hero from "@/components/sections/Hero";
 import FullDay from "@/components/sections/FullDay";
 
-// Carga Diferida (Lazy Loading) para todas las secciones debajo del fold
-const Rooms = dynamic(() => import("@/components/sections/Rooms"));
-const InstagramFeed = dynamic(() => import("@/components/sections/InstagramFeed"));
-const Gallery = dynamic(() => import("@/components/sections/Gallery"));
-const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
-const Restaurant = dynamic(() => import("@/components/sections/Restaurant"));
-const Events = dynamic(() => import("@/components/sections/Events"));
-const About = dynamic(() => import("@/components/sections/About"));
-const FAQ = dynamic(() => import("@/components/sections/FAQ"));
-const Location = dynamic(() => import("@/components/sections/Location"));
-const Tourism = dynamic(() => import("@/components/sections/Tourism"));
+import Rooms from "@/components/sections/Rooms";
+import InstagramFeed from "@/components/sections/InstagramFeed";
+import Gallery from "@/components/sections/Gallery";
+import Testimonials from "@/components/sections/Testimonials";
+import Restaurant from "@/components/sections/Restaurant";
+import Events from "@/components/sections/Events";
+import About from "@/components/sections/About";
+import FAQ from "@/components/sections/FAQ";
+import Location from "@/components/sections/Location";
+import Tourism from "@/components/sections/Tourism";
 
 export default function Home() {
   return (

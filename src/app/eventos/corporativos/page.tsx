@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, Building2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Building2, MapPin, Trophy, Utensils, Users, Wine, Check, AlertCircle, CreditCard, Mail, Phone, Music } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
@@ -10,35 +10,88 @@ import ScrollToTop from "@/components/layout/ScrollToTop";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { getWhatsAppUrl } from "@/lib/utils";
 
-const EVENT_DATA = {
-  title: "Eventos Corporativos",
-  subtitle: "Inspira a tu equipo de trabajo",
-  description: "Espacios versátiles diseñados para el éxito de tus reuniones empresariales, conferencias y jornadas de integración (Team Building). Sal de la rutina de la oficina y aprovecha el contacto con la naturaleza para fomentar la creatividad, el liderazgo y el trabajo en equipo.",
-  benefits: ["Salones amplios con excelente iluminación", "Zonas al aire libre para dinámicas", "Menús ejecutivos y coffee breaks", "Internet de alta velocidad y equipos"],
-  images: [
-    "/images/events/corporativo/corp3.webp",
-    "/videos/video_corp.MOV",
-    "/images/events/corporativo/corp1.webp",
-    "/images/events/corporativo/corp2.webp",
-    "/images/events/corporativo/corp4.webp",
-    "/images/events/corporativo/corp5.webp",
-    "/images/events/corporativo/corp6.webp",
-    "/images/events/corporativo/corp7.webp",
-    "/images/events/corporativo/corp8.webp",
-    "/images/events/corporativo/corp9.webp",
-    "/images/events/corporativo/corp10.webp",
-    "/images/events/corporativo/corp11.webp",
-    "/images/events/corporativo/corp12.webp",
-    "/images/events/corporativo/corp13.webp"
-  ],
-  whatsappMsg: "Hola, me gustaría cotizar un Evento Corporativo / Team Building en Los Andes Club Resort."
-};
+const WHATSAPP_MSG = "Hola, me gustaría cotizar un evento corporativo en Los Andes.";
 
-const isVideo = (url: string) => url.toLowerCase().endsWith('.mov') || url.toLowerCase().endsWith('.mp4');
+const AMBIENTES = [
+  "Ingreso con camino entre vegetación",
+  "Amplias áreas verdes (10,000 m2)",
+  "Piscina con jacuzzi e isla con bar",
+  "Terraza frente a la piscina con vista panorámica",
+  "Zona de bosque con mesas de madera",
+  "Zona de comedor en jardín",
+  "2 cascadas (piscina y zona de bungalows)",
+  "Amplia zona de estacionamiento",
+  "Zona de juegos"
+];
+
+const CATERING = [
+  "Pollo a la parrila, arroz blanco y ensalada con legumbres",
+  "Pollo a la caja china, acompañado de papas y ensalada",
+  "Chancho a la caja china, con papas y zarza criolla",
+  "Buffet criollo / parrillero",
+  "Pachamanca"
+];
+
+const BEBIDAS = [
+  "Champagne Santiago Queirolo Primado",
+  "Vino tinto Santiago Quierolo",
+  "Jarras de agua de mesa",
+  "Jarras de gaseosa"
+];
+
+const MENAJE = [
+  "Copas de champagne",
+  "Copas de vino",
+  "Vasos para agua y gaseosa",
+  "Jarras para agua",
+  "Vajilla completa",
+  "Cuchillos y tenedores hoteleros"
+];
+
+const PERSONAL = [
+  "5 mozos profesionales",
+  "Chef ejecutivo",
+  "Ayudantes de cocina",
+  "Filmación profesional",
+  "Maitré"
+];
+
+const GYMKANAS_INCLUYE = [
+  "Animador profesional",
+  "Producción de juegos",
+  "DJ y Sonido",
+  "Hora Loca",
+  "Materiales completos para juegos"
+];
+
+const GYMKANAS_JUEGOS = [
+  "Pasa la pelota", "Rueda gigante", "Botella flotante", "Carrera loca", 
+  "Chapa tu punto", "Pasa el hula", "Saca polo", "Vuela vuela", 
+  "Chapa tu globo", "Lleva naranjas", "Play back", "La loca carrera", 
+  "Gorditos bonitos", "Juegos con skies", "Cinco pies", "Juego del anillo", 
+  "Arma el canal", "Encostalados", "Canta y gana", "Bailetón", "Jala soga", 
+  "Botella borracha", "Glotones", "La bandeja", "Teléfono malogrado", 
+  "Pasa la esponja", "Vaso en la cabeza", "Tres en raya"
+];
+
+const GALLERY_MEDIA = [
+  { type: "image", src: "/images/events/corporativo/corp1.webp" },
+  { type: "video", src: "/videos/video_corp.MOV" },
+  { type: "image", src: "/images/events/corporativo/corp4.webp" },
+  { type: "image", src: "/images/events/corporativo/corp5.webp" },
+  { type: "image", src: "/images/events/corporativo/corp6.webp" },
+  { type: "image", src: "/images/events/corporativo/corp7.webp" },
+  { type: "image", src: "/images/events/corporativo/corp8.webp" },
+  { type: "image", src: "/images/events/corporativo/corp9.webp" },
+  { type: "image", src: "/images/events/corporativo/corp10.webp" },
+  { type: "image", src: "/images/events/corporativo/corp11.webp" },
+  { type: "image", src: "/images/events/corporativo/corp12.webp" },
+  { type: "image", src: "/images/events/corporativo/corp13.webp" },
+];
 
 export default function CorporativosPage() {
   return (
-    <div className="bg-[#FDFBF7] min-h-screen relative overflow-hidden font-inter">
+    <div className="bg-[#FDFBF7] min-h-screen relative overflow-hidden font-inter selection:bg-gold/30 selection:text-forest">
         <Navbar />
         <WhatsAppFloat />
         <ScrollToTop />
@@ -55,134 +108,337 @@ export default function CorporativosPage() {
         </div>
 
         {/* HERO SECTION */}
-        <section className="relative min-h-[60vh] md:min-h-[75vh] flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-[70vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0 bg-black">
             <Image
-              src={EVENT_DATA.images[0]}
-              alt="Hero Evento"
+              src="/images/events/corporativo/corp3.webp"
+              alt="Eventos Corporativos en Los Andes"
               fill
-              className="object-cover object-center"
+              className="object-cover object-center opacity-80"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-black/80" />
           </div>
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-48 md:pt-56 pb-20">
-            <AnimatedSection variant="fadeUp" className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-4 md:mb-6">
-                <div className="w-8 md:w-12 h-[2px] bg-gold" />
-                <span className="text-gold text-xs md:text-sm font-inter tracking-[0.4em] uppercase font-bold drop-shadow-md">
-                  Celebraciones Memorables
-                </span>
-              </div>
-              <h1 className="font-playfair text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white font-medium leading-[1.1] mb-6 drop-shadow-2xl">
-                {EVENT_DATA.title}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-48 md:pt-56 pb-20 text-center">
+            <AnimatedSection variant="fadeUp" className="max-w-4xl mx-auto flex flex-col items-center">
+              <span className="text-gold text-xs md:text-sm font-inter tracking-[0.5em] uppercase font-bold mb-6 block">
+                Team Building & Conferencias
+              </span>
+              <h1 className="font-playfair text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] text-white font-medium leading-[1] mb-8 drop-shadow-2xl">
+                Eventos <br />
+                <span className="italic font-light text-gold-light">Corporativos</span>
               </h1>
-              <p className="font-inter text-white/90 text-sm md:text-lg font-light leading-relaxed max-w-2xl drop-shadow-lg">
-                {EVENT_DATA.subtitle}
+              <p className="font-inter text-white/90 text-xl md:text-2xl font-light tracking-widest uppercase drop-shadow-lg">
+                El destino perfecto para tu empresa
               </p>
             </AnimatedSection>
           </div>
         </section>
 
-        {/* CONTENT SECTION */}
-        <div className="py-20 md:py-32 max-w-7xl mx-auto px-4 md:px-6">
-          <section className="relative">
-            <div className="flex flex-col gap-10 lg:gap-16 lg:items-start lg:flex-row">
+        {/* INTRO: DESCUBRE LA EXPERIENCIA */}
+        <section className="py-24 md:py-40 max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+            
+            <AnimatedSection variant="fadeRight" className="lg:col-span-5 relative">
+              <div className="relative aspect-[3/4] w-[90%] md:w-[80%] mx-auto lg:ml-0 rounded-t-full overflow-hidden shadow-2xl ring-8 ring-[#FDFBF7] z-10">
+                <Image src="/images/events/corporativo/corp2.webp" alt="Equipo corporativo" fill className="object-cover" />
+              </div>
+              <div className="absolute -bottom-10 -right-4 lg:-right-12 w-48 h-48 bg-forest rounded-full p-6 flex flex-col items-center justify-center text-center z-20 shadow-2xl border border-gold/20">
+                <Building2 className="w-8 h-8 text-gold mb-2" />
+                <p className="text-gold font-playfair italic text-lg leading-tight">Integración y<br/>Liderazgo</p>
+              </div>
+            </AnimatedSection>
+            
+            <AnimatedSection variant="fadeLeft" className="lg:col-span-7 flex flex-col gap-8 relative">
+              <div className="absolute -top-20 -left-10 text-[10rem] md:text-[14rem] text-gold/5 font-playfair leading-none select-none pointer-events-none">
+                Éxito.
+              </div>
               
-              {/* TEXT CONTENT */}
-              <AnimatedSection variant="fadeRight" className="w-full lg:w-5/12 flex flex-col justify-center lg:sticky lg:top-32">
-                <div className="flex items-center gap-4 mb-6 md:mb-8">
-                  <div className="w-14 h-14 md:w-20 md:h-20 rounded-2xl bg-white shadow-xl border border-forest/5 flex items-center justify-center shrink-0 -rotate-3 hover:rotate-0 transition-transform duration-500">
-                    <Building2 strokeWidth={1.2} className="w-7 h-7 md:w-10 md:h-10 text-[#722F37]" />
-                  </div>
+              <div>
+                <h2 className="text-gold uppercase tracking-[0.3em] text-sm font-bold mb-4">Descubre la Experiencia</h2>
+                <h3 className="font-playfair text-5xl md:text-6xl text-forest font-light leading-tight">
+                  Más allá de la oficina
+                </h3>
+              </div>
+              
+              <div className="text-forest/70 font-light text-lg leading-relaxed space-y-6">
+                <p>
+                  Asegura el éxito de tu evento en nuestras instalaciones, especialmente adecuadas para concentrar a tus invitados. <strong className="text-forest font-medium">Aléjate del estrés de la ciudad</strong> y déjate envolver por la naturaleza que rodea a Los Andes.
+                </p>
+                <div className="bg-white p-6 rounded-2xl border border-forest/5 flex items-start gap-4">
+                  <MapPin className="w-6 h-6 text-gold shrink-0 mt-1" />
                   <div>
-                    <span className="block text-gold text-[10px] md:text-xs font-inter uppercase tracking-[0.2em] font-bold mb-1.5 md:mb-2">
-                      {EVENT_DATA.subtitle}
-                    </span>
-                    <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl text-forest font-light leading-tight">
-                      {EVENT_DATA.title}
-                    </h2>
+                    <h4 className="font-bold text-forest mb-1">Nuestra Ubicación</h4>
+                    <p className="text-sm">Av. Nueva Toledo 206, segunda etapa, parcelación - Cieneguilla, Lima. (A cuadra y media del óvalo de Cieneguilla).</p>
                   </div>
                 </div>
+              </div>
 
-                <p className="font-inter text-forest/70 font-light text-base md:text-lg leading-relaxed mb-8 md:mb-10 text-justify md:text-left">
-                  {EVENT_DATA.description}
-                </p>
+              <div className="border-t border-forest/10 pt-8 mt-4">
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <a href="mailto:eventos@restaurantlosandes.com.pe" className="flex items-center gap-3 text-forest hover:text-gold transition-colors">
+                    <div className="w-10 h-10 rounded-full border border-forest/20 flex items-center justify-center"><Mail className="w-4 h-4" /></div>
+                    <span className="text-sm tracking-wide">eventos@restaurantlosandes.com.pe</span>
+                  </a>
+                  <div className="flex items-center gap-3 text-forest">
+                    <div className="w-10 h-10 rounded-full border border-forest/20 flex items-center justify-center"><Phone className="w-4 h-4" /></div>
+                    <span className="text-sm tracking-wide">924 899 204 &nbsp;|&nbsp; (01) 748 3726</span>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
 
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 mb-10 md:mb-12">
-                  {EVENT_DATA.benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-start gap-3 group/item">
-                      <div className="mt-1 flex items-center justify-center shrink-0 relative">
-                         <div className="absolute inset-0 bg-gold/20 rounded-full scale-0 group-hover/item:scale-150 transition-transform duration-300" />
-                         <Check className="w-[18px] h-[18px] text-gold relative z-10" strokeWidth={2.5} />
-                      </div>
-                      <span className="font-inter text-sm md:text-[15px] text-forest/80 font-medium leading-relaxed group-hover/item:text-forest transition-colors">
-                        {benefit}
-                      </span>
+        {/* AMBIENTES E INSTALACIONES (Sticky Scroll Layout) */}
+        <section className="bg-forest relative py-24 md:py-32 px-6">
+          <div className="absolute inset-0 bg-gold/5 opacity-50 mix-blend-overlay" />
+          
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 lg:gap-24 relative z-10">
+            <AnimatedSection variant="fadeRight" className="lg:col-span-5 lg:sticky lg:top-32 h-max">
+              <span className="text-gold text-sm font-inter tracking-[0.4em] uppercase font-bold block mb-4">Espacios Amplios</span>
+              <h2 className="font-playfair text-5xl md:text-6xl text-white font-light mb-8">
+                Instalaciones <br/><span className="text-gold italic">Premium</span>
+              </h2>
+              <p className="font-inter text-white/70 text-lg font-light leading-relaxed mb-8">
+                Contamos con 10,000 m2 de área dedicados a brindarte un respiro al aire libre. Piscinas, cataratas, jardines y espacios adaptables para cualquier dinámica empresarial.
+              </p>
+              <div className="w-20 h-[1px] bg-gold/50" />
+            </AnimatedSection>
+
+            <AnimatedSection variant="fadeLeft" className="lg:col-span-7">
+              <ul className="grid sm:grid-cols-2 gap-x-12 gap-y-8">
+                {AMBIENTES.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-4 border-b border-white/10 pb-4 group">
+                    <Check className="w-5 h-5 text-gold mt-1 shrink-0 group-hover:scale-125 transition-transform" />
+                    <span className="font-inter text-white/90 text-lg font-light">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </AnimatedSection>
+          </div>
+        </section>
+
+        {/* DETALLES DEL EVENTO (Gastronomía, Personal, Team Building) */}
+        <section className="py-24 md:py-32 max-w-7xl mx-auto px-6 space-y-24 md:space-y-32">
+          
+          {/* CATERING & MENAJE (Fila 1) */}
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+            <AnimatedSection variant="fadeUp">
+              <div className="flex items-center gap-4 mb-8">
+                <span className="text-gold font-playfair text-5xl italic opacity-50">01</span>
+                <h3 className="font-playfair text-4xl text-forest">Catering & Bebidas</h3>
+              </div>
+              <p className="text-forest/70 font-light text-lg mb-8">
+                Deleita a tu equipo con nuestra excelente gastronomía campestre y selección de bebidas preparadas para eventos de gran escala.
+              </p>
+              
+              <div className="space-y-8">
+                <div>
+                  <h4 className="font-bold text-forest uppercase tracking-widest text-sm mb-4 border-b border-forest/10 pb-2 flex items-center gap-2"><Utensils className="w-4 h-4 text-gold"/> Opciones de Menú</h4>
+                  <ul className="space-y-3">
+                    {CATERING.map((item, i) => <li key={i} className="text-forest/80 font-light flex gap-3"><span className="text-gold">•</span> {item}</li>)}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-bold text-forest uppercase tracking-widest text-sm mb-4 border-b border-forest/10 pb-2 flex items-center gap-2"><Wine className="w-4 h-4 text-gold"/> Bebidas Incluidas</h4>
+                  <ul className="space-y-3">
+                    {BEBIDAS.map((item, i) => <li key={i} className="text-forest/80 font-light flex gap-3"><span className="text-gold">•</span> {item}</li>)}
+                  </ul>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection variant="fadeUp" className="lg:mt-24">
+              <div className="flex items-center gap-4 mb-8">
+                <span className="text-gold font-playfair text-5xl italic opacity-50">02</span>
+                <h3 className="font-playfair text-4xl text-forest">Personal y Menaje</h3>
+              </div>
+              <p className="text-forest/70 font-light text-lg mb-8">
+                Garantizamos que no te falte nada. Desde la vajilla completa hasta el equipo humano necesario para atender a todos tus invitados.
+              </p>
+              
+              <div className="bg-white p-8 md:p-12 rounded-[2rem] shadow-xl border border-gold/10 relative mb-8">
+                <Users className="absolute top-8 right-8 w-16 h-16 text-gold/10" />
+                <h4 className="font-bold text-forest uppercase tracking-widest text-sm mb-6">Staff del Evento</h4>
+                <ul className="grid sm:grid-cols-2 gap-y-4 gap-x-8 relative z-10">
+                  {PERSONAL.map((item, i) => (
+                    <li key={i} className="text-forest/90 text-base font-playfair italic flex items-center gap-3 border-b border-forest/5 pb-2">
+                      {item}
                     </li>
                   ))}
                 </ul>
+              </div>
 
-                <a 
-                  href={getWhatsAppUrl(EVENT_DATA.whatsappMsg)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full md:w-max items-center justify-center gap-3 bg-forest hover:bg-forest-light text-white px-8 py-4 md:py-5 rounded-full font-inter text-sm md:text-base font-semibold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group"
-                >
-                  Cotizar este evento
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
+              <div className="bg-[#FDFBF7] p-8 md:p-10 rounded-[2rem] border border-forest/10">
+                <h4 className="font-bold text-forest uppercase tracking-widest text-sm mb-4">Menaje Completo Incluido</h4>
+                <div className="flex flex-wrap gap-2">
+                  {MENAJE.map((item, i) => (
+                    <span key={i} className="bg-white px-4 py-2 rounded-full text-xs text-forest/80 border border-forest/5 shadow-sm">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          {/* TEAM BUILDING Y GYMKANAS (Fila 2 - Destacada) */}
+          <AnimatedSection variant="fadeUp" className="bg-[#f4ebd9] rounded-[3rem] p-10 md:p-16 lg:p-20 border border-gold/20">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <Trophy className="w-16 h-16 text-gold mx-auto mb-6" />
+              <h3 className="font-playfair text-4xl md:text-5xl text-forest mb-6">Team Building & Gymkanas</h3>
+              <p className="text-forest/70 font-light text-lg">
+                Fomenta el trabajo en equipo, la comunicación y el liderazgo a través de dinámicas divertidas. Nosotros nos encargamos de todo el entretenimiento.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-12">
+              <div className="lg:col-span-1 space-y-6">
+                <h4 className="font-bold text-forest uppercase tracking-widest text-sm border-b border-forest/10 pb-4">La Producción Incluye</h4>
+                <ul className="space-y-4">
+                  {GYMKANAS_INCLUYE.map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 text-forest/90 font-medium">
+                      <div className="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center shrink-0">
+                        <Check className="w-4 h-4 text-gold" />
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="lg:col-span-2">
+                <h4 className="font-bold text-forest uppercase tracking-widest text-sm border-b border-forest/10 pb-4 mb-6">Catálogo de Dinámicas y Juegos</h4>
+                <div className="flex flex-wrap gap-3">
+                  {GYMKANAS_JUEGOS.map((juego, i) => (
+                    <span key={i} className="bg-white/60 backdrop-blur-sm px-4 py-2.5 rounded-xl text-forest/90 font-medium border border-white text-sm hover:bg-gold hover:text-white hover:border-gold transition-colors cursor-default shadow-sm">
+                      {juego}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+        </section>
+
+        {/* GALERÍA MULTIMEDIA */}
+        <section className="py-24 bg-[#FDFBF7] border-t border-forest/10">
+          <div className="max-w-7xl mx-auto px-6">
+            <AnimatedSection variant="fadeUp" className="text-center mb-16">
+              <span className="text-gold text-sm font-inter tracking-[0.4em] uppercase font-bold mb-4 block">Galería</span>
+              <h2 className="font-playfair text-4xl md:text-5xl text-forest font-light">Revive la Experiencia</h2>
+            </AnimatedSection>
+            
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+              {GALLERY_MEDIA.map((media, idx) => (
+                <AnimatedSection key={idx} variant="fadeUp" className="break-inside-avoid relative rounded-2xl overflow-hidden shadow-lg group">
+                  {media.type === 'video' ? (
+                    <video 
+                      src={media.src} 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  ) : (
+                    <Image 
+                      src={media.src} 
+                      alt={`Evento Corporativo ${idx}`} 
+                      width={600} 
+                      height={800} 
+                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* INVERSIÓN Y TÉRMINOS (Diseño Editorial) */}
+        <section className="py-24 md:py-32 bg-white">
+          <div className="max-w-6xl mx-auto px-6">
+            
+            {/* Tarjeta de Cotización */}
+            <AnimatedSection variant="fadeUp" className="max-w-4xl mx-auto bg-forest text-white p-12 md:p-20 rounded-[3rem] shadow-2xl border border-gold/20 text-center relative mb-20 overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-gold to-transparent" />
+              
+              <span className="text-gold text-sm font-inter tracking-[0.4em] uppercase font-bold mb-4 block">Planificación a Medida</span>
+              <h3 className="font-playfair text-4xl md:text-6xl mb-8 leading-tight">Diseñemos el evento ideal para tu equipo</h3>
+              
+              <p className="text-white/70 text-lg font-light mb-12 max-w-2xl mx-auto">
+                Cada empresa es única. Contáctanos para enviarte un presupuesto personalizado ajustado a la cantidad de asistentes y los requerimientos específicos de tu corporación.
+              </p>
+              
+              <a 
+                href={getWhatsAppUrl(WHATSAPP_MSG)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-gold text-forest px-12 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-xl hover:bg-white transition-all duration-300 hover:-translate-y-1"
+              >
+                Cotizar Evento
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </AnimatedSection>
+
+            {/* Términos y Pagos */}
+            <div className="grid md:grid-cols-2 gap-16 lg:gap-24 pt-12 border-t border-forest/10">
+              
+              <AnimatedSection variant="fadeRight">
+                <div className="flex items-center gap-3 mb-8">
+                  <AlertCircle className="w-6 h-6 text-gold" />
+                  <h4 className="font-playfair text-3xl text-forest">Términos Importantes</h4>
+                </div>
+                <ul className="space-y-6">
+                  <li className="text-forest/70 font-light text-base leading-relaxed pl-4 border-l-2 border-gold/30">
+                    Cotización válida por <strong>30 días</strong>.
+                  </li>
+                  <li className="text-forest/70 font-light text-base leading-relaxed pl-4 border-l-2 border-gold/30">
+                    En caso de modificación de fecha del evento, tendrá un costo del <strong>10%</strong> del monto total del evento, y se reprogramará según disponibilidad.
+                  </li>
+                  <li className="text-forest/70 font-light text-base leading-relaxed pl-4 border-l-2 border-gold/30">
+                    En caso de cancelación del evento, se cobrará el monto total del evento y <strong>no habrá devolución</strong> de dinero.
+                  </li>
+                  <li className="text-forest/70 font-light text-base leading-relaxed pl-4 border-l-2 border-gold/30">
+                    El cliente será responsable del mal uso o negligencia de las áreas de nuestras instalaciones.
+                  </li>
+                </ul>
               </AnimatedSection>
 
-              {/* IMAGES GALLERY */}
-              <AnimatedSection variant="fadeLeft" className="w-full lg:w-7/12">
-                {EVENT_DATA.images.length === 1 ? (
-                  <div className="relative w-full aspect-[4/3] rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl border border-forest/5 group lg:sticky lg:top-32">
-                    {isVideo(EVENT_DATA.images[0]) ? (
-                      <video src={EVENT_DATA.images[0]} autoPlay muted loop playsInline className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1500ms]" />
-                    ) : (
-                      <Image src={EVENT_DATA.images[0]} alt={EVENT_DATA.title} fill className="object-cover group-hover:scale-105 transition-transform duration-[1500ms]" />
-                    )}
+              <AnimatedSection variant="fadeLeft">
+                <div className="flex items-center gap-3 mb-8">
+                  <CreditCard className="w-6 h-6 text-gold" />
+                  <h4 className="font-playfair text-3xl text-forest">Métodos de Pago</h4>
+                </div>
+                <p className="text-forest/70 font-light text-base mb-8">
+                  Se aceptan pagos en efectivo o transferencia vía BCP. Ofrecemos facilidades de pago en cuotas de <strong>máximo 5 fechas</strong>.
+                </p>
+                
+                <div className="bg-[#FDFBF7] p-8 rounded-[2rem] border border-forest/10 space-y-6">
+                  <div>
+                    <p className="text-xs text-forest/50 uppercase tracking-widest font-bold mb-2">Cuenta BCP Soles</p>
+                    <p className="font-playfair italic text-forest text-2xl">1939 6216 14018</p>
                   </div>
-                ) : (
-                  <>
-                    {/* Mobile View */}
-                    <div className="flex lg:hidden overflow-x-auto gap-4 snap-x snap-mandatory pb-6 pt-2 hide-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
-                      {EVENT_DATA.images.map((img, i) => (
-                        <div key={i} className="relative w-[85vw] sm:w-[60vw] shrink-0 aspect-[4/3] snap-center rounded-3xl overflow-hidden shadow-lg border border-forest/5">
-                          {isVideo(img) ? (
-                            <video src={img} autoPlay muted loop playsInline className="w-full h-full object-cover" />
-                          ) : (
-                            <Image src={img} alt={`${EVENT_DATA.title} ${i + 1}`} fill className="object-cover" />
-                          )}
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Desktop View */}
-                    <div className="hidden lg:grid grid-cols-2 gap-4 lg:gap-6 w-full auto-rows-[250px]">
-                      {EVENT_DATA.images.map((img, i) => {
-                        const isTall = i % 3 === 0;
-                        return (
-                          <div key={i} className={`relative w-full rounded-3xl overflow-hidden shadow-lg group border border-forest/5 ${isTall ? "row-span-2" : "row-span-1"}`}>
-                            {isVideo(img) ? (
-                              <video src={img} autoPlay muted loop playsInline className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms] ease-out" />
-                            ) : (
-                              <Image src={img} alt={`${EVENT_DATA.title} foto ${i + 1}`} fill className="object-cover group-hover:scale-110 transition-transform duration-[2000ms] ease-out" />
-                            )}
-                            <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </>
-                )}
+                  <div>
+                    <p className="text-xs text-forest/50 uppercase tracking-widest font-bold mb-2">Cuenta Interbancaria (CCI)</p>
+                    <p className="font-playfair italic text-forest text-2xl">002 193 0096 2161 4018 14</p>
+                  </div>
+                  <div className="pt-4 border-t border-forest/10">
+                    <p className="text-xs text-forest/50 uppercase tracking-widest font-bold mb-1">Titular</p>
+                    <p className="font-inter font-medium text-forest">Los Andes Hotel Resort SAC</p>
+                  </div>
+                </div>
               </AnimatedSection>
 
             </div>
-          </section>
-        </div>
+
+          </div>
+        </section>
 
         <Footer />
     </div>

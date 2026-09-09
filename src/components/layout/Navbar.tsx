@@ -69,8 +69,26 @@ export default function Navbar() {
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 0);
+    
+    // Fix para scroll cruzado: si llegamos al Home desde otra página con un #hash
+    if (pathname === '/' && window.location.hash) {
+      const hash = window.location.hash;
+      const t2 = setTimeout(() => {
+        const target = document.querySelector(hash) as HTMLElement;
+        if (target && lenis) {
+          lenis.scrollTo(target, { offset: 0, duration: 1.2 });
+        } else if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 300); // Pequeño delay para asegurar que el DOM cargó
+      return () => {
+        clearTimeout(t);
+        clearTimeout(t2);
+      };
+    }
+    
     return () => clearTimeout(t);
-  }, []);
+  }, [pathname, lenis]);
 
   const isScrolled = scrollY > 50;
 
