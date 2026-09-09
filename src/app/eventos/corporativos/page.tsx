@@ -1,8 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Building2, MapPin, Trophy, Utensils, Users, Wine, Check, AlertCircle, CreditCard, Mail, Phone, Music } from "lucide-react";
+import { ArrowLeft, ArrowRight, Building2, MapPin, Trophy, Utensils, Users, Wine, Check, AlertCircle, CreditCard, Mail, Phone, Music, X } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
@@ -90,6 +92,20 @@ const GALLERY_MEDIA = [
 ];
 
 export default function CorporativosPage() {
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const [showAllGames, setShowAllGames] = useState(false);
+
+  useEffect(() => {
+    if (isGalleryOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isGalleryOpen]);
+
   return (
     <div className="bg-[#FDFBF7] min-h-screen relative overflow-hidden font-inter selection:bg-gold/30 selection:text-forest">
         <Navbar />
@@ -312,11 +328,19 @@ export default function CorporativosPage() {
               <div className="lg:col-span-2">
                 <h4 className="font-bold text-forest uppercase tracking-widest text-sm border-b border-forest/10 pb-4 mb-6">Catálogo de Dinámicas y Juegos</h4>
                 <div className="flex flex-wrap gap-3">
-                  {GYMKANAS_JUEGOS.map((juego, i) => (
+                  {(showAllGames ? GYMKANAS_JUEGOS : GYMKANAS_JUEGOS.slice(0, 10)).map((juego, i) => (
                     <span key={i} className="bg-white/60 backdrop-blur-sm px-4 py-2.5 rounded-xl text-forest/90 font-medium border border-white text-sm hover:bg-gold hover:text-white hover:border-gold transition-colors cursor-default shadow-sm">
                       {juego}
                     </span>
                   ))}
+                  {!showAllGames && (
+                    <button 
+                      onClick={() => setShowAllGames(true)}
+                      className="bg-forest/5 backdrop-blur-sm px-5 py-2.5 rounded-xl text-forest font-bold border border-forest/10 text-sm hover:bg-forest hover:text-white transition-colors shadow-sm"
+                    >
+                      + {GYMKANAS_JUEGOS.length - 10} juegos más...
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -332,33 +356,51 @@ export default function CorporativosPage() {
               <h2 className="font-playfair text-4xl md:text-5xl text-forest font-light">Revive la Experiencia</h2>
             </AnimatedSection>
             
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-              {GALLERY_MEDIA.map((media, idx) => (
-                <AnimatedSection key={idx} variant="fadeUp" className="break-inside-avoid relative rounded-2xl overflow-hidden shadow-lg group">
-                  {media.type === 'video' ? (
-                    <video 
-                      src={media.src} 
-                      autoPlay 
-                      loop 
-                      muted 
-                      playsInline 
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  ) : (
-                    <Image 
-                      src={media.src} 
-                      alt={`Evento Corporativo ${idx}`} 
-                      width={600} 
-                      height={800} 
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 pointer-events-none" />
-                </AnimatedSection>
-              ))}
+              <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+                {GALLERY_MEDIA.slice(0, 6).map((media, idx) => (
+                  <AnimatedSection 
+                    key={idx} 
+                    variant="fadeUp" 
+                    className="break-inside-avoid relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
+                    onClick={() => setIsGalleryOpen(true)}
+                  >
+                    {media.type === 'video' ? (
+                      <video 
+                        src={media.src} 
+                        autoPlay 
+                        loop 
+                        muted 
+                        playsInline 
+                        className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    ) : (
+                      <Image 
+                        src={media.src} 
+                        alt={`Evento Corporativo ${idx}`} 
+                        width={600} 
+                        height={800} 
+                        className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 text-white font-inter text-sm tracking-widest font-medium">
+                        VER
+                      </div>
+                    </div>
+                  </AnimatedSection>
+                ))}
+              </div>
+
+              <div className="flex justify-center mt-12">
+                <button 
+                  onClick={() => setIsGalleryOpen(true)}
+                  className="bg-forest text-white px-8 py-3.5 rounded-full font-inter text-xs tracking-[0.2em] uppercase font-bold shadow-xl hover:bg-gold hover:-translate-y-1 transition-all duration-300"
+                >
+                  Ver todas las fotos ({GALLERY_MEDIA.length})
+                </button>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
         {/* INVERSIÓN Y TÉRMINOS (Diseño Editorial) */}
         <section className="py-24 md:py-32 bg-white">
@@ -441,6 +483,58 @@ export default function CorporativosPage() {
         </section>
 
         <Footer />
-    </div>
-  );
-}
+
+        {/* Modal de Galería Full Screen */}
+        <AnimatePresence>
+          {isGalleryOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="fixed inset-0 z-[9999] bg-black overflow-y-auto"
+              data-lenis-prevent
+            >
+              <div className="sticky top-0 z-[10000] flex justify-end p-6 bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
+                <button 
+                  onClick={() => setIsGalleryOpen(false)} 
+                  className="text-white/70 hover:text-white p-3 rounded-full bg-black/40 backdrop-blur-md transition-colors pointer-events-auto"
+                >
+                  <X size={28} />
+                </button>
+              </div>
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-24 columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 -mt-16">
+                {GALLERY_MEDIA.map((media, idx) => (
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: idx * 0.1 }}
+                    key={idx} 
+                    className="break-inside-avoid relative rounded-2xl overflow-hidden"
+                  >
+                    {media.type === 'video' ? (
+                      <video 
+                        src={media.src} 
+                        autoPlay 
+                        loop 
+                        muted 
+                        playsInline 
+                        className="w-full h-auto object-cover"
+                      />
+                    ) : (
+                      <Image 
+                        src={media.src} 
+                        alt={`Evento Corporativo Full ${idx}`} 
+                        width={800} 
+                        height={1000} 
+                        className="w-full h-auto object-cover"
+                      />
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  }

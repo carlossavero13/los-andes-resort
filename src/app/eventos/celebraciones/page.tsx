@@ -1,8 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, Cake } from "lucide-react";
+import { ArrowLeft, ArrowRight, Cake, Utensils, Check, AlertCircle, CreditCard, Sparkles, GlassWater, X } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
@@ -10,168 +12,330 @@ import ScrollToTop from "@/components/layout/ScrollToTop";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { getWhatsAppUrl } from "@/lib/utils";
 
-const EVENT_DATA = {
-  title: "Cumpleaños y Fiestas",
-  subtitle: "Celebra la vida rodeado de naturaleza",
-  description: "Ya sea un festejo íntimo en familia o una gran fiesta con amigos, nuestras instalaciones brindan el equilibrio perfecto entre diversión y relajación. Relájate en la piscina, disfruta de nuestra gastronomía y crea recuerdos invaluables.",
-  benefits: ["Espacios reservados al aire libre", "Variedad gastronómica y bar", "Acceso a instalaciones del resort", "Atención personalizada"],
-  images: [
-    "/images/events/cumple/cumple.webp"
-  ],
-  whatsappMsg: "Hola, quiero cotizar la celebración de un Cumpleaños en Los Andes Club Resort."
-};
+const WHATSAPP_MSG = "Hola, me gustaría cotizar una celebración/cumpleaños en Los Andes.";
 
-const isVideo = (url: string) => url.toLowerCase().endsWith('.mov') || url.toLowerCase().endsWith('.mp4');
+const INCLUSIONES = [
+  "Espacios al aire libre y terrazas reservadas",
+  "Opciones de buffet criollo, parrilla o piqueos",
+  "Barra de cócteles y bebidas",
+  "Decoración básica y mesas de cortesía",
+  "Asistencia y personal de servicio durante el evento",
+  "Opciones de toldo y pista de baile"
+];
+
+const TIPOS_EVENTOS = [
+  { icon: <Cake className="w-6 h-6 text-gold" />, title: "Cumpleaños", desc: "Celebra un año más rodeado de amigos y naturaleza, con música y barra exclusiva." },
+  { icon: <Sparkles className="w-6 h-6 text-gold" />, title: "Aniversarios", desc: "Veladas románticas o celebraciones de bodas de plata/oro en ambientes íntimos." },
+  { icon: <GlassWater className="w-6 h-6 text-gold" />, title: "Despedidas y Graduaciones", desc: "Cierra etapas importantes con una fiesta a lo grande y opciones de Full Day." },
+];
+
+const GALLERY_MEDIA = [
+  { type: "image", src: "/images/events/cumple/cumple.webp" },
+  { type: "image", src: "/images/events/corporativo/corp3.webp" },
+  { type: "image", src: "/images/events/matrimonio/matri4.webp" },
+  { type: "video", src: "/videos/video_corp.MOV" },
+];
 
 export default function CelebracionesPage() {
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+
+  useEffect(() => {
+    if (isGalleryOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "unset";
+    return () => { document.body.style.overflow = "unset"; };
+  }, [isGalleryOpen]);
+
   return (
-    <div className="bg-[#FDFBF7] min-h-screen relative overflow-hidden font-inter">
+    <div className="bg-[#FDFBF7] min-h-screen relative overflow-hidden font-inter selection:bg-gold/30 selection:text-forest">
         <Navbar />
         <WhatsAppFloat />
         <ScrollToTop />
 
-        {/* BOTÓN VOLVER */}
-        <div className="absolute top-32 md:top-40 left-0 right-0 z-[70] w-full max-w-7xl mx-auto px-6 pointer-events-none">
+        {/* Botón Volver */}
+        <div className="absolute top-28 lg:top-36 left-4 md:left-12 z-50">
           <Link 
             href="/#eventos"
-            className="pointer-events-auto inline-flex items-center gap-2 text-white hover:text-gold transition-colors duration-300 font-inter text-xs md:text-sm uppercase tracking-[0.2em] font-semibold group bg-black/20 hover:bg-black/40 backdrop-blur-sm px-4 md:px-6 py-2.5 md:py-3 rounded-full border border-white/20 w-max"
+            className="group flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 md:px-5 py-2.5 rounded-full text-white font-inter text-xs tracking-widest uppercase border border-white/20 hover:bg-white hover:text-forest transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.1)]"
           >
             <ArrowLeft className="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-x-1 transition-transform" />
-            Volver a eventos
+            Volver
           </Link>
         </div>
 
         {/* HERO SECTION */}
-        <section className="relative min-h-[60vh] md:min-h-[75vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 z-0 bg-black">
+        <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-20">
+          <div className="absolute inset-0 z-0 bg-forest">
             <Image
-              src={EVENT_DATA.images[0]}
-              alt="Hero Evento"
+              src="/images/events/cumple/cumple.webp"
+              alt="Celebraciones en Los Andes"
               fill
-              className="object-cover object-center"
+              className="object-cover object-center opacity-70"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80" />
+            <div className="absolute inset-0 bg-gradient-to-b from-forest/80 via-transparent to-[#FDFBF7]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-forest/60 to-transparent" />
           </div>
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-48 md:pt-56 pb-20">
-            <AnimatedSection variant="fadeUp" className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-4 md:mb-6">
-                <div className="w-8 md:w-12 h-[2px] bg-gold" />
-                <span className="text-gold text-xs md:text-sm font-inter tracking-[0.4em] uppercase font-bold drop-shadow-md">
-                  Celebraciones Memorables
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-12 mt-20">
+            <AnimatedSection variant="fadeRight" className="max-w-2xl">
+              <div className="inline-flex items-center gap-3 mb-6 bg-white/10 backdrop-blur-sm border border-white/20 px-5 py-2 rounded-full">
+                <Cake className="w-4 h-4 text-gold" />
+                <span className="text-white text-xs font-inter tracking-[0.3em] uppercase font-bold drop-shadow-md">
+                  Momentos Inolvidables
                 </span>
               </div>
-              <h1 className="font-playfair text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white font-medium leading-[1.1] mb-6 drop-shadow-2xl">
-                {EVENT_DATA.title}
+              <h1 className="font-playfair text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white font-medium leading-[1.1] mb-8 drop-shadow-2xl">
+                Celebraciones <br/><span className="italic font-light text-gold">& Fiestas</span>
               </h1>
-              <p className="font-inter text-white/90 text-sm md:text-lg font-light leading-relaxed max-w-2xl drop-shadow-lg">
-                {EVENT_DATA.subtitle}
+              <p className="font-inter text-white/90 text-lg md:text-xl font-light leading-relaxed max-w-xl drop-shadow-lg lg:mx-0 mx-auto">
+                Desde reuniones íntimas hasta grandes fiestas. Hacemos que cada aniversario, cumpleaños o graduación sea una experiencia única rodeada de naturaleza.
               </p>
             </AnimatedSection>
           </div>
         </section>
 
-        {/* CONTENT SECTION */}
-        <div className="py-20 md:py-32 max-w-7xl mx-auto px-4 md:px-6">
-          <section className="relative">
-            <div className="flex flex-col gap-10 lg:gap-16 lg:items-start lg:flex-row">
-              
-              {/* TEXT CONTENT */}
-              <AnimatedSection variant="fadeRight" className="w-full lg:w-5/12 flex flex-col justify-center lg:sticky lg:top-32">
-                <div className="flex items-center gap-4 mb-6 md:mb-8">
-                  <div className="w-14 h-14 md:w-20 md:h-20 rounded-2xl bg-white shadow-xl border border-forest/5 flex items-center justify-center shrink-0 -rotate-3 hover:rotate-0 transition-transform duration-500">
-                    <Cake strokeWidth={1.2} className="w-7 h-7 md:w-10 md:h-10 text-[#722F37]" />
+        {/* TIPOS DE EVENTOS */}
+        <section className="py-24 bg-[#FDFBF7] relative">
+          <div className="max-w-7xl mx-auto px-6">
+            <AnimatedSection variant="fadeUp" className="text-center mb-16">
+              <span className="text-gold text-sm font-inter tracking-[0.4em] uppercase font-bold mb-4 block">Personalización</span>
+              <h2 className="font-playfair text-4xl md:text-5xl text-forest font-light">Para Cada Ocasión</h2>
+            </AnimatedSection>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {TIPOS_EVENTOS.map((evento, idx) => (
+                <AnimatedSection key={idx} variant="fadeUp" delay={idx * 0.1}>
+                  <div className="bg-white p-10 rounded-[2rem] border border-forest/5 shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-full flex flex-col text-center">
+                    <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                      {evento.icon}
+                    </div>
+                    <h3 className="font-playfair text-2xl text-forest mb-4">{evento.title}</h3>
+                    <p className="font-inter text-forest/70 font-light leading-relaxed">{evento.desc}</p>
                   </div>
-                  <div>
-                    <span className="block text-gold text-[10px] md:text-xs font-inter uppercase tracking-[0.2em] font-bold mb-1.5 md:mb-2">
-                      {EVENT_DATA.subtitle}
-                    </span>
-                    <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl text-forest font-light leading-tight">
-                      {EVENT_DATA.title}
-                    </h2>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* INCLUSIONES */}
+        <section className="py-24 bg-white border-y border-forest/10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <AnimatedSection variant="fadeRight">
+                <span className="text-gold text-sm font-inter tracking-[0.4em] uppercase font-bold mb-4 block">Servicio Integral</span>
+                <h2 className="font-playfair text-4xl md:text-5xl text-forest font-light leading-tight mb-8">
+                  Diseñamos tu celebración a medida
+                </h2>
+                <p className="font-inter text-forest/70 font-light text-lg leading-relaxed mb-10 text-justify">
+                  Nos encargamos de todos los detalles logísticos para que tú solo te preocupes por disfrutar. Contamos con paquetes flexibles que se adaptan a tus requerimientos.
+                </p>
+                <div className="space-y-4">
+                  {INCLUSIONES.map((item, i) => (
+                    <div key={i} className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
+                        <Check className="w-5 h-5 text-gold" />
+                      </div>
+                      <span className="font-inter text-forest/90 font-medium">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection variant="fadeLeft">
+                <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
+                  <Image 
+                    src="/images/events/corporativo/corp2.webp"
+                    alt="Buffet y Catering"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-10 left-10 right-10 text-white">
+                    <Utensils className="w-8 h-8 text-gold mb-4" />
+                    <h3 className="font-playfair text-3xl mb-2">Gastronomía de Autor</h3>
+                    <p className="font-inter font-light text-white/80 text-sm">Opciones desde parrilladas al aire libre hasta elegantes buffets criollos.</p>
                   </div>
                 </div>
-
-                <p className="font-inter text-forest/70 font-light text-base md:text-lg leading-relaxed mb-8 md:mb-10 text-justify md:text-left">
-                  {EVENT_DATA.description}
-                </p>
-
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5 mb-10 md:mb-12">
-                  {EVENT_DATA.benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-start gap-3 group/item">
-                      <div className="mt-1 flex items-center justify-center shrink-0 relative">
-                         <div className="absolute inset-0 bg-gold/20 rounded-full scale-0 group-hover/item:scale-150 transition-transform duration-300" />
-                         <Check className="w-[18px] h-[18px] text-gold relative z-10" strokeWidth={2.5} />
-                      </div>
-                      <span className="font-inter text-sm md:text-[15px] text-forest/80 font-medium leading-relaxed group-hover/item:text-forest transition-colors">
-                        {benefit}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a 
-                  href={getWhatsAppUrl(EVENT_DATA.whatsappMsg)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full md:w-max items-center justify-center gap-3 bg-forest hover:bg-forest-light text-white px-8 py-4 md:py-5 rounded-full font-inter text-sm md:text-base font-semibold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group"
-                >
-                  Cotizar este evento
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
               </AnimatedSection>
-
-              {/* IMAGES GALLERY */}
-              <AnimatedSection variant="fadeLeft" className="w-full lg:w-7/12">
-                {EVENT_DATA.images.length === 1 ? (
-                  <div className="relative w-full aspect-[4/3] rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl border border-forest/5 group lg:sticky lg:top-32">
-                    {isVideo(EVENT_DATA.images[0]) ? (
-                      <video src={EVENT_DATA.images[0]} autoPlay muted loop playsInline className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1500ms]" />
-                    ) : (
-                      <Image src={EVENT_DATA.images[0]} alt={EVENT_DATA.title} fill className="object-cover group-hover:scale-105 transition-transform duration-[1500ms]" />
-                    )}
-                  </div>
-                ) : (
-                  <>
-                    {/* Mobile View */}
-                    <div className="flex lg:hidden overflow-x-auto gap-4 snap-x snap-mandatory pb-6 pt-2 hide-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
-                      {EVENT_DATA.images.map((img, i) => (
-                        <div key={i} className="relative w-[85vw] sm:w-[60vw] shrink-0 aspect-[4/3] snap-center rounded-3xl overflow-hidden shadow-lg border border-forest/5">
-                          {isVideo(img) ? (
-                            <video src={img} autoPlay muted loop playsInline className="w-full h-full object-cover" />
-                          ) : (
-                            <Image src={img} alt={`${EVENT_DATA.title} ${i + 1}`} fill className="object-cover" />
-                          )}
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Desktop View */}
-                    <div className="hidden lg:grid grid-cols-2 gap-4 lg:gap-6 w-full auto-rows-[250px]">
-                      {EVENT_DATA.images.map((img, i) => {
-                        const isTall = i % 3 === 0;
-                        return (
-                          <div key={i} className={`relative w-full rounded-3xl overflow-hidden shadow-lg group border border-forest/5 ${isTall ? "row-span-2" : "row-span-1"}`}>
-                            {isVideo(img) ? (
-                              <video src={img} autoPlay muted loop playsInline className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2000ms] ease-out" />
-                            ) : (
-                              <Image src={img} alt={`${EVENT_DATA.title} foto ${i + 1}`} fill className="object-cover group-hover:scale-110 transition-transform duration-[2000ms] ease-out" />
-                            )}
-                            <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </>
-                )}
-              </AnimatedSection>
-
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
+
+        {/* GALERÍA MULTIMEDIA */}
+        <section className="py-24 bg-[#FDFBF7]">
+          <div className="max-w-7xl mx-auto px-6">
+            <AnimatedSection variant="fadeUp" className="text-center mb-16">
+              <span className="text-gold text-sm font-inter tracking-[0.4em] uppercase font-bold mb-4 block">Galería</span>
+              <h2 className="font-playfair text-4xl md:text-5xl text-forest font-light">Momentos de Alegría</h2>
+            </AnimatedSection>
+            
+            <div className="columns-1 sm:columns-2 gap-6 space-y-6">
+              {GALLERY_MEDIA.slice(0, 4).map((media, idx) => (
+                <AnimatedSection 
+                  key={idx} 
+                  variant="fadeUp" 
+                  className="break-inside-avoid relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
+                  onClick={() => setIsGalleryOpen(true)}
+                >
+                  {media.type === 'video' ? (
+                    <video 
+                      src={media.src} 
+                      autoPlay 
+                      loop 
+                      muted 
+                      playsInline 
+                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  ) : (
+                    <Image 
+                      src={media.src} 
+                      alt={`Celebraciones ${idx}`} 
+                      width={600} 
+                      height={800} 
+                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 text-white font-inter text-sm tracking-widest font-medium">
+                      VER
+                    </div>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+
+            <div className="flex justify-center mt-12">
+              <button 
+                onClick={() => setIsGalleryOpen(true)}
+                className="bg-forest text-white px-8 py-3.5 rounded-full font-inter text-xs tracking-[0.2em] uppercase font-bold shadow-xl hover:bg-gold hover:-translate-y-1 transition-all duration-300"
+              >
+                Ver todas las fotos
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Y TÉRMINOS */}
+        <section className="py-24 md:py-32 bg-white">
+          <div className="max-w-6xl mx-auto px-6">
+            
+            {/* Tarjeta de Cotización */}
+            <AnimatedSection variant="fadeUp" className="max-w-4xl mx-auto bg-forest text-white p-12 md:p-20 rounded-[3rem] shadow-2xl border border-gold/20 text-center relative mb-20 overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-gold to-transparent" />
+              
+              <span className="text-gold text-sm font-inter tracking-[0.4em] uppercase font-bold mb-4 block">Empieza a Planificar</span>
+              <h3 className="font-playfair text-4xl md:text-5xl mb-8 leading-tight">Haz de tu celebración algo inolvidable</h3>
+              
+              <p className="text-white/70 text-lg font-light mb-12 max-w-2xl mx-auto border-b border-white/10 pb-12">
+                Escríbenos contándonos el motivo de tu celebración y la cantidad de invitados para armarte un paquete especial a tu medida.
+              </p>
+              
+              <a 
+                href={getWhatsAppUrl(WHATSAPP_MSG)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-gold text-forest px-12 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-xl hover:bg-white transition-all duration-300 hover:-translate-y-1"
+              >
+                Cotizar Celebración
+                <ArrowRight className="w-5 h-5" />
+              </a>
+            </AnimatedSection>
+
+            {/* Términos y Pagos */}
+            <div className="grid md:grid-cols-2 gap-16 lg:gap-24 pt-12 border-t border-forest/10">
+              <AnimatedSection variant="fadeRight">
+                <div className="flex items-center gap-3 mb-8">
+                  <AlertCircle className="w-6 h-6 text-gold" />
+                  <h4 className="font-playfair text-3xl text-forest">Términos Importantes</h4>
+                </div>
+                <ul className="space-y-6">
+                  <li className="text-forest/70 font-light text-base leading-relaxed pl-4 border-l-2 border-gold/30">
+                    Cotización válida por <strong>30 días</strong>. Reserva de fecha asegurada con el abono del 50%.
+                  </li>
+                  <li className="text-forest/70 font-light text-base leading-relaxed pl-4 border-l-2 border-gold/30">
+                    Horario de fiestas máximo hasta las 02:00 AM (sujeto a regulaciones).
+                  </li>
+                </ul>
+              </AnimatedSection>
+
+              <AnimatedSection variant="fadeLeft">
+                <div className="flex items-center gap-3 mb-8">
+                  <CreditCard className="w-6 h-6 text-gold" />
+                  <h4 className="font-playfair text-3xl text-forest">Métodos de Pago</h4>
+                </div>
+                <div className="bg-[#FDFBF7] p-8 rounded-[2rem] border border-forest/10 space-y-6">
+                  <div>
+                    <p className="text-xs text-forest/50 uppercase tracking-widest font-bold mb-2">Cuenta BCP Soles</p>
+                    <p className="font-playfair italic text-forest text-2xl">1939 6216 14018</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-forest/50 uppercase tracking-widest font-bold mb-2">Cuenta Interbancaria (CCI)</p>
+                    <p className="font-playfair italic text-forest text-2xl">002 193 0096 2161 4018 14</p>
+                  </div>
+                  <div className="pt-4 border-t border-forest/10">
+                    <p className="text-xs text-forest/50 uppercase tracking-widest font-bold mb-1">Titular</p>
+                    <p className="font-inter font-medium text-forest">Los Andes Hotel Resort SAC</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            </div>
+          </div>
+        </section>
 
         <Footer />
+
+        {/* Modal de Galería Full Screen */}
+        <AnimatePresence>
+          {isGalleryOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="fixed inset-0 z-[9999] bg-black overflow-y-auto"
+              data-lenis-prevent
+            >
+              <div className="sticky top-0 z-[10000] flex justify-end p-6 bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
+                <button 
+                  onClick={() => setIsGalleryOpen(false)} 
+                  className="text-white/70 hover:text-white p-3 rounded-full bg-black/40 backdrop-blur-md transition-colors pointer-events-auto"
+                >
+                  <X size={28} />
+                </button>
+              </div>
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-24 columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 -mt-16">
+                {GALLERY_MEDIA.map((media, idx) => (
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: idx * 0.1 }}
+                    key={idx} 
+                    className="break-inside-avoid relative rounded-2xl overflow-hidden"
+                  >
+                    {media.type === 'video' ? (
+                      <video 
+                        src={media.src} 
+                        autoPlay 
+                        loop 
+                        muted 
+                        playsInline 
+                        className="w-full h-auto object-cover"
+                      />
+                    ) : (
+                      <Image 
+                        src={media.src} 
+                        alt={`Celebraciones Full ${idx}`} 
+                        width={800} 
+                        height={1000} 
+                        className="w-full h-auto object-cover"
+                      />
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
     </div>
   );
 }

@@ -328,19 +328,15 @@ export default function MatrimoniosPage() {
         <section className="py-24 md:py-32 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             
-            {/* Tarjeta de Precio */}
+            {/* Tarjeta de Cotización */}
             <AnimatedSection variant="fadeUp" className="max-w-4xl mx-auto bg-forest text-white p-12 md:p-20 rounded-[3rem] shadow-2xl border border-gold/20 text-center relative mb-20 overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-gold to-transparent" />
               
-              <span className="text-gold text-sm font-inter tracking-[0.4em] uppercase font-bold mb-4 block">Inversión</span>
-              <h3 className="font-playfair text-5xl md:text-6xl mb-12">Paquete Los Andes</h3>
+              <span className="text-gold text-sm font-inter tracking-[0.4em] uppercase font-bold mb-4 block">Planificación a Medida</span>
+              <h3 className="font-playfair text-4xl md:text-6xl mb-8 leading-tight">Diseñemos juntos la boda de tus sueños</h3>
               
-              <div className="flex items-center justify-center gap-4 mb-8">
-                <span className="text-3xl md:text-4xl font-light text-gold">S/.</span>
-                <span className="text-7xl md:text-9xl font-playfair font-medium tracking-tight">21 999</span>
-              </div>
-              <p className="text-white/50 text-sm uppercase tracking-widest mb-12 border-b border-white/10 pb-12 max-w-sm mx-auto">
-                * Precio incluye IGV
+              <p className="text-white/70 text-lg font-light mb-12 max-w-2xl mx-auto border-b border-white/10 pb-12">
+                Cada historia de amor es única. Contáctanos para enviarte un presupuesto personalizado basado en la cantidad de tus invitados y todos los detalles que imaginas para tu día especial.
               </p>
               
               <a 
@@ -349,7 +345,7 @@ export default function MatrimoniosPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-gold text-forest px-12 py-5 rounded-full font-bold text-sm uppercase tracking-widest shadow-xl hover:bg-white transition-all duration-300 hover:-translate-y-1"
               >
-                Reservar mi fecha
+                Cotizar mi boda
                 <ArrowRight className="w-5 h-5" />
               </a>
             </AnimatedSection>
