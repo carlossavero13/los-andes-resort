@@ -168,13 +168,13 @@ export default function FullDayPage() {
   <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#FDFBF7] to-transparent z-10 md:hidden pointer-events-none flex items-center justify-end">
     <ChevronRight className="w-6 h-6 text-forest/70 mr-1 drop-shadow-md" />
   </div>
-  <div className="flex overflow-x-auto snap-x snap-mandatory md:block md:columns-2 lg:columns-3 gap-4 md:gap-6 pb-6 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+  <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 pb-6 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
 
               {GALLERY_MEDIA.slice(0, 5).map((media, idx) => (
                 <AnimatedSection 
                   key={idx} 
                   variant="fadeUp" 
-                  className="snap-center shrink-0 w-[85vw] sm:w-[60vw] md:w-auto md:w-full break-inside-avoid relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer mb-0 md:mb-6"
+                  className="snap-center shrink-0 w-[85vw] sm:w-[60vw] md:w-full relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer aspect-[4/5]"
                   onClick={() => setIsGalleryOpen(true)}
                 >
                   <Image 
@@ -182,7 +182,7 @@ export default function FullDayPage() {
                     alt={`Full Day Colegios ${idx}`} 
                     width={600} 
                     height={800} 
-                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
                     <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 text-white font-inter text-sm tracking-widest font-medium">
@@ -292,21 +292,21 @@ export default function FullDayPage() {
                   <X size={28} />
                 </button>
               </div>
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-24 columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 -mt-16">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 -mt-16">
                 {GALLERY_MEDIA.map((media, idx) => (
                   <motion.div 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: idx * 0.1 }}
                     key={idx} 
-                    className="break-inside-avoid relative rounded-2xl overflow-hidden"
+                    className="relative rounded-2xl overflow-hidden aspect-[4/5]"
                   >
                     <Image 
                       src={media.src} 
                       alt={`Full Day Colegios Full ${idx}`} 
                       width={800} 
                       height={1000} 
-                      className="w-full h-auto object-cover"
+                      className="w-full h-full object-cover"
                     />
                   </motion.div>
                 ))}
