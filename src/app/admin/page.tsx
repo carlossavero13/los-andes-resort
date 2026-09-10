@@ -127,7 +127,7 @@ export default function AdminDashboard() {
       <aside className="hidden md:flex flex-col w-72 bg-white border-r border-gray-100 shadow-[2px_0_10px_rgba(0,0,0,0.02)] z-10 relative shrink-0">
         <div className="p-8 border-b border-gray-100 flex justify-center">
           <img 
-            src="/images/los_andes_logo.webp" 
+            src="/images/los_andes_brand.webp" 
             alt="Los Andes Logo" 
             className="w-32 object-contain brightness-0 opacity-80"
           />
@@ -171,7 +171,7 @@ export default function AdminDashboard() {
 
       {/* MOBILE HEADER (Normal document flow) */}
       <header className="md:hidden shrink-0 flex items-center justify-between p-4 bg-white border-b border-gray-100 z-20">
-        <img src="/images/los_andes_logo.webp" alt="Logo" className="w-24 object-contain brightness-0 opacity-80" />
+        <img src="/images/los_andes_brand.webp" alt="Logo" className="w-24 object-contain brightness-0 opacity-80" />
         <button onClick={handleLogout} className="p-2 text-gray-500 hover:text-gray-900 transition-colors">
           <LogOut className="w-5 h-5" />
         </button>

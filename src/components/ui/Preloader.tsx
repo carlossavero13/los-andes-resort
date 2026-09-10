@@ -58,7 +58,7 @@ export default function Preloader() {
             {/* Logo Ampliado */}
             <div className="relative w-72 h-36 md:w-96 md:h-48 mb-10">
                <Image 
-                  src="/images/los_andes_logo.webp" 
+                  src="/images/los_andes_brand.webp" 
                   alt="Los Andes Club Resort"
                   fill
                   priority

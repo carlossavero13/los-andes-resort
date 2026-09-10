@@ -51,7 +51,7 @@ export function LoginForm({ onLogin }: LoginFormProps) {
         <div className="mb-10 text-center flex justify-center">
           <div className="w-40 drop-shadow-md">
             <img 
-              src="/images/los_andes_logo.webp" 
+              src="/images/los_andes_brand.webp" 
               alt="Los Andes Logo" 
               className="object-contain w-full h-auto brightness-0 invert"
             />
