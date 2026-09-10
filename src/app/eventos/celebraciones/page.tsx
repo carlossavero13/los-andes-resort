@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Cake, Utensils, Check, AlertCircle, CreditCard, Sparkles, GlassWater, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Cake, Utensils, Check, AlertCircle, CreditCard, Sparkles, GlassWater, X, PartyPopper, MapPin, Users } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
@@ -15,18 +15,18 @@ import { getWhatsAppUrl } from "@/lib/utils";
 const WHATSAPP_MSG = "Hola, me gustaría cotizar una celebración/cumpleaños en Los Andes.";
 
 const INCLUSIONES = [
-  "Espacios al aire libre y terrazas reservadas",
-  "Opciones de buffet criollo, parrilla o piqueos",
-  "Barra de cócteles y bebidas",
-  "Decoración básica y mesas de cortesía",
-  "Asistencia y personal de servicio durante el evento",
-  "Opciones de toldo y pista de baile"
+  "Paquetes de comida y catering a partir de 15 personas (Buffet, Parrilla, Infantil)",
+  "Servicios integrales: Decoración, toldos, música y asistencia durante el evento",
+  "Espacios amplios que brindamos: Áreas verdes, terrazas y zonas de piscina",
+  "Opción de espacio propio y totalmente personalizado según la temática",
+  "Barra de cócteles y bebidas refrescantes",
+  "Flexibilidad para incorporar shows infantiles y animaciones"
 ];
 
 const TIPOS_EVENTOS = [
   { icon: <Cake className="w-6 h-6 text-gold" />, title: "Cumpleaños", desc: "Celebra un año más rodeado de amigos y naturaleza, con música y barra exclusiva." },
-  { icon: <Sparkles className="w-6 h-6 text-gold" />, title: "Aniversarios", desc: "Veladas románticas o celebraciones de bodas de plata/oro en ambientes íntimos." },
-  { icon: <GlassWater className="w-6 h-6 text-gold" />, title: "Despedidas y Graduaciones", desc: "Cierra etapas importantes con una fiesta a lo grande y opciones de Full Day." },
+  { icon: <PartyPopper className="w-6 h-6 text-gold" />, title: "Fiestas y Shows Infantiles", desc: "Espacios seguros y amplios ideales para shows infantiles, juegos inflables y mucha diversión." },
+  { icon: <Sparkles className="w-6 h-6 text-gold" />, title: "Aniversarios y Despedidas", desc: "Veladas románticas o celebraciones a lo grande en ambientes íntimos y exclusivos." },
 ];
 
 const GALLERY_MEDIA = [
@@ -79,16 +79,16 @@ export default function CelebracionesPage() {
           <div className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-12 mt-20">
             <AnimatedSection variant="fadeRight" className="max-w-2xl">
               <div className="inline-flex items-center gap-3 mb-6 bg-white/10 backdrop-blur-sm border border-white/20 px-5 py-2 rounded-full">
-                <Cake className="w-4 h-4 text-gold" />
+                <PartyPopper className="w-4 h-4 text-gold" />
                 <span className="text-white text-xs font-inter tracking-[0.3em] uppercase font-bold drop-shadow-md">
                   Momentos Inolvidables
                 </span>
               </div>
               <h1 className="font-playfair text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white font-medium leading-[1.1] mb-8 drop-shadow-2xl">
-                Celebraciones <br/><span className="italic font-light text-gold">& Fiestas</span>
+                Celebraciones <br/><span className="italic font-light text-gold">& Eventos</span>
               </h1>
               <p className="font-inter text-white/90 text-lg md:text-xl font-light leading-relaxed max-w-xl drop-shadow-lg lg:mx-0 mx-auto">
-                Desde reuniones íntimas hasta grandes fiestas. Hacemos que cada aniversario, cumpleaños o graduación sea una experiencia única rodeada de naturaleza.
+                Desde shows infantiles hasta grandes fiestas y aniversarios. Diseñamos espacios propios y personalizados para que cada celebración sea única.
               </p>
             </AnimatedSection>
           </div>
@@ -118,25 +118,25 @@ export default function CelebracionesPage() {
           </div>
         </section>
 
-        {/* INCLUSIONES */}
+        {/* ESPACIOS Y SERVICIOS QUE BRINDAMOS */}
         <section className="py-24 bg-white border-y border-forest/10">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <AnimatedSection variant="fadeRight">
-                <span className="text-gold text-sm font-inter tracking-[0.4em] uppercase font-bold mb-4 block">Servicio Integral</span>
+                <span className="text-gold text-sm font-inter tracking-[0.4em] uppercase font-bold mb-4 block">Servicios y Espacios</span>
                 <h2 className="font-playfair text-4xl md:text-5xl text-forest font-light leading-tight mb-8">
                   Diseñamos tu celebración a medida
                 </h2>
                 <p className="font-inter text-forest/70 font-light text-lg leading-relaxed mb-10 text-justify">
-                  Nos encargamos de todos los detalles logísticos para que tú solo te preocupes por disfrutar. Contamos con paquetes flexibles que se adaptan a tus requerimientos.
+                  Contamos con los espacios que brindamos ideales para ti, o si lo prefieres, preparamos un espacio propio y personalizado según la temática de tu evento. Ofrecemos paquetes completos de comidas a partir de 15 personas.
                 </p>
                 <div className="space-y-4">
                   {INCLUSIONES.map((item, i) => (
-                    <div key={i} className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
+                    <div key={i} className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center shrink-0 mt-1">
                         <Check className="w-5 h-5 text-gold" />
                       </div>
-                      <span className="font-inter text-forest/90 font-medium">{item}</span>
+                      <span className="font-inter text-forest/90 font-medium leading-relaxed pt-2">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -146,15 +146,15 @@ export default function CelebracionesPage() {
                 <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl">
                   <Image 
                     src="/images/events/corporativo/corp2.webp"
-                    alt="Buffet y Catering"
+                    alt="Servicios y Catering"
                     fill
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-forest/80 via-transparent to-transparent" />
                   <div className="absolute bottom-10 left-10 right-10 text-white">
-                    <Utensils className="w-8 h-8 text-gold mb-4" />
-                    <h3 className="font-playfair text-3xl mb-2">Gastronomía de Autor</h3>
-                    <p className="font-inter font-light text-white/80 text-sm">Opciones desde parrilladas al aire libre hasta elegantes buffets criollos.</p>
+                    <Users className="w-8 h-8 text-gold mb-4" />
+                    <h3 className="font-playfair text-3xl mb-2">Paquetes para Grupos</h3>
+                    <p className="font-inter font-light text-white/80 text-sm">Organizamos el catering y los servicios que brindamos para grupos de 15 a más personas.</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -228,7 +228,7 @@ export default function CelebracionesPage() {
               <h3 className="font-playfair text-4xl md:text-5xl mb-8 leading-tight">Haz de tu celebración algo inolvidable</h3>
               
               <p className="text-white/70 text-lg font-light mb-12 max-w-2xl mx-auto border-b border-white/10 pb-12">
-                Escríbenos contándonos el motivo de tu celebración y la cantidad de invitados para armarte un paquete especial a tu medida.
+                Escríbenos contándonos el motivo de tu celebración, si deseas show infantil y la cantidad de invitados para armarte un paquete especial a tu medida.
               </p>
               
               <a 
@@ -254,7 +254,7 @@ export default function CelebracionesPage() {
                     Cotización válida por <strong>30 días</strong>. Reserva de fecha asegurada con el abono del 50%.
                   </li>
                   <li className="text-forest/70 font-light text-base leading-relaxed pl-4 border-l-2 border-gold/30">
-                    Horario de fiestas máximo hasta las 02:00 AM (sujeto a regulaciones).
+                    Nuestros paquetes gastronómicos aplican a partir de <strong>15 personas</strong>.
                   </li>
                 </ul>
               </AnimatedSection>
