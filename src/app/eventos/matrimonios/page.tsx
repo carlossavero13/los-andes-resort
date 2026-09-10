@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Heart, GlassWater, Utensils, PartyPopper, Speaker, BedDouble, CreditCard, AlertCircle, Check, Mail, Phone } from "lucide-react";
+import { ArrowLeft, ArrowRight, Heart, GlassWater, Utensils, PartyPopper, Speaker, BedDouble, CreditCard, AlertCircle, Check, Mail, Phone , ChevronLeft, ChevronRight} from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";

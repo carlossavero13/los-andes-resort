@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, GraduationCap, ShieldCheck, Clock, X, AlertCircle, CreditCard } from "lucide-react";
+import { ArrowLeft, ArrowRight, GraduationCap, ShieldCheck, Clock, X, AlertCircle, CreditCard , ChevronLeft, ChevronRight} from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
@@ -161,12 +161,20 @@ export default function FullDayPage() {
               <h2 className="font-playfair text-4xl md:text-5xl text-forest font-light">Diversión Asegurada</h2>
             </AnimatedSection>
             
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+            <div className="relative group">
+  <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#FDFBF7] to-transparent z-10 md:hidden pointer-events-none flex items-center justify-start">
+    <ChevronLeft className="w-6 h-6 text-forest/70 ml-1 drop-shadow-md" />
+  </div>
+  <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#FDFBF7] to-transparent z-10 md:hidden pointer-events-none flex items-center justify-end">
+    <ChevronRight className="w-6 h-6 text-forest/70 mr-1 drop-shadow-md" />
+  </div>
+  <div className="flex overflow-x-auto snap-x snap-mandatory md:block md:columns-2 lg:columns-3 gap-4 md:gap-6 pb-6 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+
               {GALLERY_MEDIA.slice(0, 5).map((media, idx) => (
                 <AnimatedSection 
                   key={idx} 
                   variant="fadeUp" 
-                  className="break-inside-avoid relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
+                  className="snap-center shrink-0 w-[85vw] sm:w-[60vw] md:w-auto md:w-full break-inside-avoid relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer mb-0 md:mb-6"
                   onClick={() => setIsGalleryOpen(true)}
                 >
                   <Image 
@@ -183,9 +191,10 @@ export default function FullDayPage() {
                   </div>
                 </AnimatedSection>
               ))}
-            </div>
-
-            <div className="flex justify-center mt-12">
+            
+  </div>
+</div>
+<div className="flex justify-center mt-12">
               <button 
                 onClick={() => setIsGalleryOpen(true)}
                 className="bg-forest text-white px-8 py-3.5 rounded-full font-inter text-xs tracking-[0.2em] uppercase font-bold shadow-xl hover:bg-gold hover:-translate-y-1 transition-all duration-300"
