@@ -32,8 +32,6 @@ const ITINERARIO = [
 ];
 
 const GALLERY_MEDIA = [
-  { type: "image", src: "/images/events/fullday_colegios/f_day_cole1.webp" },
-  { type: "image", src: "/images/events/fullday_colegios/f_day_cole2.webp" },
   { type: "image", src: "/images/events/fullday_colegios/f_day_cole3.webp" },
   { type: "image", src: "/images/events/fullday_colegios/f_day_cole4.webp" },
   { type: "image", src: "/images/events/fullday_colegios/f_day_cole5.webp" }
@@ -69,7 +67,7 @@ export default function FullDayPage() {
         <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-20">
           <div className="absolute inset-0 z-0 bg-forest">
             <Image
-              src="/images/events/fullday_colegios/f_day_cole2.webp"
+              src="/images/events/fullday_colegios/f_day_cole3.webp"
               alt="Full Day Colegios Los Andes"
               fill
               className="object-cover object-center opacity-70"
