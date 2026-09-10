@@ -126,8 +126,8 @@ export default function Navbar() {
                   : "w-[154px] h-[154px] md:w-[176px] md:h-[176px] drop-shadow-2xl"
               )}>
                 <Image 
-                  src="/images/los_andes_logo.webp" 
-                  alt="Los Andes Logo" 
+                  src="/images/los_andes_brand.webp" 
+                  alt="Los Andes Resort" 
                   fill
                   className={cn("object-contain", !isScrolled && "object-top")}
                   priority
@@ -232,8 +232,8 @@ export default function Navbar() {
                 className="w-[100px] relative opacity-80 brightness-0 invert block"
               >
                 <Image 
-                  src="/images/los_andes_logo.webp" 
-                  alt="Los Andes Logo" 
+                  src="/images/los_andes_brand.webp" 
+                  alt="Los Andes Resort" 
                   width={100}
                   height={40}
                   className="object-contain"
