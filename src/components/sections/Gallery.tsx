@@ -113,6 +113,26 @@ const gridItems: GalleryImage[] = [
   // Actividades
   { id: 105, category: "Actividades", src: "/images/gallery/cuatrimoto_1.webp", label: "Paseo en Cuatrimoto" },
   { id: 106, category: "Actividades", src: "/images/gallery/cuatrimoto_2.webp", label: "Aventura en Cieneguilla" },
+,
+  { id: 1000, category: "Habitaciones", src: "/images/rooms/hab_mat_std/hab_mat_std7.webp", label: "Habitación Matrimonial Estándar" },
+  { id: 1001, category: "Habitaciones", src: "/images/rooms/hab_mat_std/hab_mat_std8.webp", label: "Habitación Matrimonial Estándar" },
+  { id: 1002, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun6.webp", label: "Suite Doble Junior" },
+  { id: 1003, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun7.webp", label: "Suite Doble Junior" },
+  { id: 1004, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun8.webp", label: "Suite Doble Junior" },
+  { id: 1005, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun9.webp", label: "Suite Doble Junior" },
+  { id: 1006, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun10.webp", label: "Suite Doble Junior" },
+  { id: 1007, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun11.webp", label: "Suite Doble Junior" },
+  { id: 1008, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun12.webp", label: "Suite Doble Junior" },
+  { id: 1009, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun13.webp", label: "Suite Doble Junior" },
+  { id: 1010, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun14.webp", label: "Suite Doble Junior" },
+  { id: 1011, category: "Habitaciones", src: "/images/rooms/sui_jun_ejec/sui_jun_ejec3.webp", label: "Suite Junior Ejecutiva" },
+  { id: 1012, category: "Habitaciones", src: "/images/rooms/sui_jun_ejec/sui_jun_ejec4.webp", label: "Suite Junior Ejecutiva" },
+  { id: 1013, category: "Habitaciones", src: "/images/rooms/sui_jun_ejec/sui_jun_ejec5.webp", label: "Suite Junior Ejecutiva" },
+  { id: 1014, category: "Habitaciones", src: "/images/rooms/sui_jun_ejec/sui_jun_ejec6.webp", label: "Suite Junior Ejecutiva" },
+  { id: 1015, category: "Habitaciones", src: "/images/rooms/sui_jun_ejec/sui_jun_ejec7.webp", label: "Suite Junior Ejecutiva" },
+  { id: 1016, category: "Habitaciones", src: "/images/rooms/sui_jun_ejec/sui_jun_ejec8.webp", label: "Suite Junior Ejecutiva" },
+  { id: 1017, category: "Habitaciones", src: "/images/rooms/sui_mat_jun/sui_mat_jun6.webp", label: "Suite Matrimonial Junior" },
+  { id: 1018, category: "Habitaciones", src: "/images/rooms/sui_mat_jun/sui_mat_jun7.webp", label: "Suite Matrimonial Junior" }
 ];
 
 const categories = ["Todas", "Piscinas", "Habitaciones", "Restaurante", "Eventos", "Áreas verdes", "Familias", "Actividades"];

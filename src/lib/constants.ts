@@ -36,12 +36,14 @@ export const ROOMS: Room[] = [
     price: 300.00,
     description: "Una suite matrimonial premium con cama King Size y todas las comodidades modernas en la zona del hotel.",
     images: [
-      "/images/rooms/sui_mat_jun/sui_mat_jun1.webp",
-      "/images/rooms/sui_mat_jun/sui_mat_jun2.webp",
-      "/images/rooms/sui_mat_jun/sui_mat_jun3.webp",
-      "/images/rooms/sui_mat_jun/sui_mat_jun4.webp",
-      "/images/rooms/sui_mat_jun/sui_mat_jun5.webp"
-    ],
+        "/images/rooms/sui_mat_jun/sui_mat_jun1.webp",
+        "/images/rooms/sui_mat_jun/sui_mat_jun2.webp",
+        "/images/rooms/sui_mat_jun/sui_mat_jun3.webp",
+        "/images/rooms/sui_mat_jun/sui_mat_jun4.webp",
+        "/images/rooms/sui_mat_jun/sui_mat_jun5.webp",
+        "/images/rooms/sui_mat_jun/sui_mat_jun6.webp",
+        "/images/rooms/sui_mat_jun/sui_mat_jun7.webp"
+      ],
     amenities: ["1 Cama King Size", "Tina", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
     featured: true,
   },
@@ -54,9 +56,15 @@ export const ROOMS: Room[] = [
     price: 350.00,
     description: "Una suite ejecutiva ideal para quienes buscan comodidad, elegancia y un espacio perfecto para el descanso.",
     images: [
-      "/images/rooms/sui_jun_ejec/sui_jun_ejec1.webp",
-      "/images/rooms/sui_jun_ejec/sui_jun_ejec2.webp"
-    ],
+        "/images/rooms/sui_jun_ejec/sui_jun_ejec1.webp",
+        "/images/rooms/sui_jun_ejec/sui_jun_ejec2.webp",
+        "/images/rooms/sui_jun_ejec/sui_jun_ejec3.webp",
+        "/images/rooms/sui_jun_ejec/sui_jun_ejec4.webp",
+        "/images/rooms/sui_jun_ejec/sui_jun_ejec5.webp",
+        "/images/rooms/sui_jun_ejec/sui_jun_ejec6.webp",
+        "/images/rooms/sui_jun_ejec/sui_jun_ejec7.webp",
+        "/images/rooms/sui_jun_ejec/sui_jun_ejec8.webp"
+      ],
     amenities: ["1 Cama King Size", "Jacuzzi", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
     featured: true,
   },
@@ -69,13 +77,15 @@ export const ROOMS: Room[] = [
     price: 270.00,
     description: "Una cabaña íntima y acogedora, perfecta para parejas que buscan tranquilidad rodeados de naturaleza.",
     images: [
-      "/images/rooms/hab_mat_std/hab_mat_std1.webp",
-      "/images/rooms/hab_mat_std/hab_mat_std2.webp",
-      "/images/rooms/hab_mat_std/hab_mat_std3.webp",
-      "/images/rooms/hab_mat_std/hab_mat_std4.webp",
-      "/images/rooms/hab_mat_std/hab_mat_std5.webp",
-      "/images/rooms/hab_mat_std/hab_mat_std6.webp"
-    ],
+        "/images/rooms/hab_mat_std/hab_mat_std1.webp",
+        "/images/rooms/hab_mat_std/hab_mat_std2.webp",
+        "/images/rooms/hab_mat_std/hab_mat_std3.webp",
+        "/images/rooms/hab_mat_std/hab_mat_std4.webp",
+        "/images/rooms/hab_mat_std/hab_mat_std5.webp",
+        "/images/rooms/hab_mat_std/hab_mat_std6.webp",
+        "/images/rooms/hab_mat_std/hab_mat_std7.webp",
+        "/images/rooms/hab_mat_std/hab_mat_std8.webp"
+      ],
     amenities: ["1 Cama Queen", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
 
@@ -107,13 +117,21 @@ export const ROOMS: Room[] = [
     price: 400.00,
     description: "Comodidad de lujo para 4 personas con dos camas Queen en nuestra exclusiva zona de hotel.",
     images: [
-      "/images/rooms/sui_dob_jun/sui_dob_jun1.webp",
-      "/images/rooms/sui_dob_jun/sui_dob_jun2.webp",
-      "/images/rooms/sui_dob_jun/sui_dob_jun3.webp",
-      "/images/rooms/sui_dob_jun/sui_dob_jun4.webp",
-      "/images/rooms/sui_dob_jun/sui_dob_jun5.webp",
-      "/images/rooms/sui_dob_jun/sui_dob_jun6.webp"
-    ],
+        "/images/rooms/sui_dob_jun/sui_dob_jun1.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun10.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun11.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun12.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun13.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun14.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun2.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun3.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun4.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun5.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun6.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun7.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun8.webp",
+        "/images/rooms/sui_dob_jun/sui_dob_jun9.webp"
+      ],
     amenities: ["2 Camas Queen", "Área de 44 m²", "Terraza", "Vista a la piscina", "Wifi", "Friobar", "Agua Caliente", "Toalla / Toalla de mano", "Aire acondicionado", "Servicio de habitaciones disponible", "Limpieza diaria", "Televisión", "Artículos de aseo", "Desayuno Incluido", "Piscina", "Cancha de fútbol y vóley", "Juegos recreativos", "Áreas verdes", "Estacionamiento"],
   },
   {
