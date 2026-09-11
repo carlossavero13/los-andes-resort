@@ -30,18 +30,6 @@ export interface NavLink {
   href: string;
 }
 
-export interface EventType {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-}
-
-export interface CommonArea {
-  id: string;
-  name: string;
-  icon: string;
-}
 
 export interface GalleryImage {
   id: number;
