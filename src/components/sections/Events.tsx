@@ -19,7 +19,7 @@ const EVENT_CATEGORIES = [
     id: "fullday",
     title: "Full Day Colegios",
     href: "/eventos/full-day",
-    image: "/images/events/fullday_colegios/f_day_cole2.webp",
+    image: "/images/events/fullday_colegios/f_day_cole3.webp",
   },
   {
     id: "corporativo",
