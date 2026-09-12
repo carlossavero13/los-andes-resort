@@ -113,7 +113,6 @@ const gridItems: GalleryImage[] = [
   // Actividades
   { id: 105, category: "Actividades", src: "/images/gallery/cuatrimoto_1.webp", label: "Paseo en Cuatrimoto" },
   { id: 106, category: "Actividades", src: "/images/gallery/cuatrimoto_2.webp", label: "Aventura en Cieneguilla" },
-,
   { id: 1000, category: "Habitaciones", src: "/images/rooms/hab_mat_std/hab_mat_std7.webp", label: "Habitación Matrimonial Estándar" },
   { id: 1001, category: "Habitaciones", src: "/images/rooms/hab_mat_std/hab_mat_std8.webp", label: "Habitación Matrimonial Estándar" },
   { id: 1002, category: "Habitaciones", src: "/images/rooms/sui_dob_jun/sui_dob_jun6.webp", label: "Suite Doble Junior" },
