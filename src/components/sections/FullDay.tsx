@@ -8,8 +8,12 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { getWhatsAppUrl } from "@/lib/utils";
 
 const FULLDAY_IMAGES = [
-  "/images/gallery/piscina (2).webp",
+  "/images/site/piscina-principal-1.webp",
+  "/images/site/huesped-con-mascota-2.webp",
   "/images/gallery/cuatrimoto_1.webp",
+  "/images/site/piscina-y-jacuzzi.webp",
+  "/images/site/atardecer-jardines-sombrillas.webp",
+  "/images/site/puente-madera-detalle.webp",
   "/images/gallery/cuatrimoto_2.webp",
   "/images/gallery/vista.webp",
   "/images/gallery/piscina (3).webp",
