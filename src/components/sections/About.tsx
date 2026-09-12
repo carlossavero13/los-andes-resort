@@ -1,11 +1,30 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import { Leaf, Sun, Coffee } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 
+
+const ABOUT_SLIDER_IMAGES = [
+  "/images/site/piscina-principal-1.webp",
+  "/images/site/huesped-con-mascota-1.webp",
+  "/images/site/vista-balcon-hacia-jardines.webp",
+  "/images/gallery/vista.webp"
+];
+
 export default function About() {
+  const [currentImg, setCurrentImg] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImg((prev) => (prev + 1) % ABOUT_SLIDER_IMAGES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="nosotros" className="py-24 md:py-32 bg-[#FDFBF7] relative overflow-hidden">
       
@@ -73,13 +92,26 @@ export default function About() {
             {/* Imagen Principal (Arriba Izquierda) */}
             <div className="absolute top-0 left-0 w-[75%] h-[75%] overflow-hidden rounded-3xl shadow-2xl z-10 group-hover:-translate-y-2 transition-transform duration-700">
               <div className="absolute inset-0 bg-black/10 z-10 group-hover:opacity-0 transition-opacity duration-700 pointer-events-none" />
-              <Image 
-                src="/images/site/piscina-principal-1.webp" 
-                alt="Piscina principal del resort" 
-                fill 
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-[3000ms] group-hover:scale-105"
-              />
+              
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={currentImg}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <Image 
+                    src={ABOUT_SLIDER_IMAGES[currentImg]} 
+                    alt="Acerca del resort Los Andes" 
+                    fill 
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-[4000ms] group-hover:scale-105"
+                  />
+                </motion.div>
+              </AnimatePresence>
+
             </div>
             
             {/* Imagen Secundaria (Abajo Derecha) */}
