@@ -133,9 +133,7 @@ const gridItems: GalleryImage[] = [
   { id: 1016, category: "Habitaciones", src: "/images/rooms/sui_jun_ejec/sui_jun_ejec8.webp", label: "Suite Junior Ejecutiva" },
   { id: 1017, category: "Habitaciones", src: "/images/rooms/sui_mat_jun/sui_mat_jun6.webp", label: "Suite Matrimonial Junior" },
   { id: 1018, category: "Habitaciones", src: "/images/rooms/sui_mat_jun/sui_mat_jun7.webp", label: "Suite Matrimonial Junior" }
-];
-
-const categories = ["Todas", "Piscinas", "Habitaciones", "Restaurante", "Eventos", "Áreas verdes", "Familias", "Actividades"  ,
+  ,
   { id: 2001, category: "Piscinas", src: "/images/site/piscina-principal-1.webp", label: "Piscina Principal" },
   { id: 2002, category: "Piscinas", src: "/images/site/piscina-principal-2.webp", label: "Piscina y Sombrillas" },
   { id: 2003, category: "Piscinas", src: "/images/site/puente-madera-piscina-1.webp", label: "Puente sobre la piscina" },
@@ -154,6 +152,8 @@ const categories = ["Todas", "Piscinas", "Habitaciones", "Restaurante", "Eventos
   { id: 2016, category: "Áreas verdes", src: "/images/site/atardecer-jardines-sombrillas.webp", label: "Atardecer en los jardines" },
   { id: 2017, category: "Áreas verdes", src: "/images/site/vista-general-resort.webp", label: "Vista general del Resort", className: "md:col-span-2" }
 ];
+
+const categories = ["Todas", "Piscinas", "Habitaciones", "Restaurante", "Eventos", "Áreas verdes", "Familias", "Actividades"];
 
 export default function Gallery() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
