@@ -135,7 +135,25 @@ const gridItems: GalleryImage[] = [
   { id: 1018, category: "Habitaciones", src: "/images/rooms/sui_mat_jun/sui_mat_jun7.webp", label: "Suite Matrimonial Junior" }
 ];
 
-const categories = ["Todas", "Piscinas", "Habitaciones", "Restaurante", "Eventos", "Áreas verdes", "Familias", "Actividades"];
+const categories = ["Todas", "Piscinas", "Habitaciones", "Restaurante", "Eventos", "Áreas verdes", "Familias", "Actividades"  ,
+  { id: 2001, category: "Piscinas", src: "/images/site/piscina-principal-1.webp", label: "Piscina Principal" },
+  { id: 2002, category: "Piscinas", src: "/images/site/piscina-principal-2.webp", label: "Piscina y Sombrillas" },
+  { id: 2003, category: "Piscinas", src: "/images/site/puente-madera-piscina-1.webp", label: "Puente sobre la piscina" },
+  { id: 2004, category: "Piscinas", src: "/images/site/puente-madera-piscina-2.webp", label: "Puente rústico" },
+  { id: 2005, category: "Piscinas", src: "/images/site/piscina-y-jacuzzi.webp", label: "Piscina y Jacuzzi" },
+  { id: 2006, category: "Piscinas", src: "/images/site/piscina-exterior-panoramica.webp", label: "Vista panorámica de la piscina", className: "md:col-span-2" },
+  { id: 2007, category: "Piscinas", src: "/images/site/piscina-sombrillas.webp", label: "Zona de descanso en piscina" },
+  { id: 2008, category: "Piscinas", src: "/images/site/piscina-palmera-central.webp", label: "Piscina y palmeras" },
+  { id: 2009, category: "Piscinas", src: "/images/site/puente-madera-detalle.webp", label: "Puente de madera" },
+  { id: 2010, category: "Piscinas", src: "/images/site/piscina-zonas-verdes.webp", label: "Piscina y zonas verdes" },
+  { id: 2011, category: "Piscinas", src: "/images/site/sombrillas-y-montana.webp", label: "Sombrillas con vista a la montaña" },
+  { id: 2012, category: "Piscinas", src: "/images/site/piscina-jardines-amplios.webp", label: "Piscina y jardines" },
+  { id: 2013, category: "Áreas verdes", src: "/images/site/vista-panoramica-desde-balcon-1.webp", label: "Vista desde el balcón", className: "md:col-span-2" },
+  { id: 2014, category: "Áreas verdes", src: "/images/site/vista-panoramica-desde-balcon-2.webp", label: "Vista panorámica del resort" },
+  { id: 2015, category: "Áreas verdes", src: "/images/site/vista-balcon-hacia-jardines.webp", label: "Jardines desde balcón" },
+  { id: 2016, category: "Áreas verdes", src: "/images/site/atardecer-jardines-sombrillas.webp", label: "Atardecer en los jardines" },
+  { id: 2017, category: "Áreas verdes", src: "/images/site/vista-general-resort.webp", label: "Vista general del Resort", className: "md:col-span-2" }
+];
 
 export default function Gallery() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
