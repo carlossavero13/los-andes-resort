@@ -9,9 +9,6 @@ import { heroReveal } from "@/lib/animations";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
 const heroImages = [
-  "/images/site/vista-general-resort.webp",
-  "/images/site/vista-panoramica-desde-balcon-1.webp",
-  "/images/site/atardecer-jardines-sombrillas.webp",
   "/images/gallery/piscina (1).webp",
   "/images/hero/hero-1.webp",
   "/images/hero/hero-2.webp",

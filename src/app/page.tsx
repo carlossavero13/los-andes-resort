@@ -4,7 +4,6 @@ import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import Hero from "@/components/sections/Hero";
 import FullDay from "@/components/sections/FullDay";
-import PetFriendly from "@/components/sections/PetFriendly";
 
 
 import Rooms from "@/components/sections/Rooms";

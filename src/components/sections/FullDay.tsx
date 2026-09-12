@@ -62,6 +62,8 @@ export default function FullDay() {
     { text: "Juegos infantiles y recreativos", icon: Castle },
     { text: "Vale de consumo para el restaurante", icon: ChefHat },
     { text: "Hermosas áreas verdes y jardines", icon: Flower2 },
+    
+    { text: "100% Pet Friendly - Trae a tu mascota", icon: PawPrint },
   ];
 
   return (
@@ -147,7 +149,7 @@ export default function FullDay() {
             />
             
             <p className="text-forest/70 font-inter font-light text-sm md:text-lg leading-relaxed mb-8 md:mb-10 mt-4 md:mt-6 max-w-lg">
-              Desconéctate de la ciudad y disfruta de un día completo en nuestras instalaciones rodeadas de naturaleza, piscinas y exquisita gastronomía. Todo lo que necesitas para un día inolvidable con tu familia.
+              Desconéctate de la ciudad y disfruta de un día completo en nuestras instalaciones rodeadas de naturaleza, piscinas y exquisita gastronomía. Todo lo que necesitas para un día inolvidable con tu familia. Y como sabemos que tu mascota también es parte de ella, ¡somos 100% Pet Friendly!
             </p>
 
             <h4 className="font-playfair text-lg md:text-2xl text-forest font-medium mb-5 md:mb-6">¿Qué incluye?</h4>
