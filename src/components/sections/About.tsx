@@ -74,8 +74,8 @@ export default function About() {
             <div className="absolute top-0 left-0 w-[75%] h-[75%] overflow-hidden rounded-3xl shadow-2xl z-10 group-hover:-translate-y-2 transition-transform duration-700">
               <div className="absolute inset-0 bg-black/10 z-10 group-hover:opacity-0 transition-opacity duration-700 pointer-events-none" />
               <Image 
-                src="/images/gallery/vista.webp" 
-                alt="Vista panorámica Los Andes" 
+                src="/images/site/piscina-principal-1.webp" 
+                alt="Piscina principal del resort" 
                 fill 
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-transform duration-[3000ms] group-hover:scale-105"
@@ -86,8 +86,8 @@ export default function About() {
             <div className="absolute bottom-0 right-0 w-[55%] h-[55%] bg-white p-2 sm:p-3 rounded-2xl z-20 shadow-[0_20px_50px_rgba(0,0,0,0.2)] group-hover:translate-y-2 group-hover:translate-x-2 transition-transform duration-700">
               <div className="relative w-full h-full overflow-hidden rounded-xl">
                 <Image 
-                  src="/images/site/huesped-con-mascota-1.webp" 
-                  alt="Huésped con su mascota - Pet Friendly" 
+                  src="/images/areas/baile1.webp" 
+                  alt="Bailes y Shows en el Restaurante" 
                   fill 
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-[3000ms] group-hover:scale-110"
