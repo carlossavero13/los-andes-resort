@@ -28,7 +28,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://losandesclubresort.com"),
+  metadataBase: new URL("https://losandeshotel.pe"),
   title: {
     default: "Los Andes Club Resort | Hotel & Restaurante en Cieneguilla, Lima",
     template: "%s | Los Andes Club Resort",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Los Andes Club Resort | Hotel & Restaurante en Cieneguilla, Lima",
     description: "Tu escape perfecto entre naturaleza y confort. Habitaciones premium, restaurante criollo, piscina, eventos y Full Day a solo 40 min de Lima.",
-    url: "https://losandesclubresort.com",
+    url: "https://losandeshotel.pe",
     siteName: "Los Andes Club Resort",
     images: [
       {
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     images: ["/images/hero/hero-1.webp"],
   },
   alternates: {
-    canonical: "https://losandesclubresort.com",
+    canonical: "https://losandeshotel.pe",
   },
   category: "travel",
 };
@@ -88,12 +88,12 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Resort",
-      "@id": "https://losandesclubresort.com/#resort",
+      "@id": "https://losandeshotel.pe/#resort",
       "name": "Los Andes Club Resort",
       "alternateName": "Club Resort Los Andes",
       "image": [
-        "https://losandesclubresort.com/images/hero/hero-1.webp",
-        "https://losandesclubresort.com/images/hero/hero-2.webp"
+        "https://losandeshotel.pe/images/hero/hero-1.webp",
+        "https://losandeshotel.pe/images/hero/hero-2.webp"
       ],
       "description": "Resort campestre exclusivo en Cieneguilla, Lima. Habitaciones premium, restaurante criollo, bar de cócteles, piscina, áreas verdes y espacios para eventos como matrimonios, cumpleaños y full days corporativos.",
       "address": {
@@ -111,7 +111,7 @@ const jsonLd = {
       },
       "telephone": "+51924899204",
       "email": "clientes@restaurantlosandes.com.pe",
-      "url": "https://losandesclubresort.com",
+      "url": "https://losandeshotel.pe",
       "priceRange": "$$",
       "checkinTime": "14:00",
       "checkoutTime": "12:00",
@@ -139,9 +139,9 @@ const jsonLd = {
     },
     {
       "@type": "Restaurant",
-      "@id": "https://losandesclubresort.com/#restaurant",
+      "@id": "https://losandeshotel.pe/#restaurant",
       "name": "Restaurante Los Andes",
-      "image": "https://losandesclubresort.com/images/restaurant/platos/platos1.webp",
+      "image": "https://losandeshotel.pe/images/restaurant/platos/platos1.webp",
       "description": "Restaurante campestre en Cieneguilla con carta criolla, fusión y bar de cócteles artesanales. Ideal para almuerzos familiares y celebraciones.",
       "servesCuisine": ["Peruana", "Criolla", "Fusión"],
       "address": {
@@ -152,22 +152,22 @@ const jsonLd = {
         "addressCountry": "PE"
       },
       "telephone": "+51924899204",
-      "url": "https://losandesclubresort.com/#restaurante",
+      "url": "https://losandeshotel.pe/#restaurante",
       "priceRange": "$$",
-      "parentOrganization": { "@id": "https://losandesclubresort.com/#resort" }
+      "parentOrganization": { "@id": "https://losandeshotel.pe/#resort" }
     },
     {
       "@type": "WebSite",
-      "@id": "https://losandesclubresort.com/#website",
-      "url": "https://losandesclubresort.com",
+      "@id": "https://losandeshotel.pe/#website",
+      "url": "https://losandeshotel.pe",
       "name": "Los Andes Club Resort",
       "description": "Resort campestre en Cieneguilla, Lima — Hotel, Restaurante y Eventos",
-      "publisher": { "@id": "https://losandesclubresort.com/#resort" },
+      "publisher": { "@id": "https://losandeshotel.pe/#resort" },
       "inLanguage": "es-PE"
     },
     {
       "@type": "FAQPage",
-      "@id": "https://losandesclubresort.com/#faq",
+      "@id": "https://losandeshotel.pe/#faq",
       "mainEntity": [
         {
           "@type": "Question",

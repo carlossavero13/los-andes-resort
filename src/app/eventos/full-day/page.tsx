@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, GraduationCap, ShieldCheck, Clock, X, AlertCircle, CreditCard , ChevronLeft, ChevronRight} from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import TermsAndPayment from "@/components/shared/TermsAndPayment";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -231,44 +232,8 @@ export default function FullDayPage() {
               </a>
             </AnimatedSection>
 
-            {/* Términos y Pagos */}
-            <div className="grid md:grid-cols-2 gap-16 lg:gap-24 pt-12 border-t border-forest/10">
-              <AnimatedSection variant="fadeRight">
-                <div className="flex items-center gap-3 mb-8">
-                  <AlertCircle className="w-6 h-6 text-gold" />
-                  <h4 className="font-playfair text-3xl text-forest">Términos Importantes</h4>
-                </div>
-                <ul className="space-y-6">
-                  <li className="text-forest/70 font-light text-base leading-relaxed pl-4 border-l-2 border-gold/30">
-                    Cotización válida por <strong>30 días</strong>. Se requiere un adulto responsable (profesor/padre) por cada 10 estudiantes.
-                  </li>
-                  <li className="text-forest/70 font-light text-base leading-relaxed pl-4 border-l-2 border-gold/30">
-                    Prohibido el ingreso de bebidas alcohólicas al evento escolar.
-                  </li>
-                </ul>
-              </AnimatedSection>
-
-              <AnimatedSection variant="fadeLeft">
-                <div className="flex items-center gap-3 mb-8">
-                  <CreditCard className="w-6 h-6 text-gold" />
-                  <h4 className="font-playfair text-3xl text-forest">Métodos de Pago</h4>
-                </div>
-                <div className="bg-[#FDFBF7] p-8 rounded-[2rem] border border-forest/10 space-y-6">
-                  <div>
-                    <p className="text-xs text-forest/50 uppercase tracking-widest font-bold mb-2">Cuenta BCP Soles</p>
-                    <p className="font-playfair italic text-forest text-2xl">1939 6216 14018</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-forest/50 uppercase tracking-widest font-bold mb-2">Cuenta Interbancaria (CCI)</p>
-                    <p className="font-playfair italic text-forest text-2xl">002 193 0096 2161 4018 14</p>
-                  </div>
-                  <div className="pt-4 border-t border-forest/10">
-                    <p className="text-xs text-forest/50 uppercase tracking-widest font-bold mb-1">Titular</p>
-                    <p className="font-inter font-medium text-forest">Los Andes Hotel Resort SAC</p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            </div>
+             {/* Términos y Pagos */}
+              <TermsAndPayment />
           </div>
         </section>
 
