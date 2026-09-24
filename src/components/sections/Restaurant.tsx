@@ -13,7 +13,7 @@ const RESTAURANT_IMAGES = [
   
   "/images/restaurant/platos/platos4.webp",
   "/images/restaurant/platos/platos5.webp",
-  "/images/restaurant/platos/platos6.webp",
+  
   "/images/restaurant/platos/platos7.webp",
   "/images/restaurant/platos/plato8.webp",
   
