@@ -64,34 +64,16 @@ export default function Restaurant() {
               </p>
             </div>
 
-            {/* Menu Buttons */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 max-w-lg w-full">
+            {/* Menu Button */}
+            <div className="flex max-w-lg w-full">
               <a 
                 href="https://drive.google.com/file/d/1ApHDA3qOftxPXYqJy78eSnOQCCFBl7_R/view"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#722F37] rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center text-white hover:bg-[#5a252b] transition-all hover:-translate-y-1 shadow-lg"
+                className="bg-[#722F37] w-full rounded-xl sm:rounded-2xl px-6 py-4 flex items-center justify-center gap-3 text-white hover:bg-[#5a252b] transition-all hover:-translate-y-1 shadow-lg"
               >
-                <UtensilsCrossed className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-2 md:mb-3" strokeWidth={1.5} />
-                <span className="font-inter font-medium underline underline-offset-2 md:underline-offset-4 text-[10px] sm:text-sm md:text-base">Carta</span>
-              </a>
-              <a 
-                href={getWhatsAppUrl("Hola, me gustaría ver la carta del Bar")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#722F37] rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center text-white hover:bg-[#5a252b] transition-all hover:-translate-y-1 shadow-lg"
-              >
-                <Martini className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-2 md:mb-3" strokeWidth={1.5} />
-                <span className="font-inter font-medium underline underline-offset-2 md:underline-offset-4 text-[10px] sm:text-sm md:text-base">Bar</span>
-              </a>
-              <a 
-                href={getWhatsAppUrl("Hola, me gustaría ver la carta de Vinos")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#722F37] rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center text-white hover:bg-[#5a252b] transition-all hover:-translate-y-1 shadow-lg"
-              >
-                <Wine className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-2 md:mb-3" strokeWidth={1.5} />
-                <span className="font-inter font-medium underline underline-offset-2 md:underline-offset-4 text-[10px] sm:text-sm md:text-base">Vinos</span>
+                <UtensilsCrossed className="w-6 h-6" strokeWidth={2} />
+                <span className="font-inter font-medium text-lg">Ver Carta Completa</span>
               </a>
             </div>
           </AnimatedSection>

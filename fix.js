@@ -1,0 +1,1 @@
+const fs = require('fs'); const file = 'src/components/sections/Restaurant.tsx'; let code = fs.readFileSync(file, 'utf8'); code = code.replace(/href=\{getWhatsAppUrl\([^\)]*Carta del restaurante[^\)]*\)\}/, 'href="https://drive.google.com/file/d/1ApHDA3qOftxPXYqJy78eSnOQCCFBl7_R/view"'); fs.writeFileSync(file, code);
