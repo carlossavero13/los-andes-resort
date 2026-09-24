@@ -67,7 +67,7 @@ export default function Restaurant() {
             {/* Menu Buttons */}
             <div className="grid grid-cols-3 gap-2 sm:gap-4 max-w-lg w-full">
               <a 
-                href={getWhatsAppUrl("Hola, me gustaría ver la Carta del restaurante")}
+                href="https://drive.google.com/file/d/1ApHDA3qOftxPXYqJy78eSnOQCCFBl7_R/view"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#722F37] rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center text-white hover:bg-[#5a252b] transition-all hover:-translate-y-1 shadow-lg"
