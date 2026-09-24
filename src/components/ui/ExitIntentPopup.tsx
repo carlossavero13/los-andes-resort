@@ -8,8 +8,11 @@ import { getWhatsAppUrl } from "@/lib/utils";
 export default function ExitIntentPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const [hasTriggered, setHasTriggered] = useState(false);
+  const [currentMonth, setCurrentMonth] = useState("");
 
   useEffect(() => {
+    setCurrentMonth(new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(new Date()));
+    
     // Solo mostramos en desktop cuando el mouse sale hacia arriba (intento de cerrar pestaña o cambiar URL)
     const handleMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) {
@@ -26,7 +29,7 @@ export default function ExitIntentPopup() {
   }, [hasTriggered]);
 
   const handleClaim = () => {
-    window.open(getWhatsAppUrl("Hola, acabo de ver la promoción del 10% de descuento en la web y me gustaría aprovecharlo."), "_blank");
+    window.open(getWhatsAppUrl(`Hola, me gustar\u00eda reservar aprovechando la promoc\u00f3n del 10% de descuento para todo el mes de ${currentMonth}.`), "_blank");
     setIsOpen(false);
   };
 
@@ -64,10 +67,10 @@ export default function ExitIntentPopup() {
                 <Gift size={28} className="text-gold" />
               </div>
               <h3 className="font-playfair text-3xl md:text-4xl font-bold text-[#722F37] mb-3 leading-tight">
-                ¡Un Regalo <br/> Exclusivo!
+                ©Un Regalo <br/> Exclusivo!
               </h3>
               <p className="font-inter text-forest/60 text-sm leading-relaxed px-2">
-                Antes de irte, queremos obsequiarte un cupón especial para que disfrutes de tu estadía en Los Andes Resort.
+                Reserva ahora y obtén un <strong className="text-[#722F37]">10% de descuento</strong> válido para todo el mes de <span className="font-bold capitalize">{currentMonth}</span>.
               </p>
             </div>
             
@@ -78,7 +81,7 @@ export default function ExitIntentPopup() {
               
               <div className="text-center z-10">
                 <span className="block font-inter text-[10px] font-bold uppercase tracking-[0.2em] text-forest/50 mb-1">
-                  Válido para tu Estadía
+                  TODO EL MES DE {currentMonth.toUpperCase()}
                 </span>
                 <span className="block font-playfair text-3xl text-forest font-bold">
                   10% DE DESCT.
@@ -93,14 +96,14 @@ export default function ExitIntentPopup() {
                 className="w-full flex items-center justify-center gap-3 bg-[#722F37] hover:bg-[#5a252b] text-white px-8 py-4 rounded-xl font-inter text-sm font-semibold transition-all shadow-[0_8px_20px_rgba(114,47,55,0.2)] hover:-translate-y-1"
               >
                 <MessageCircle size={20} />
-                Reclamarlo por WhatsApp
+                Reservar por WhatsApp
               </button>
               
               <button
                 onClick={() => setIsOpen(false)}
                 className="w-full text-center text-forest/40 text-xs font-inter hover:text-[#722F37] underline transition-colors"
               >
-                No gracias, prefiero perder la promoción
+                No gracias, prefiero perder la promocion
               </button>
             </div>
           </motion.div>
