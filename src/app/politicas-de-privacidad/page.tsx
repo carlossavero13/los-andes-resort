@@ -49,7 +49,7 @@ export default function PoliticasDePrivacidad() {
 
             <h2 className="text-2xl mt-8 mb-4 font-semibold">6. Derechos ARCO</h2>
             <p className="font-inter mb-4">
-              De acuerdo con la Ley de Protección de Datos Personales (Ley N° 29733), usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse (Derechos ARCO) al uso de sus datos personales. Para ejercer estos derechos, puede contactarnos enviando un correo a: <strong>clientes@restaurantlosandes.com.pe</strong>.
+              De acuerdo con la Ley de Protección de Datos Personales (Ley N° 29733), usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse (Derechos ARCO) al uso de sus datos personales. Para ejercer estos derechos, puede contactarnos enviando un correo a: <strong>a.clientes@losandeshotel.pe</strong>.
             </p>
 
             <h2 className="text-2xl mt-8 mb-4 font-semibold">7. Contacto</h2>

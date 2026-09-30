@@ -64,7 +64,7 @@ export function CompanyInfoPanel() {
             </div>
             <div>
               <dt className="text-white/40 text-[10px] uppercase tracking-wider mb-1">Correo de Contacto</dt>
-              <dd className="text-gold font-medium">clientes@restaurantlosandes.com.pe</dd>
+              <dd className="text-gold font-medium">a.clientes@losandeshotel.pe</dd>
             </div>
           </dl>
         </div>

@@ -4,7 +4,7 @@ export const WHATSAPP_NUMBER = "51924899204";
 export const WHATSAPP_DEFAULT_MESSAGE = "Hola, me gustaría obtener más información sobre Los Andes Club Resort";
 export const RESORT_PHONE = "+51 924 899 204";
 export const RESORT_LANDLINE = "(01) 748 - 3726";
-export const RESORT_EMAIL = "clientes@restaurantlosandes.com.pe";
+export const RESORT_EMAIL = "a.clientes@losandeshotel.pe";
 export const RESORT_ADDRESS = "Los Andes Club Resort, Cieneguilla, Lima, Perú";
 export const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/HF5sNn4YHAZWRQKA6";
 export const GOOGLE_MAPS_EMBED = "https://maps.google.com/maps?q=Club%20Resort%20Los%20Andes,%20Cieneguilla,%20Lima,%20Peru&t=&z=14&ie=UTF8&iwloc=&output=embed";

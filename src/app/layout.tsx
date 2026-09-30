@@ -110,7 +110,7 @@ const jsonLd = {
         "longitude": -76.7697
       },
       "telephone": "+51924899204",
-      "email": "clientes@restaurantlosandes.com.pe",
+      "email": "a.clientes@losandeshotel.pe",
       "url": "https://losandeshotel.pe",
       "priceRange": "$$",
       "checkinTime": "14:00",
