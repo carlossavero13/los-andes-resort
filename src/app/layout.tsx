@@ -6,6 +6,7 @@ import BookingModal from "@/components/ui/BookingModal";
 import ExitIntentPopup from "@/components/ui/ExitIntentPopup";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import Preloader from "@/components/ui/Preloader";
+import { Analytics } from "@vercel/analytics/next";
 
 import CookieBanner from "@/components/ui/CookieBanner";
 
@@ -286,6 +287,7 @@ export default function RootLayout({
           <ExitIntentPopup />
           <CookieBanner />
         </SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );
