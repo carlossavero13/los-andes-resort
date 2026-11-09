@@ -10,6 +10,7 @@ import { Menu, X, MessageCircle } from "lucide-react";
 import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
+import AnnouncementBar from "@/components/layout/AnnouncementBar";
 const InstagramIcon = ({ size = 24, className = "" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -94,9 +95,11 @@ export default function Navbar() {
 
   return (
     <>
-      <header
+      <header className="fixed top-0 w-full z-50">
+        <AnnouncementBar />
+        <div
         className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-500",
+          "w-full transition-all duration-500",
           isScrolled
             ? "bg-white/60 backdrop-blur-3xl shadow-sm border-b border-white/30 py-3"
             : "bg-gradient-to-b from-black/80 via-black/20 to-transparent py-6"
@@ -203,6 +206,8 @@ export default function Navbar() {
 
         </div>
         
+        </div>
+
         {/* Línea de Progreso (Lujo) */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-gold to-transparent origin-left"

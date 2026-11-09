@@ -3,6 +3,7 @@ import Footer from "@/components/layout/Footer";
 import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import Hero from "@/components/sections/Hero";
+import NewYearPromo from "@/components/sections/NewYearPromo";
 import FullDay from "@/components/sections/FullDay";
 
 
@@ -30,6 +31,7 @@ export default function Home() {
 
         {/* 2. NOSOTROS (Desliza por encima del Hero) */}
         <div className="relative z-10 bg-white shadow-[0_-20px_50px_rgba(0,0,0,0.5)] rounded-t-[40px] overflow-hidden">
+          <NewYearPromo />
           <About />
         </div>
 
